@@ -1,0 +1,34 @@
+{
+  "name": "@daysnap/cornucopia-plugin",
+  "version": "0.0.1",
+  "description": "cornucopia ui",
+  "keywords": [
+    "cornucopia",
+    "ui",
+    "vue",
+    "vant"
+  ],
+  "author": "chenzhigang <979703986@qq.com>",
+  "homepage": "https://github.com/daysnap/cornucopia#readme",
+  "main": "lib/cornucopia-ui.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmmirror.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daysnap/cornucopia.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/daysnap/cornucopia/issues"
+  }
+}

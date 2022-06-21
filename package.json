@@ -1,8 +1,9 @@
 {
-  "name": "root",
+  "name": "cornucopia",
   "private": true,
   "scripts": {
-    "dev": "lerna exec --scope cornucopia -- npm run dev",
+    "bootstrop": "lerna bootstrop --hoist",
+    "dev": "lerna run dev --scope @daysnap/cornucopia",
     "clean": "lerna clean"
   },
   "devDependencies": {

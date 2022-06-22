@@ -5,7 +5,6 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     VanButton: typeof import('vant/es')['Button']
   }
 }

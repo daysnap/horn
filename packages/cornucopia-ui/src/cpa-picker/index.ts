@@ -1,6 +1,6 @@
 
 import Component from './index.vue'
-import { withInstall } from 'src/utils'
+import { withInstall } from '../utils'
 
 export const CpaPicker = withInstall<typeof Component>(Component)
 

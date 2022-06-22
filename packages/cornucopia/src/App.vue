@@ -5,9 +5,8 @@
 </template>
 
 <script setup lang="ts">
-  // import CpaPicker from '@daysnap/cornucopia-ui/src/cpa-picker/index.vue'
   import { CpaPicker } from '@daysnap/cornucopia-ui'
-  console.log('CpaPicker => ', CpaPicker)
+  console.log('CpaPicker => ', CpaPicker.name)
 
   const data = () => {
     console.log('dddasdadadasdadadaddas')

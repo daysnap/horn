@@ -35,7 +35,8 @@
     "vant": "^3.5.1"
   },
   "devDependencies": {
-    "vue": "^3.2.25",
-    "unplugin-vue-define-options": "^0.5.0"
+    "@daysnap/define-sass": "^0.0.9",
+    "unplugin-vue-define-options": "^0.5.0",
+    "vue": "^3.2.25"
   }
 }

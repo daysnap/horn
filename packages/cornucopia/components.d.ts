@@ -6,6 +6,7 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     VanButton: typeof import('vant/es')['Button']
+    VanField: typeof import('vant/es')['Field']
   }
 }
 

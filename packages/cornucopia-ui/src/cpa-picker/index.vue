@@ -1,14 +1,21 @@
 
 <template>
-  <van-button1></van-button1>
+  <van-button></van-button>
 </template>
 
 <script setup lang="ts">
-  import { Button as VanButton1 } from 'vant'
+  import { Button as VanButton } from 'vant'
 
   defineOptions({
-    name: 'CpaPicker1'
+    name: 'CpaPicker',
   })
+
+
+
+  defineExpose({
+
+  })
+
 </script>
 
 <style lang="scss" scoped>

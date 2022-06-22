@@ -5,7 +5,10 @@
 
 <script setup lang="ts">
   import { Button as VanButton1 } from 'vant'
-  import { default } from 'unplugin-vue-define-options/vite'
+
+  defineOptions({
+    name: 'CpaPicker'
+  })
 
   const data = () => {
     console.log('DDDDDDXXXXXXXX')

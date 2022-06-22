@@ -1,14 +1,14 @@
 
 <template>
   <van-popup></van-popup>
-  <van-button/>
+  <van-button>312321</van-button>
   <van-field :label="d"/>
-  <Button type="prr"></Button>
+  <VanButton>12312</VanButton>
 </template>
 
 <script setup lang="ts">
 
-  import { Popup as VanPopup, Picker as VanPicker, Button } from 'vant'
+  import { Popup as VanPopup, Picker as VanPicker, Button as VanButton } from 'vant'
 
   const d: string = 'ss'
 

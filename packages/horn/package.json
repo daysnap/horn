@@ -1,5 +1,5 @@
 {
-  "name": "@daysnap/cornucopia",
+  "name": "@daysnap/horn",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -8,7 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@daysnap/cornucopia-ui": "^0.0.1",
+    "@daysnap/horn-ui": "^0.0.1",
     "vant": "4.0.0-alpha.4",
     "vue": "^3.2.25"
   },

@@ -1,11 +1,11 @@
-# `cornucopia-ui`
+# `horn-ui`
 
 > TODO: description
 
 ## Usage
 
 ```
-const cornucopiaUi = require('cornucopia-ui');
+const hornUi = require('horn-ui');
 
 // TODO: DEMONSTRATE API
 ```

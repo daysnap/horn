@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-  import { CpaPicker, CpaPickerInstance } from '@daysnap/cornucopia-ui'
+  import { CpaPicker, CpaPickerInstance } from '@daysnap/horn-ui'
   console.log('CpaPicker => ', CpaPicker.name)
   let label = '姓名'
   const refCpaPicker = ref<CpaPickerInstance>()

@@ -1,16 +1,16 @@
 {
-  "name": "@daysnap/cornucopia-plugin",
+  "name": "@daysnap/horn-plugin",
   "version": "0.0.1",
-  "description": "cornucopia ui",
+  "description": "horn ui",
   "keywords": [
-    "cornucopia",
+    "horn",
     "ui",
     "vue",
     "vant"
   ],
   "author": "chenzhigang <979703986@qq.com>",
-  "homepage": "https://github.com/daysnap/cornucopia#readme",
-  "main": "lib/cornucopia-ui.js",
+  "homepage": "https://github.com/daysnap/horn#readme",
+  "main": "lib/horn-ui.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -23,12 +23,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/daysnap/cornucopia.git"
+    "url": "git+https://github.com/daysnap/horn.git"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
-    "url": "https://github.com/daysnap/cornucopia/issues"
+    "url": "https://github.com/daysnap/horn/issues"
   }
 }

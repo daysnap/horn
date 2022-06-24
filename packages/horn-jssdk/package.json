@@ -1,5 +1,5 @@
 {
-  "name": "@daysnap/jssdk",
+  "name": "@daysnap/horn-jssdk",
   "version": "0.0.1",
   "description": "原生容器面向 H5 开发者提供的基于容器应用内的网页开发工具包",
   "main": "index.js",
@@ -14,6 +14,7 @@
     "url": "git+https://github.com/daysnap/jssdk.git"
   },
   "keywords": [
+    "horn",
     "daysnap",
     "jssdk",
     "tool"

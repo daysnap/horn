@@ -1,7 +1,8 @@
 
-import Component from './index.vue'
+import CpaPicker from './index.vue'
 import { withInstall } from '../utils'
 
-export const CpaPicker = withInstall<typeof Component>(Component)
+withInstall(CpaPicker)
 
-export default CpaPicker
+export * from './index.vue'
+export { default as CpaPicker } from './index.vue'

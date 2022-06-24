@@ -1,13 +1,14 @@
-import { App } from 'vue'
+import { Plugin } from 'vue'
 
-export type WithInstall<T> = T & {
-  install(app: App): void
-}
+export type WithInstall<T> = T & Plugin
 
-export const withInstall = <T>(options: any): WithInstall<T> => {
-  (options as Record<string, unknown>).install = (app: App) => {
-    const { name } = options
-    app.component(name, options)
+export const withInstall = <T>(
+  main: any,
+): WithInstall<T> => {
+
+  ;(main as WithInstall<T>).install = (app): void => {
+    app.component(main.name, main)
   }
-  return options
+
+  return main
 }

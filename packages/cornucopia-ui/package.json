@@ -32,7 +32,7 @@
     "url": "https://github.com/daysnap/cornucopia/issues"
   },
   "dependencies": {
-    "vant": "^3.5.1"
+    "vant": "4.0.0-alpha.4"
   },
   "devDependencies": {
     "@daysnap/define-sass": "^0.0.9",

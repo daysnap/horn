@@ -6998,10 +6998,10 @@ validate-npm-package-name@^4.0.0:
   dependencies:
     builtins "^5.0.0"
 
-vant@^3.5.1:
-  version "3.5.1"
-  resolved "https://registry.npmmirror.com/vant/-/vant-3.5.1.tgz#7a7287f019e86ef56f55fae7c4d6f6ac92d5452b"
-  integrity sha512-SoTrAnesooXnAAR9IDn/zfna24tgShkC8/lAJJQsOa0ynmR61AnV1wOwCsUNf2Q1CobQIGi3AHTUan7cPzupEA==
+vant@4.0.0-alpha.4:
+  version "4.0.0-alpha.4"
+  resolved "https://registry.npmmirror.com/vant/-/vant-4.0.0-alpha.4.tgz#6ed39998e74fbb92515324c340d5e888c2a4afcc"
+  integrity sha512-bgZU5aLjTRfU6egt9PX1DM6HTICKs4ca8sRnbzWvLsogudvqa+zmGicq/104c4JH9bnSMc71cWhioxN4jTbaZA==
   dependencies:
     "@vant/icons" "^1.8.0"
     "@vant/popperjs" "^1.2.1"

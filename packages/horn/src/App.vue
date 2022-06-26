@@ -19,12 +19,7 @@
   const refCpaPicker = ref<CpaPickerInstance>()
   const handleClick = () => {
     refCpaPicker.value?.show({
-      value: [
-        {
-          value: '333',
-          text: '温州',
-        }
-      ],
+      value: { text: '杭州', value: '222' },
       columns: [
         { text: '杭州', value: '111' },
         { text: '宁波', value: '222' },
@@ -34,6 +29,7 @@
       //   console.log('action => ', action)
       //   return action === 'confirm'
       // },
+      filterable: true,
     }).then((res) => {
       const { selectedOptions, selectedValues } = res
       console.log('selectedOptions => ', selectedOptions)

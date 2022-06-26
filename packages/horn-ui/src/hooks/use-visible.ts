@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 export interface UseVisibleOptions<T> {
-  showCallback?: (options?: UseVisibleShowOptions & T) => void | Promise<void>,
+  showCallback?: (options?: T) => void | Promise<void>,
   hideCallback?: () => void | Promise<void>,
   confirmCallback?: (...args: any[]) => void | Promise<void>,
 }
@@ -26,7 +26,7 @@ export const useVisible = <T extends {}, P = any>(
   const show = <R = P>(options?: UseVisibleShowOptions & T) => {
     return new Promise<R> (async (_resolve, _reject) => {
       beforeClose = options?.beforeClose
-      await showCallback?.(options as T)
+      await showCallback?.(options)
       visible.value = true
       resolve = _resolve
       reject = _reject

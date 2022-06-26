@@ -1,12 +1,5 @@
 
 <template>
-  <van-picker
-    v-model="selectedValues"
-    title="标题"
-    :columns="columns"
-    @confirm="confirm"
-  />
-  <p>{{ selectedValues }}</p>
   <van-popup
     round
     :show="visible"
@@ -14,67 +7,82 @@
     position="bottom"
   >
     <van-picker
-      :modelValue="selectedValues"
-      :columns="columns"
+      :title="computedProps.title"
+      :modelValue="computedProps.value"
+      :columns="computedProps.columns"
       @cancel="hide"
       @confirm="confirm"
     ></van-picker>
+    <input
+      v-if="computedProps.filterable"
+      placeholder="输入关键词进行筛选"
+      class="cpa-picker-filter"
+      type="text"
+      v-model="keyword"
+    />
   </van-popup>
 </template>
 
 <script setup lang="ts">
   // import { Popup as VanPopup, Picker as VanPicker, Button as VanButton } from 'vant'
-  import { ref, reactive } from 'vue'
+  import { ref, reactive, computed } from 'vue'
   import { PickerColumn, PickerProps, PickerConfirmEventParams } from 'vant'
   import { useVisible, UseVisibleShowOptions } from '../hooks'
-  import { Numeric } from 'vant/es/utils'
 
   defineOptions({
     name: 'CpaPicker',
   })
 
-  const attrs = ref<any>({
-    value: [],
-    columns: [],
+  const props = defineProps({
+    title: String,
+    value: {
+      default: '',
+    },
+    filterable: {
+      type: Boolean,
+      default: false,
+    },
+    columns: {
+      type: Array,
+      default: () => []
+    }
   })
-  const columns = [
-    { text: '杭州', value: 'Hangzhou' },
-    { text: '宁波', value: 'Ningbo' },
-    { text: '温州', value: 'Wenzhou' },
-    { text: '绍兴', value: 'Shaoxing' },
-    { text: '湖州', value: 'Huzhou' },
-  ];
-  const selectedValues = ref(['Ningbo']);
+
+  const keyword = ref<string>('')
 
   export interface CpaPickerProps {
-    value: [],
-    title: string,
+    columns?: PickerColumn,
+    value?: any,
+    filterable?: boolean
   }
+  const dynamicProps = ref<CpaPickerProps>()
 
-  defineProps<{
-    value: [],
-    title: string,
-  }>()
+  const computedProps = computed(() => {
+    let { value, columns, ...rest } = Object.assign({}, props, dynamicProps.value)
+    if (!Array.isArray(value)) {
+      value = typeof value === 'object' ? value.value : value
+      value = value ? [value] : []
+    }
+    return { value, columns, ...rest }
+  })
 
   const {
     show,
     hide,
     confirm,
     visible,
-  } = useVisible<{
-    columns?: PickerColumn,
-    value?: any,
-  }, PickerConfirmEventParams>({
-    showCallback: (options) => {
-      attrs.value = options
-      options = reactive({})
-      console.log('回调了')
+  } = useVisible<
+    CpaPickerProps,
+    PickerConfirmEventParams
+  >({
+    showCallback: options => {
+      dynamicProps.value = options
     },
     hideCallback: () => {
       console.log('hideCallback')
     },
-    confirmCallback: (res) => {
-      console.log('confirmCallback')
+    confirmCallback: res => {
+      console.log('confirmCallback => ', res)
     },
   })
 
@@ -94,5 +102,13 @@
 
 <style lang="scss" scoped>
   @import "../styles/define";
-
+  .cpa-picker-filter{
+    @extend %bsb;
+    @extend %w100;
+    border: none;
+    padding: 0 j(16);
+    height: j(40);
+    font-size: j(14);
+    background-color: transparent;
+  }
 </style>

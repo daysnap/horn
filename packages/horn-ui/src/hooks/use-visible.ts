@@ -4,7 +4,7 @@ import { ref } from 'vue'
 export interface UseVisibleOptions<T> {
   showCallback?: (options?: T) => void | Promise<void>,
   hideCallback?: () => void | Promise<void>,
-  confirmCallback?: (...args: any[]) => void | Promise<void>,
+  confirmCallback?: (...args: any[]) => any | Promise<any>,
 }
 
 export interface UseVisibleShowOptions {

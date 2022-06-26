@@ -7,7 +7,9 @@
   <van-field
     label="姓名"
   ></van-field>
-  <cpa-picker ref="refCpaPicker"/>
+  <cpa-picker
+    ref="refCpaPicker"
+  />
 </template>
 
 <script setup lang="ts">
@@ -28,12 +30,14 @@
         { text: '宁波', value: '222' },
         { text: '温州', value: '333' },
       ],
-      beforeClose: (action) => {
-        console.log('action => ', action)
-        return action === 'confirm'
-      },
+      // beforeClose: (action) => {
+      //   console.log('action => ', action)
+      //   return action === 'confirm'
+      // },
     }).then((res) => {
-
+      const { selectedOptions, selectedValues } = res
+      console.log('selectedOptions => ', selectedOptions)
+      console.log('selectedValues => ', selectedValues)
     }).catch(err => {
 
     })

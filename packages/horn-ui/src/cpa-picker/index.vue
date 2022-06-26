@@ -4,6 +4,7 @@
     v-model="selectedValues"
     title="标题"
     :columns="columns"
+    @confirm="confirm"
   />
   <p>{{ selectedValues }}</p>
   <van-popup
@@ -23,9 +24,10 @@
 
 <script setup lang="ts">
   // import { Popup as VanPopup, Picker as VanPicker, Button as VanButton } from 'vant'
-  import { ref, PropType, reactive } from 'vue'
-  import { PickerColumn, PickerOption } from 'vant'
+  import { ref, reactive } from 'vue'
+  import { PickerColumn, PickerProps, PickerConfirmEventParams } from 'vant'
   import { useVisible, UseVisibleShowOptions } from '../hooks'
+  import { Numeric } from 'vant/es/utils'
 
   defineOptions({
     name: 'CpaPicker',
@@ -42,7 +44,17 @@
     { text: '绍兴', value: 'Shaoxing' },
     { text: '湖州', value: 'Huzhou' },
   ];
-  const selectedValues = ref(['Wenzhou']);
+  const selectedValues = ref(['Ningbo']);
+
+  export interface CpaPickerProps {
+    value: [],
+    title: string,
+  }
+
+  defineProps<{
+    value: [],
+    title: string,
+  }>()
 
   const {
     show,
@@ -52,7 +64,7 @@
   } = useVisible<{
     columns?: PickerColumn,
     value?: any,
-  }>({
+  }, PickerConfirmEventParams>({
     showCallback: (options) => {
       attrs.value = options
       options = reactive({})
@@ -61,8 +73,7 @@
     hideCallback: () => {
       console.log('hideCallback')
     },
-    confirmCallback: (res, index) => {
-      console.log('res => ', res, index)
+    confirmCallback: (res) => {
       console.log('confirmCallback')
     },
   })

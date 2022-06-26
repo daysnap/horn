@@ -11,7 +11,7 @@ export interface UseVisibleShowOptions {
   beforeClose?: (action: string) => boolean | Promise<boolean>
 }
 
-export const useVisible = <T extends {}>(
+export const useVisible = <T extends {}, P = any>(
   options: UseVisibleOptions<T> = {}
 ) => {
 
@@ -23,7 +23,7 @@ export const useVisible = <T extends {}>(
   let beforeClose: UseVisibleShowOptions['beforeClose']
 
   // 显示
-  const show = <R = any>(options?: UseVisibleShowOptions & T) => {
+  const show = <R = P>(options?: UseVisibleShowOptions & T) => {
     return new Promise<R> (async (_resolve, _reject) => {
       beforeClose = options?.beforeClose
       await showCallback?.(options as T)
@@ -52,7 +52,7 @@ export const useVisible = <T extends {}>(
     }
     const value = await confirmCallback?.(...args)
     resolve?.(value)
-    visible.value = true
+    visible.value = false
   }
 
   return {

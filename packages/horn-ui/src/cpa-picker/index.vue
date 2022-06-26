@@ -8,7 +8,7 @@
   >
     <van-picker
       :title="computedProps.title"
-      :modelValue="computedProps.value"
+      :modelValue="computedValues"
       :columns="computedColumns"
       @cancel="hide"
       @confirm="confirm"
@@ -54,13 +54,16 @@
   }
   const dynamicProps = ref<CpaPickerProps>()
 
-  const computedProps = computed<CpaPickerProps>(() => {
-    let { value, columns, ...rest } = Object.assign({}, props, dynamicProps.value)
+  const computedProps = computed<CpaPickerProps>(() =>
+    Object.assign({}, props, dynamicProps.value)
+  )
+  const computedValues = computed(() => {
+    let { value } = computedProps.value
     if (!Array.isArray(value)) {
       value = typeof value === 'object' ? value.value : value
       value = value ? [value] : []
     }
-    return { value, columns, ...rest }
+    return value
   })
 
   const keyword = ref<string>('')
@@ -104,13 +107,17 @@
           selectedValues = [selected.value ?? '']
         }
       } else {
+        console.log('selectedOptions.length => ', Array.isArray(value))
         if (selectedOptions.length === 1 && !Array.isArray(value)) {
           if (typeof value === 'object') {
             value = selectedOptions[0]
+            console.log('11')
           } else {
+            console.log('22')
             value = selectedValues [0]
           }
         } else {
+          console.log('33')
           value = selectedOptions
         }
       }

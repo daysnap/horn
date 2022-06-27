@@ -24,10 +24,9 @@
 </template>
 
 <script setup lang="ts">
-  // import { Popup as VanPopup, Picker as VanPicker, Button as VanButton } from 'vant'
+  import { Popup as VanPopup, Picker as VanPicker, PickerColumn, PickerConfirmEventParams } from 'vant'
   import { ref, computed } from 'vue'
-  import { PickerColumn, PickerConfirmEventParams } from 'vant'
-  import { useVisible } from '../hooks'
+  import { useVisible } from '@daysnap/horn-use'
 
   defineOptions({
     name: 'CpaPicker',
@@ -107,17 +106,13 @@
           selectedValues = [selected.value ?? '']
         }
       } else {
-        console.log('selectedOptions.length => ', Array.isArray(value))
         if (selectedOptions.length === 1 && !Array.isArray(value)) {
           if (typeof value === 'object') {
             value = selectedOptions[0]
-            console.log('11')
           } else {
-            console.log('22')
             value = selectedValues [0]
           }
         } else {
-          console.log('33')
           value = selectedOptions
         }
       }

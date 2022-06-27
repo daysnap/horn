@@ -1,2 +1,2 @@
 export * from './utils'
-export * from './cpa-picker'
+export * from './ho-picker'

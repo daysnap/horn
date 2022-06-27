@@ -12,14 +12,9 @@
 </template>
 
 <script setup lang="ts">
-  import { CpaPicker, CpaPickerInstance } from '@daysnap/horn-ui'
-  console.log('CpaPicker => ', CpaPicker.name)
-
-  let label = '姓名'
-
+  import { HoPicker, HoPickerInstance } from '@daysnap/horn-ui'
   const city = ref('111')
-
-  const refCpaPicker = ref<CpaPickerInstance>()
+  const refCpaPicker = ref<HoPickerInstance>()
   const handleClick = () => {
     refCpaPicker.value?.show({
       value: city.value,
@@ -39,14 +34,6 @@
 
     })
   }
-
-
-  const fun = <T> (): Promise<T> => Promise.resolve({} as T)
-
-  fun<{ x: string }>().then((res) => {
-
-  })
-
 </script>
 
 <style lang="scss" scoped>

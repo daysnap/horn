@@ -2,7 +2,7 @@ import { PickerOption, PickerColumn } from 'vant'
 import { ExtractPropTypes, PropType } from 'vue'
 import { makeArrayProp } from '../utils'
 
-export const cpaPickerProps = {
+export const pickerProps = {
   title: String,
   value: {
     type: [String, Number, Object],
@@ -14,4 +14,4 @@ export const cpaPickerProps = {
   columns: makeArrayProp<PickerOption | PickerColumn>(),
 }
 
-export type CpaPickerProps = ExtractPropTypes<typeof cpaPickerProps>
+export type PickerProps = ExtractPropTypes<typeof pickerProps>

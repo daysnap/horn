@@ -28,18 +28,18 @@
   import { PickerColumn, PickerConfirmEventParams } from 'vant'
   import { ref, computed } from 'vue'
   import { useVisible } from '@daysnap/horn-use'
-  import { cpaPickerProps, CpaPickerProps } from './types'
+  import { pickerProps, PickerProps } from './types'
   import { Numeric } from '../utils'
 
   defineOptions({
     name: 'CpaPicker',
   })
 
-  const props = defineProps(cpaPickerProps)
+  const props = defineProps(pickerProps)
 
-  const dynamicProps = ref<CpaPickerProps>()
+  const dynamicProps = ref<PickerProps>()
 
-  const computedProps = computed<CpaPickerProps>(() =>
+  const computedProps = computed<PickerProps>(() =>
     Object.assign({}, props, dynamicProps.value)
   )
   const computedValues = computed(() => {
@@ -76,7 +76,7 @@
     confirm,
     visible,
   } = useVisible<
-    CpaPickerProps,
+    PickerProps,
     PickerConfirmEventParams & { value: any }
   >({
     showCallback: options => {

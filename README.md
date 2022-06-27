@@ -1,6 +1,8 @@
 # horn
 vue3 box
 
+pnpm install react react-dom -w
+pnpm install dayjs -r --filter @test/web
 
 ## lerna
 

@@ -1,15 +1,27 @@
 
 <template>
-  <van-button @click="handleClick">主要按钮</van-button>
+
+  <van-button @click="handleClick">选择省份</van-button>
+
   <p>city => {{ city }}</p>
+
   <cpa-picker
     ref="refCpaPicker"
   />
+
+  <cpa-picker
+    ref="refCpaPicker"
+  />
+
 </template>
 
 <script setup lang="ts">
   import { CpaPicker, CpaPickerInstance } from '@daysnap/horn-ui'
   console.log('CpaPicker => ', CpaPicker.name)
+
+
+
+
   let label = '姓名'
 
   const city = ref('111')
@@ -34,6 +46,7 @@
 
     })
   }
+
 </script>
 
 <style lang="scss" scoped>

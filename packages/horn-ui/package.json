@@ -32,6 +32,7 @@
     "url": "https://github.com/daysnap/horn/issues"
   },
   "dependencies": {
+    "@daysnap/horn-use": "workspace:^0.0.1",
     "vant": "4.0.0-alpha.4"
   },
   "devDependencies": {

@@ -5,16 +5,16 @@
 
   <p>city => {{ city }}</p>
 
-  <cpa-picker
+  <hor-picker
     ref="refCpaPicker"
   />
 
 </template>
 
 <script setup lang="ts">
-  import { HoPicker, HoPickerInstance } from '@daysnap/horn-ui'
+  import { HorPicker, HorPickerInstance } from '@daysnap/horn-ui'
   const city = ref('111')
-  const refCpaPicker = ref<HoPickerInstance>()
+  const refCpaPicker = ref<HorPickerInstance>()
   const handleClick = () => {
     refCpaPicker.value?.show({
       value: city.value,

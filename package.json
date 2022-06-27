@@ -2,10 +2,8 @@
   "name": "horn",
   "private": true,
   "scripts": {
-    "bootstrop": "lerna bootstrop --hoist",
-    "dev": "lerna run dev --scope @daysnap/horn",
-    "clean": "lerna clean",
-    "husky": "husky install && echo 'export PATH=\"/usr/local/bin/:$PATH\"' >> ~/.huskyrc"
+    "start": "pnpm -C ./packages/horn dev",
+    "prepare": "husky install && echo 'export PATH=\"/usr/local/bin/:$PATH\"' >> ~/.huskyrc"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.1",

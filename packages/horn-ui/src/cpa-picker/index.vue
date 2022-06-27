@@ -24,52 +24,43 @@
 </template>
 
 <script setup lang="ts">
-  import { Popup as VanPopup, Picker as VanPicker, PickerColumn, PickerConfirmEventParams } from 'vant'
+
+  import { PickerColumn, PickerConfirmEventParams } from 'vant'
   import { ref, computed } from 'vue'
   import { useVisible } from '@daysnap/horn-use'
+  import { cpaPickerProps, CpaPickerProps } from './types'
+  import { Numeric } from '../utils'
 
   defineOptions({
     name: 'CpaPicker',
   })
 
-  const props = defineProps({
-    title: String,
-    value: {
-      default: '',
-    },
-    filterable: {
-      type: Boolean,
-      default: false,
-    },
-    columns: {
-      type: Array,
-      default: () => []
-    }
-  })
-  export interface CpaPickerProps {
-    columns?: PickerColumn,
-    value?: any,
-    filterable?: boolean
-  }
+  const props = defineProps(cpaPickerProps)
+
   const dynamicProps = ref<CpaPickerProps>()
 
   const computedProps = computed<CpaPickerProps>(() =>
     Object.assign({}, props, dynamicProps.value)
   )
   const computedValues = computed(() => {
-    let { value } = computedProps.value
-    if (!Array.isArray(value)) {
-      value = typeof value === 'object' ? value.value : value
-      value = value ? [value] : []
+    const { value } = computedProps.value
+    let values: Numeric[] = []
+    if (Array.isArray(value)) {
+      values = [...value]
+    } else {
+      const item = typeof value === 'object' ? value.value : value
+      if (item) {
+        values = [item]
+      }
     }
-    return value
+    return values
   })
 
   const keyword = ref<string>('')
   const computedColumns = computed(() => {
     let { columns = [], filterable } = computedProps.value
     if (filterable && keyword.value.length) {
-      columns = columns.filter(item =>
+      columns = (columns as PickerColumn).filter(item =>
         item?.text?.toString().includes(keyword.value)
       )
     }
@@ -96,7 +87,7 @@
       let { value, columns } = computedProps.value
       let { selectedOptions, selectedValues } = res
       if (selectedValues[0] === 'ERR_NO_DATA') {
-        const selected = columns?.find(item =>
+        const selected = (columns as PickerColumn)?.find(item =>
           item.value === value
         )
         selectedOptions = []
@@ -120,12 +111,7 @@
     },
   })
 
-  export interface CpaPickerInstance {
-    show: typeof show
-    hide: typeof hide
-    confirm: typeof confirm
-  }
-  defineExpose<CpaPickerInstance>({
+  defineExpose({
     show,
     hide,
     confirm,

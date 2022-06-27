@@ -9,18 +9,11 @@
     ref="refCpaPicker"
   />
 
-  <cpa-picker
-    ref="refCpaPicker"
-  />
-
 </template>
 
 <script setup lang="ts">
   import { CpaPicker, CpaPickerInstance } from '@daysnap/horn-ui'
   console.log('CpaPicker => ', CpaPicker.name)
-
-
-
 
   let label = '姓名'
 
@@ -46,6 +39,13 @@
 
     })
   }
+
+
+  const fun = <T> (): Promise<T> => Promise.resolve({} as T)
+
+  fun<{ x: string }>().then((res) => {
+
+  })
 
 </script>
 

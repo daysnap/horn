@@ -3,7 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite --focus",
+    "dev": "vite --force",
+    "tsc": "vue-tsc --noEmit",
     "build1": "vue-tsc --noEmit && vite build",
     "build": "vite build",
     "preview": "vite preview"

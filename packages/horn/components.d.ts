@@ -6,6 +6,7 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Child: typeof import('./src/components/child.vue')['default']
+    ChildSetup: typeof import('./src/components/child-setup.vue')['default']
     Test: typeof import('./src/components/test.vue')['default']
     VanButton: typeof import('vant/es')['Button']
     VanDatePicker: typeof import('vant/es')['DatePicker']

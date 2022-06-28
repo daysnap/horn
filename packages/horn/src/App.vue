@@ -6,17 +6,34 @@
   <p>city => {{ city }}</p>
 
   <hor-picker
+    s="123123123"
     ref="refCpaPicker"
   />
 
-  <hor-date-picker></hor-date-picker>
+  <child
+    ref="refChild"
+  ></child>
+
+  <child-set-up
+    ref="refChildSetup"
+  ></child-set-up>
+
+  <hor-date-picker/>
 </template>
 
 <script setup lang="ts">
-  import { HorPicker, HorPickerInstance , HorDatePicker} from '@daysnap/horn-ui'
+  import Child from './components/child.vue'
+  import ChildSetUp from './components/child-setup.vue'
+  import { HorPicker, HorPickerInstance, HorDatePicker} from '@daysnap/horn-ui'
+  
   const city = ref('111')
   const refCpaPicker = ref<HorPickerInstance>()
+
+  const refChildSetup = ref<InstanceType<typeof ChildSetUp>>()
+  const refChild = ref<InstanceType<typeof Child>>()
+
   const handleClick = () => {
+
     refCpaPicker.value?.show({
       value: city.value,
       columns: [

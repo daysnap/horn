@@ -16,7 +16,7 @@
     <input
       v-if="computedFilterable"
       placeholder="输入关键词进行筛选"
-      class="cpa-picker-filter"
+      class="hor-picker-filter"
       type="text"
       v-model="keyword"
     />
@@ -31,13 +31,11 @@
   import { pickerProps, PickerProps } from './types'
   import { Numeric } from '../utils'
 
-  defineOptions({
-    name: 'CpaPicker',
-  })
+  defineOptions({ name: 'HorPicker' })
 
   const props = defineProps(pickerProps)
 
-  const dynamicProps = ref<PickerProps>()
+  const dynamicProps = ref<Partial<PickerProps>>()
 
   const computedProps = computed<PickerProps>(() =>
     Object.assign({}, props, dynamicProps.value)
@@ -46,7 +44,7 @@
     const { value } = computedProps.value
     let values: Numeric[] = []
     if (Array.isArray(value)) {
-      values = value.map(item => 
+      values = value.map(item =>
         typeof item === 'object' ? item.value : value
       )
     } else {
@@ -84,7 +82,7 @@
     confirm,
     visible,
   } = useVisible<
-    PickerProps,
+    Partial<PickerProps>,
     PickerConfirmEventParams & { value: any }
   >({
     showCallback: options => {
@@ -128,11 +126,13 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "../styles/define";
-  .cpa-picker-filter{
+  @import "../styles/define.scss";
+
+  @include b(picker-filter) {
     @extend %bsb;
     @extend %w100;
     border: none;
+    padding: j(222);
     padding: 0 j(16);
     height: j(40);
     font-size: j(14);

@@ -9,10 +9,11 @@
     ref="refCpaPicker"
   />
 
+  <hor-date-picker></hor-date-picker>
 </template>
 
 <script setup lang="ts">
-  import { HorPicker, HorPickerInstance } from '@daysnap/horn-ui'
+  import { HorPicker, HorPickerInstance , HorDatePicker} from '@daysnap/horn-ui'
   const city = ref('111')
   const refCpaPicker = ref<HorPickerInstance>()
   const handleClick = () => {

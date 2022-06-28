@@ -8,6 +8,7 @@ declare module '@vue/runtime-core' {
     Child: typeof import('./src/components/child.vue')['default']
     Test: typeof import('./src/components/test.vue')['default']
     VanButton: typeof import('vant/es')['Button']
+    VanDatePicker: typeof import('vant/es')['DatePicker']
     VanPicker: typeof import('vant/es')['Picker']
     VanPopup: typeof import('vant/es')['Popup']
   }

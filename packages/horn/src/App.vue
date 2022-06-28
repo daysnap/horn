@@ -18,7 +18,14 @@
     ref="refChildSetup"
   ></child-set-up>
 
-  <hor-date-picker/>
+  <van-button @click="handleDatePicker">打开DatePicker</van-button>
+  <hor-date-picker ref="refHorDatePicker"/>
+  <p>time => {{ time }}</p>
+<!--  <van-cell title="单元格" value="123" icon="location-o" >-->
+<!--    <template #value>-->
+<!--      123321123321-->
+<!--    </template>-->
+<!--  </van-cell>-->
 </template>
 
 <script setup lang="ts">
@@ -90,6 +97,18 @@
       console.log('selectedOptions => ', selectedOptions)
       console.log('selectedValues => ', selectedValues)
     }).catch(err => {
+
+    })
+  }
+  const refHorDatePicker = ref();
+  const time = ref();
+  const handleDatePicker = ()=>{
+    refHorDatePicker.value.show({
+      columnsType:['year']
+    }).then(res=>{
+      time.value = res;
+      console.log(res)
+    }).catch(err=>{
 
     })
   }

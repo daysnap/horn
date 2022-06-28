@@ -1,15 +1,56 @@
 <template>
-  <van-date-picker
-      v-model="currentDate"
-      title="选择日期"
-  />
+  <van-popup
+    round
+    :show="visible"
+    position="bottom"
+  >
+    <van-date-picker
+        :modelValue="computedProps.value"
+        title="选择日期"
+        :columns-type="computedProps.columnsType"
+        @confirm="confirm"
+        @cancel="hide"
+    />
+  </van-popup>
 </template>
 
 <script setup lang="ts">
+
+  import {computed, defineProps, ref,} from 'vue'
+  import { datePickerProps , DatePickerProps} from './types'
+  import {PickerProps} from "@/hor-picker/types";
+  import {useVisible} from "@daysnap/horn-use";
   defineOptions({
-    name: 'CpaDatePicker',
+    name: 'HorDatePicker',
   })
 
+  const props = defineProps(datePickerProps);
+
+  const dynamicProps = ref<Partial<DatePickerProps>>();
+
+  const computedProps = computed<DatePickerProps>(() =>
+      Object.assign({}, props, dynamicProps.value)
+  )
+  const {
+    show,
+    hide,
+    confirm,
+    visible,
+  } = useVisible<
+      Partial<DatePickerProps>
+    >({
+      showCallback: options => {
+        dynamicProps.value = options
+      },
+      confirmCallback:(res)=>{
+        return res
+      }
+  })
+  defineExpose({
+    show,
+    hide,
+    confirm,
+  })
 </script>
 
 <style scoped>

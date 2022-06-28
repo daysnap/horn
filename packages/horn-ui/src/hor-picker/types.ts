@@ -12,8 +12,4 @@ export const pickerProps = {
   columns: makeArrayProp<PickerOption | PickerColumn>(),
 }
 
-export const porps = {
-  title: String,
-}
-
 export type PickerProps = ExtractPropTypes<typeof pickerProps>

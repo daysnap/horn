@@ -90,6 +90,7 @@
       dynamicProps.value = options
     },
     confirmCallback: (res: PickerConfirmEventParams) => {
+      console.log('PickerConfirmEventParams=>',res)
       let { value, columns } = computedProps.value
       let { selectedOptions, selectedValues } = res
       if (selectedValues[0] === 'ERR_NO_DATA') {

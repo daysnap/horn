@@ -14,7 +14,7 @@
       @confirm="confirm"
     ></van-picker>
     <input
-      v-if="computedProps.filterable"
+      v-if="computedFilterable"
       placeholder="输入关键词进行筛选"
       class="cpa-picker-filter"
       type="text"
@@ -46,7 +46,9 @@
     const { value } = computedProps.value
     let values: Numeric[] = []
     if (Array.isArray(value)) {
-      values = [...value]
+      values = value.map(item => 
+        typeof item === 'object' ? item.value : value
+      )
     } else {
       const item = typeof value === 'object' ? value.value : value
       if (item) {
@@ -54,6 +56,12 @@
       }
     }
     return values
+  })
+
+  const computedFilterable = computed(() => {
+    const { filterable, columns } = computedProps.value
+    const item = columns[0]
+    return filterable && !Array.isArray(item) && !Array.isArray(item.children)
   })
 
   const keyword = ref<string>('')

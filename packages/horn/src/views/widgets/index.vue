@@ -1,6 +1,6 @@
 
 <template>
-  <router-view/>
+<p>widgets</p>
 </template>
 
 <script setup lang="ts">

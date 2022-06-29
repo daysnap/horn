@@ -1,6 +1,6 @@
 
 <template>
-  <router-view/>
+  <p>services</p>
 </template>
 
 <script setup lang="ts">

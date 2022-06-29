@@ -1,0 +1,34 @@
+@use "sass:math";
+@import "@daysnap/define-sass/index.scss";
+
+$base-font-size: 37.5px;
+
+@function j($px, $bfs: $base-font-size) {
+  @if (unitless($px)) {
+    @return math.div($px + 0px, $bfs) * 1rem;
+  } @else if (unit($px) == rem) {
+    @return $px;
+  } @else if (unit($px) == px) {
+    @return $px;
+  }
+}
+
+
+// Color Palette
+$black: #000;
+$white: #fff;
+$gray-1: #f7f8fa;
+$gray-2: #f2f3f5;
+$gray-3: #ebedf0;
+$gray-4: #dcdee0;
+$gray-5: #c8c9cc;
+$gray-6: #969799;
+$gray-7: #646566;
+$gray-8: #323233;
+$red: #fc3939;
+$blue: #0095d9;
+$orange: #ff9523;
+$orange-dark: #ed6a0c;
+$orange-light: #fffbe8;
+$green: #67C23A;
+$color-primary: $blue;

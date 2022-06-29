@@ -3,13 +3,15 @@
   "private": true,
   "scripts": {
     "start": "pnpm -C ./packages/horn dev",
+    "clean": "rimraf **/node_modules",
     "prepare": "husky install && echo 'export PATH=\"/usr/local/bin/:$PATH\"' >> ~/.huskyrc"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-conventional": "^16.2.1",
     "commitizen": "^4.2.4",
-    "husky": "^7.0.4"
+    "husky": "^7.0.4",
+    "rimraf": "^3.0.2"
   },
   "workspaces": [
     "packages/*"

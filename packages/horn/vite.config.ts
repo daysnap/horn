@@ -33,6 +33,10 @@ export default defineConfig({
       extensions: ['vue', 'jsx', 'tsx', 'ts', 'js'],
       resolvers: [
         VantResolver(),
+        (componentName) => {
+          if (componentName.startsWith('Hor'))
+            return { name: componentName, from: '@daysnap/horn-ui' }
+        },
       ]
     }),
   ],

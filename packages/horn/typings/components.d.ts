@@ -6,9 +6,11 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     HelloWorld: typeof import('./../src/components/hello-world.vue')['default']
+    HorCell: typeof import('@daysnap/horn-ui')['HorCell']
+    HorDatePicker: typeof import('@daysnap/horn-ui')['HorDatePicker']
+    HorPicker: typeof import('@daysnap/horn-ui')['HorPicker']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    VanActionSheet: typeof import('vant/es')['ActionSheet']
     VanDatePicker: typeof import('vant/es')['DatePicker']
     VanPicker: typeof import('vant/es')['Picker']
     VanPopup: typeof import('vant/es')['Popup']

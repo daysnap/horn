@@ -23,15 +23,18 @@ export default defineConfig({
     DefineOptions(),
     AutoImport({
       imports: ['vue', 'vue-router'],
+      dts: 'typings/auto-imports.d.ts',
       resolvers: [
         VantResolver()
       ],
     }),
     Components({
+      dts: 'typings/components.d.ts',
+      extensions: ['vue', 'jsx', 'tsx', 'ts', 'js'],
       resolvers: [
         VantResolver(),
       ]
-    })
+    }),
   ],
   resolve: {
     alias: {

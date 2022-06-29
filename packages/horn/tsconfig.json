@@ -10,7 +10,6 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noImplicitAny": false,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
     "baseUrl": ".",
@@ -25,6 +24,8 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
+    "typings/**/*.d.ts",
+    "components.d.ts",
     "auto-imports.d.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]

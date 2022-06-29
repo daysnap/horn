@@ -5,11 +5,10 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    Child: typeof import('./src/components/child.vue')['default']
-    ChildSetup: typeof import('./src/components/child-setup.vue')['default']
-    Test: typeof import('./src/components/test.vue')['default']
-    VanButton: typeof import('vant/es')['Button']
-    VanCell: typeof import('vant/es')['Cell']
+    HelloWorld: typeof import('./../src/components/hello-world.vue')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
+    VanActionSheet: typeof import('vant/es')['ActionSheet']
     VanDatePicker: typeof import('vant/es')['DatePicker']
     VanPicker: typeof import('vant/es')['Picker']
     VanPopup: typeof import('vant/es')['Popup']

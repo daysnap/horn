@@ -8,7 +8,7 @@ export interface UseVisibleOptions<T> {
 }
 
 export interface UseVisibleShowOptions {
-  beforeClose?: (action: string) => boolean | Promise<boolean>
+  beforeClose?: (action: string, ...args: any[]) => boolean | Promise<boolean>
 }
 
 export const useVisible = <T extends {}, P = any>(
@@ -35,7 +35,7 @@ export const useVisible = <T extends {}, P = any>(
 
   // 隐藏
   const hide = async (reason?: any) => {
-    const result = await beforeClose?.('cancel') ?? true
+    const result = await beforeClose?.('cancel', reason) ?? true
     if (!result) {
       return
     }
@@ -46,7 +46,7 @@ export const useVisible = <T extends {}, P = any>(
 
   // 确认
   const confirm = async (...args: any[]) => {
-    const result = await beforeClose?.('confirm') ?? true
+    const result = await beforeClose?.('confirm', ...args) ?? true
     if (!result) {
       return
     }

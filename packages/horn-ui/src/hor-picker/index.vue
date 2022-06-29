@@ -132,7 +132,6 @@
     @extend %bsb;
     @extend %w100;
     border: none;
-    padding: j(222);
     padding: 0 j(16);
     height: j(40);
     font-size: j(14);

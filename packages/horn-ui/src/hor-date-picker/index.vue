@@ -1,6 +1,5 @@
 <template>
   <van-date-picker
-      v-model="currentDate"
       title="选择日期"
   />
 </template>
@@ -9,7 +8,6 @@
   defineOptions({
     name: 'CpaDatePicker',
   })
-
 </script>
 
 <style scoped>

@@ -4,6 +4,10 @@
 $namespace: 'hor';
 $base-font-size: 37.5px;
 
+
+%df {
+  position: relative;
+}
 @function j($px, $bfs: $base-font-size) {
   @if (unitless($px)) {
     @return math.div($px + 0px, $bfs) * 1rem;
@@ -12,5 +16,9 @@ $base-font-size: 37.5px;
   } @else if (unit($px) == px) {
     @return $px;
   }
+}
+
+.dd {
+  @extend %ps;
 }
 

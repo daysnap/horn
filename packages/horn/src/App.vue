@@ -1,6 +1,42 @@
 
 <template>
 
+  <hor-cell
+    label="单元格"
+    value="内容内容">
+    <template #prefix>
+      <span>prefix</span>
+    </template>
+    <template #suffix>
+      <!--      <span>suffix</span>-->
+    </template>
+  </hor-cell>
+
+  <hor-cell
+    label="单元格"
+    value="内容内容内容内容内容内容内容内容内容容内容">
+    <template #prefix>
+      <span>prefix</span>
+    </template>
+    <template #suffix>
+<!--      <span>suffix</span>-->
+    </template>
+  </hor-cell>
+
+  <hor-cell
+    direction="column"
+    label="单元格"
+    value="内容">
+    <template #prefix>
+      <span>prefix</span>
+    </template>
+    <template #suffix>
+      <span>suffix</span>
+    </template>
+  </hor-cell>
+
+  <br/>
+
   <van-button @click="handleClick">选择省份</van-button>
 
   <p>city => {{ city }}</p>
@@ -18,14 +54,15 @@
     ref="refChildSetup"
   ></child-set-up>
 
+
   <hor-date-picker/>
 </template>
 
 <script setup lang="ts">
   import Child from './components/child.vue'
   import ChildSetUp from './components/child-setup.vue'
-  import { HorPicker, HorPickerInstance, HorDatePicker} from '@daysnap/horn-ui'
-  
+  import { HorPicker, HorPickerInstance, HorCell } from '@daysnap/horn-ui'
+
   const city = ref('111')
   const refCpaPicker = ref<HorPickerInstance>()
 
@@ -84,6 +121,7 @@
       ],
       filterable: true,
     }).then((res) => {
+
       const { selectedOptions, selectedValues, value } = res
       city.value = value
       console.log('value => ', value)

@@ -1,4 +1,3 @@
-
 import Component from './index.vue'
 import { withInstall } from '../utils'
 

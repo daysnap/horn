@@ -11,6 +11,7 @@
   "dependencies": {
     "@daysnap/define-sass": "^0.0.9",
     "@daysnap/horn-ui": "^0.0.1",
+    "@daysnap/horn-use": "workspace:^0.0.1",
     "vant": "4.0.0-alpha.4",
     "vue": "^3.2.25",
     "vue-router": "^4.0.16"

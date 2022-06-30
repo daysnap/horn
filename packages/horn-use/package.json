@@ -15,6 +15,7 @@
   "homepage": "https://github.com/daysnap/horn#readme",
   "license": "ISC",
   "devDependencies": {
-    "vue": "^3.2.25"
+    "vue": "^3.2.25",
+    "vue-router": "^4.0.16"
   }
 }

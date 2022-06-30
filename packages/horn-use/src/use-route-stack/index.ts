@@ -29,7 +29,7 @@ export const useRouteStack = () => {
         )
       if (toIndex > -1 && fromIndex > -1) {
         // 返回：B -> A
-        stack.value = stack.value.slice(0, fromIndex)
+        stack.value = stack.value.slice(0, toIndex + 1)
       }
     },
     { deep: true }

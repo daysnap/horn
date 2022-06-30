@@ -14,7 +14,6 @@
 
 <script setup lang="ts">
   import { useRouteStack } from '@daysnap/horn-use'
-
   const routeStack = useRouteStack()
   const includeList = computed(() => {
     return routeStack.value

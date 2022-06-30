@@ -5,7 +5,7 @@
   <button @click="$router.push('/widgets/details')">去详情</button>
   <input type="text" v-model="name">
   <br>
-  <p>name: {{ name }}</p>
+  <p>name1: {{ name }}</p>
 </template>
 
 <route>{ meta: { title: 'hor-cell', keepAlive: true } }</route>

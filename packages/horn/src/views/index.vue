@@ -19,15 +19,21 @@
 <route>{ redirect: '/home' }</route>
 
 <script setup lang="ts">
-  import { useRoute } from 'vue-router'
 
-  const route = useRoute()
-  console.log('route index => ', route)
-  const TabBarRoutes: any = []
+  const router = useRouter()
 
+  const TabBarRoutes = computed(() => {
+    const { options } = router
+    const { routes } = options
+    console.log('12341234')
+    return routes.find(item => item.path === '/')
+  })
 
   const arrTabBar = computed(() => {
-    const { children, path } = TabBarRoutes[0]
+    if (!TabBarRoutes.value) {
+      return
+    }
+    const { children, path } = TabBarRoutes.value
     return children?.map(item => {
       const { path: itemPath } = item
       return Object.assign({}, item, {
@@ -35,8 +41,11 @@
           ? itemPath
           : `${path}${path.endsWith('/') ? '' : '/'}${itemPath}`
       })
-    })
+    }) ?? []
   })
+
+  console.log('arrTabBar => ', arrTabBar.value)
+
 </script>
 
 <style lang="scss" scoped>

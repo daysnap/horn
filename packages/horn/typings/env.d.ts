@@ -1,5 +1,4 @@
 /// <reference types="vite/client" />
-/// <reference types="@daysnap/horn-ui" />
 /// <reference types="unplugin-vue-define-options" />
 
 import '@daysnap/horn-ui'

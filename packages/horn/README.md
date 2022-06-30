@@ -1,16 +1,21 @@
 # Vue 3 + TypeScript + Vite
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## unplugin-vue-components
 
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
-
-## Type Support For `.vue` Imports in TS
-
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
-
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
-
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+``` ts
+  //自动引入功能 并为你声明组件实例类型 
+  Components({
+    dirs: ['src/components'],//用于搜索组件的目录的相对路径。默认只查找src里的
+    extensions: ['vue'],扩展名
+    deep: true,
+    resolvers: [],如果你需要引入外部的的ui库需要自定义组件的解析器
+    dts: false, 默认不会自动声明，如果你安装了ts默认帮你声明
+    directoryAsNamespace: false,允许子目录作为组件的命名空间前缀。
+    globalNamespaces: [],
+    directives: true,//指令的自动导入//默认值：Vue 3为“true”，Vue 2为“false”//Vue 2的转换需要Babel
+    importPathTransform: v => v,//解析前的变换路径
+    allowOverrides: false,
+    include: [/\.vue$/, /\.vue\?vue/],
+    exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/],
+  })
+```

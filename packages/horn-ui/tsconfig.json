@@ -14,7 +14,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "src/*": ["src/*"]
+      "src/*": ["src/*"],
+      "@daysnap/horn-ui": ["src"]
     },
     "skipLibCheck": true
   },
@@ -23,6 +24,7 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
+    "src/index.d.ts",
     "typings/**/*.d.ts",
   ]
 }

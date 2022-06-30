@@ -11,6 +11,7 @@
   "author": "chenzhigang <979703986@qq.com>",
   "homepage": "https://github.com/daysnap/horn#readme",
   "main": "src/index.ts",
+  "typings": "src/global.d.ts",
   "directories": {
     "lib": "lib",
     "test": "__tests__"

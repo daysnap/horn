@@ -16,8 +16,15 @@
   </van-tabbar>
 </template>
 
+<route>{ redirect: '/home' }</route>
+
 <script setup lang="ts">
-  import TabBarRoutes from 'src/router/modules/tabbar'
+  import { useRoute } from 'vue-router'
+
+  const route = useRoute()
+  console.log('route index => ', route)
+  const TabBarRoutes: any = []
+
 
   const arrTabBar = computed(() => {
     const { children, path } = TabBarRoutes[0]

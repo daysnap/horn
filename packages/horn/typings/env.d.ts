@@ -2,6 +2,8 @@
 /// <reference types="@daysnap/horn-ui" />
 /// <reference types="unplugin-vue-define-options" />
 
+import '@daysnap/horn-ui'
+
 declare module '*.vue' {
   import type { DefineComponent } from 'vue'
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types

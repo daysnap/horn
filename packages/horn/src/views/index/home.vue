@@ -4,10 +4,6 @@
 
   <div>
   </div>
-  <van-button></van-button>
-
-
-
 </template>
 
 <script setup lang="ts">

@@ -6,6 +6,5 @@ declare module 'vue-router' {
     title?: string
     icon?: string
     depth?: number
-    keepAlive?: boolean
   }
 }

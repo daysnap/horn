@@ -1,6 +1,7 @@
 import { watch, ref } from 'vue'
 import { useRoute, _RouteLocationBase } from 'vue-router'
 
+// todo 后续需要补充 replace 逻辑
 /**
  * A       => to: A, from:  , pageStack: [A]
  * A -> B  => to: B, from: A, pageStack: [A, B]
@@ -9,11 +10,47 @@ import { useRoute, _RouteLocationBase } from 'vue-router'
  * B -> A  => to: A, from: B, pageStack: [A]
  */
 const stack = ref<_RouteLocationBase[]>([])
+
 export const useRouteStack = () => {
   const route = useRoute()
+
+  // window.addEventListener(
+  //   'popstate',
+  //   (e) => {
+  //     console.log('popstate => ', e)
+  //       // 在这个可以添加条件判断
+  //   },
+  //   false
+  // )
+
+  // window.addEventListener(
+  //   'replaceState',
+  //   (e) => {
+  //     console.log('replaceState => ', e)
+  //       // 在这个可以添加条件判断
+  //   },
+  //   false
+  // )
+  // window.addEventListener(
+  //   'pushState',
+  //   (e) => {
+  //     console.log('pushState => ', e)
+  //       // 在这个可以添加条件判断
+  //   },
+  //   false
+  // )  
+
   watch(
     () => ({ ...route }),
-    (to, from) => {
+    (to, from, dd) => {
+
+      console.log('to => ', to.meta)
+      console.log('from => ', from.meta)
+
+      // console.log('dd => ', dd)
+      // console.log('to => ', to)
+      // console.log('from => ', from)
+
       const toIndex = stack.value
         .findIndex(item => 
           item.fullPath === to.fullPath

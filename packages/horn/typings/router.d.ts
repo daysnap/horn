@@ -5,6 +5,7 @@ declare module 'vue-router' {
   interface RouteMeta {
     title?: string
     icon?: string
+    depth?: number
     keepAlive?: boolean
   }
 }

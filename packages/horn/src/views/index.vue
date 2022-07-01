@@ -1,6 +1,17 @@
 
 <template>
-  <router-view></router-view>
+  <router-view v-slot="{ Component }">
+    <keep-alive :include="includes">
+      <component :is="Component" />
+    </keep-alive>
+  </router-view>
+
+  <br>
+  <br>
+  <input type="text" v-model="age">
+  <br>
+  <p>age => {{ age }}</p>
+
   <van-tabbar
     fixed
     route
@@ -16,18 +27,31 @@
   </van-tabbar>
 </template>
 
-<route>{ redirect: '/home' }</route>
+<route>{ redirect: '/home', meta: { depth: 1 } }</route>
 
 <script setup lang="ts">
-  import { useRoute } from 'vue-router'
+  import { useKeepAliveIncludes } from '@daysnap/horn-use'
 
-  const route = useRoute()
-  console.log('route index => ', route)
-  const TabBarRoutes: any = []
+  defineOptions({ name: 'index' })
 
+
+  const age = ref<string>('')
+
+  const [ includes ] = useKeepAliveIncludes({ name: 'index' })
+
+  const router = useRouter()
+
+  const TabBarRoutes = computed(() => {
+    const { options } = router
+    const { routes } = options
+    return routes.find(item => item.path === '/')
+  })
 
   const arrTabBar = computed(() => {
-    const { children, path } = TabBarRoutes[0]
+    if (!TabBarRoutes.value) {
+      return
+    }
+    const { children, path } = TabBarRoutes.value
     return children?.map(item => {
       const { path: itemPath } = item
       return Object.assign({}, item, {
@@ -35,8 +59,9 @@
           ? itemPath
           : `${path}${path.endsWith('/') ? '' : '/'}${itemPath}`
       })
-    })
+    }) ?? []
   })
+
 </script>
 
 <style lang="scss" scoped>

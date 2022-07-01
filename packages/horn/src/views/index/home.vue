@@ -1,25 +1,23 @@
 
 <template>
   <p>home</p>
-    <van-button @click="handleClick">click me</van-button>
-    <hor-date-picker ref="refDate"></hor-date-picker>
-
-  <div>
-  </div>
+  <input type="text" v-model="age">
+  <br>
+  <p>age => {{ age }}</p>
+  <button @click="$router.push('/widgets/list')">去列表</button>
 </template>
 
-<script setup lang="ts">
- const refDate = ref();
- const currentDate = ref(['2021', '01']);
+<route>{ meta: { title: '首页', icon: 'home-o' } }</route>
 
- const handleClick = ()=>{
-    console.log(refDate)
-    refDate.value.show({
-      value:currentDate,
-      columnsType:['year','month','day']
-    })
- }
- refDate
+<script setup lang="ts">
+  import { useKeepAliveIncludes } from '@daysnap/horn-use'
+
+  useKeepAliveIncludes()
+
+  const age = ref<string>('')
+  defineOptions({
+    name: 'index-home'
+  })
 </script>
 
 <style lang="scss" scoped>

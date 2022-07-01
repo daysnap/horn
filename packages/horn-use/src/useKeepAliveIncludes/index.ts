@@ -15,18 +15,19 @@ export const useKeepAliveIncludes = (
 ) : UseKeepAliveIncludesResult => {
 
   if (typeof data.value === 'undefined') {
-    data.value = []
     const route = useRoute()
+    data.value = []
+    
     watch(
       () => ({ ...route }),
       (to, from) => {
         const toDepth = to.meta?.depth as number
         const fromDepth = from.meta?.depth as number
-        if (toDepth < fromDepth) {
-          const index = data.value!!.findIndex(item => item.depth === toDepth)
-          if (index > -1) {
-            data.value = data.value!!.slice(0, index + 1)
-          }
+        if (toDepth < fromDepth && data.value) {
+          const index = data.value
+            .findIndex(item => item.name === to.name)
+          data.value = data.value
+            .slice(0, index + 1)
         }
       },
       { deep: true }

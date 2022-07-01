@@ -8,6 +8,7 @@
     <!-- </transition> -->
   </router-view>
   <p>includes: {{ includes }}</p>
+  <p>data: {{ data }}</p>
   <!-- <dl>
     <dt>pageStack:</dt>
     <dd v-for="(item, index) in routeStack" :key="index">
@@ -27,7 +28,7 @@
 
   import { useKeepAliveIncludes } from '@daysnap/horn-use'
 
-  const [ includes ] = useKeepAliveIncludes(false)
+  const [ includes, data ] = useKeepAliveIncludes(false)
 
 </script>
 

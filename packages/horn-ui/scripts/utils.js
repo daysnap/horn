@@ -32,7 +32,7 @@ const requireFilePath = (directory = '', recursive, regExp) => {
 }
 
 const requireDirname = (data) => {
-  const reg = /components\/(.+)\/index\.tsx$/
+  const reg = /src\/(.+)\/index\.ts$/
   return data.map(p => {
     const res = p.replace(/\\/g, '/').match(reg)
     return res ? res[1] : ''

@@ -4,7 +4,7 @@ const rt = (...args) => rtc('component', ...args)
 
 module.exports = plop => {
   plop.setActionType('end', async () => {
-    // execSync(`npm run entry`)
+    execSync(`npm run entry`)
   })
   
   plop.setHelper('upperCase', function (text) {

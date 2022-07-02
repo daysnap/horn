@@ -28,16 +28,16 @@
   import { PickerColumn, PickerConfirmEventParams } from 'vant'
   import { ref, computed } from 'vue'
   import { useVisible } from '@daysnap/horn-use'
-  import { pickerProps, PickerProps } from './types'
+  import { horPickerProps, HorPickerProps } from './types'
   import { Numeric } from '../utils'
 
   defineOptions({ name: 'HorPicker' })
 
-  const props = defineProps(pickerProps)
+  const props = defineProps(horPickerProps)
 
-  const dynamicProps = ref<Partial<PickerProps>>()
+  const dynamicProps = ref<Partial<HorPickerProps>>()
 
-  const computedProps = computed<PickerProps>(() =>
+  const computedProps = computed<HorPickerProps>(() =>
     Object.assign({}, props, dynamicProps.value)
   )
   const computedValues = computed(() => {
@@ -82,7 +82,7 @@
     confirm,
     visible,
   } = useVisible<
-    Partial<PickerProps>,
+    Partial<HorPickerProps>,
     PickerConfirmEventParams & { value: any }
   >({
     showCallback: options => {
@@ -90,7 +90,6 @@
       dynamicProps.value = options
     },
     confirmCallback: (res: PickerConfirmEventParams) => {
-      console.log('PickerConfirmEventParams=>',res)
       let { value, columns } = computedProps.value
       let { selectedOptions, selectedValues } = res
       if (selectedValues[0] === 'ERR_NO_DATA') {

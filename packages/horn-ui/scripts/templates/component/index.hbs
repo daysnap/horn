@@ -2,11 +2,11 @@ import Component from './index.vue'
 import { withInstall } from '../utils'
 
 export * from './types'
-export const Hor{{ pascalCase name }} = withInstall<typeof Component>(Component)
-export type Hor{{ pascalCase name }}Instance = InstanceType<typeof Hor{{ pascalCase name }}>
+export const {{ pascalCase name }} = withInstall<typeof Component>(Component)
+export type {{ pascalCase name }}Instance = InstanceType<typeof {{ pascalCase name }}>
 
 declare module 'vue' {
   export interface GlobalComponents {
-    Hor{{ pascalCase name }}: typeof Hor{{ pascalCase name }};
+    {{ pascalCase name }}: typeof {{ pascalCase name }};
   }
 }

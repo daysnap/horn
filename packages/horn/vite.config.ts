@@ -16,6 +16,9 @@ export default defineConfig({
   build: {
     target: 'es2015'
   },
+  server:{
+    host: '0.0.0.0',
+  },
   plugins: [
     legacy({
       targets: ['ie >= 8', 'chrome 52', '> 1%', 'last 2 versions', 'not dead']

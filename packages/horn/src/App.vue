@@ -9,18 +9,6 @@
   </router-view>
   <p>includes: {{ includes }}</p>
   <p>data: {{ data }}</p>
-  <!-- <dl>
-    <dt>pageStack:</dt>
-    <dd v-for="(item, index) in routeStack" :key="index">
-      {{ item.meta?.title }}
-      是否缓存 =>
-      <strong style="color: red" v-if="item.meta?.keepAlive">是</strong>
-      <strong style="color: #999" v-else>否</strong>
-      <p>{{ item }}</p>
-    </dd>
-  </dl> -->
-  <!-- <p>includes: {{ includes }}</p> -->
-
 </template>
 
 
@@ -32,8 +20,8 @@
 
 </script>
 
-<style lang="scss" scoped>
-  @import 'src/assets/scss/define.scss';
+<style lang="scss">
+  @import 'src/assets/scss/common.scss';
 
   .view-wrap{
   }

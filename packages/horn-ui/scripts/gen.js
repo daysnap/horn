@@ -18,23 +18,23 @@ module.exports = plop => {
         type: 'input',
         name: 'name', 
         message: '请输入组件名称？',
-        filter: v => v.toLocaleLowerCase().startsWith('hor') ? v.substring(3) : `${v}`
+        filter: v => v.toLocaleLowerCase().startsWith('hor') ? v : `hor-${v}`
       },
     ],
     actions: [
       {
         type: 'add',
-        path: rc('hor-{{ dashCase name }}/index.ts'),
+        path: rc('{{ dashCase name }}/index.ts'),
         templateFile: rt('index.hbs'),
       },
       {
         type: 'add',
-        path: rc('hor-{{ dashCase name }}/index.vue'),
+        path: rc('{{ dashCase name }}/index.vue'),
         templateFile: rt('vue.hbs'),
       },
       {
         type: 'add',
-        path: rc('hor-{{ dashCase name }}/types.ts'),
+        path: rc('{{ dashCase name }}/types.ts'),
         templateFile: rt('types.hbs'),
       },
       {

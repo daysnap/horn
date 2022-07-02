@@ -1,12 +1,12 @@
 <template>
-  <div class="hor-{{ dashCase name }}">
-    hor-{{ dashCase name }}
+  <div class="{{ dashCase name }}">
+    {{ dashCase name }}
   </div>
 </template>
 
 <script setup lang="ts">
   import { {{ camelCase name }}Props, {{ pascalCase name }}Props } from './types'
-  defineOptions({ name: 'Hor{{ pascalCase name }}' })
+  defineOptions({ name: '{{ pascalCase name }}' })
   // 如果定义属性 这里传 {{ camelCase name }}Props， 在 types 里完善类型
   defineProps()
 </script>

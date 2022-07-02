@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "start": "pnpm -C ./packages/horn dev",
+    "build": "pnpm -C ./packages/horn build",
     "clean": "rimraf **/node_modules",
     "prepare": "husky install && echo 'export PATH=\"/usr/local/bin/:$PATH\"' >> ~/.huskyrc"
   },

@@ -5,7 +5,6 @@
     position="bottom"
   >
     <van-date-picker
-        :modelValue="computedProps.value"
         title="选择日期"
         :columns-type="computedProps.columnsType"
         @confirm="confirm"
@@ -16,10 +15,10 @@
 
 <script setup lang="ts">
 
-  import {computed, defineProps, ref,} from 'vue'
-  import { datePickerProps , DatePickerProps} from './types'
-  import {PickerProps} from "@/hor-picker/types";
-  import {useVisible} from "@daysnap/horn-use";
+  import { computed, defineProps, ref } from 'vue'
+  import { useVisible } from '@daysnap/horn-use'
+  import { datePickerProps , DatePickerProps } from './types'
+  
   defineOptions({
     name: 'HorDatePicker',
   })

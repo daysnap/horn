@@ -34,7 +34,6 @@
 
   defineOptions({ name: 'index' })
 
-
   const age = ref<string>('')
 
   const [ includes ] = useKeepAliveIncludes({ name: 'index' })

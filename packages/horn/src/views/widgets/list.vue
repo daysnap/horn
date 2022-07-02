@@ -16,7 +16,6 @@
   import { useKeepAliveIncludes } from '@daysnap/horn-use'
   defineOptions({ name: 'widgets-list' })
   const name = ref('')
-
   useKeepAliveIncludes()
 </script>
 

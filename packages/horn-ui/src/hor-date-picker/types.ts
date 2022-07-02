@@ -1,6 +1,6 @@
-import type {  DatePickerColumnType } from 'vant';
-import {ExtractPropTypes, PropType} from "vue";
-import {pickerProps} from "@/hor-picker/types";
+import type {  DatePickerColumnType } from 'vant'
+import { ExtractPropTypes, PropType } from 'vue'
+
 export const datePickerProps = {
   minDate: {
     type:[Date ],
@@ -10,4 +10,5 @@ export const datePickerProps = {
   },
   columnsType: { type: Array as PropType<DatePickerColumnType[]>, default: ()=>['year', 'month'] },
 }
+
 export type DatePickerProps = ExtractPropTypes<typeof datePickerProps>

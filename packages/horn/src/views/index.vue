@@ -1,13 +1,12 @@
 
 <template>
   <div class="view-wrap">
-
+    <!-- <hor-header></hor-header> -->
   <router-view v-slot="{ Component }">
     <keep-alive :include="includes">
       <component :is="Component" />
     </keep-alive>
   </router-view>
-
   <br>
   <br>
   <input type="text" v-model="age">
@@ -69,6 +68,9 @@
 <style lang="scss" scoped>
   @import "src/assets/scss/define";
 
+  .view-wrap{
+    // transform: translate3d(-20%,0,0)
+  }
   :deep {
     .van-tabbar--fixed{
       // background-color: red !important;

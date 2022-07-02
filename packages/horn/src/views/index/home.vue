@@ -1,6 +1,7 @@
 
 <template>
   <p>home</p>
+  <hor-test></hor-test>
   <input type="text" v-model="age">
   <br>
   <p>age => {{ age }}</p>

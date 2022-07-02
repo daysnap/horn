@@ -3,4 +3,5 @@
 export * from './hor-cell'
 export * from './hor-date-picker'
 export * from './hor-picker'
+export * from './hor-test'
 export * from './utils'

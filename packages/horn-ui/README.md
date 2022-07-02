@@ -10,7 +10,31 @@ const hornUi = require('horn-ui');
 // TODO: DEMONSTRATE API
 ```
 
-## plop 
+## Develop
+
+- 创建一个组件
+
+```bash
+# root 目录下
+npm run ui:gen
+
+# or horn-ui 下
+npm run gen
+```
+
+- 删除一个组件
+
+```bash
+# root 目录下
+npm run ui:del
+
+# or horn-ui 下
+npm run del
+```
+
+## Tool
+
+### plop 
 
 - camelCase: changeFormatToThis
 - snakeCase: change_format_to_this

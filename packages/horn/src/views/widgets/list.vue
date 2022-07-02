@@ -1,13 +1,15 @@
 
 <template>
-  <p>hor-cell</p>
-  <br>
-  <button @click="$router.push('/widgets/details')">去详情</button>
-  <br>
-  <button @click="$router.replace('/widgets/details')">去详情replace</button>
-  <input type="text" v-model="name">
-  <br>
-  <p>name1: {{ name }}</p>
+  <div class="view-wrap list-wrap">
+    <p>hor-cell</p>
+    <br>
+    <button @click="$router.push('/widgets/details')">去详情</button>
+    <br>
+    <button @click="$router.replace('/widgets/details')">去详情replace</button>
+    <input type="text" v-model="name">
+    <br>
+    <p>name1: {{ name }}</p>
+  </div>
 </template>
 
 <route>{ meta: { title: 'hor-cell', depth: 2 } }</route>
@@ -20,5 +22,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+  .list-wrap{
+    background-color: red;
+  }
 </style>

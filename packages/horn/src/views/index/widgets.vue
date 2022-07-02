@@ -1,6 +1,6 @@
 
 <template>
-  <p>widgets</p>
+    <hor-header :left-arrow="false"/>
 </template>
 
 <route>{ meta: { title: '部件', icon: 'apps-o' } }</route>

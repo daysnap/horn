@@ -1,5 +1,7 @@
 
 <template>
+  <div class="view-wrap">
+
   <router-view v-slot="{ Component }">
     <keep-alive :include="includes">
       <component :is="Component" />
@@ -25,6 +27,7 @@
       :icon="item.meta?.icon"
     >{{ item.meta?.title }}</van-tabbar-item>
   </van-tabbar>
+  </div>
 </template>
 
 <route>{ redirect: '/home', meta: { depth: 1 } }</route>
@@ -65,6 +68,13 @@
 
 <style lang="scss" scoped>
   @import "src/assets/scss/define";
+
+  :deep {
+    .van-tabbar--fixed{
+      // background-color: red !important;
+    }
+  }
+
   .main-tab-bar{
     //background-color: $color-background-light;
     //&:after{

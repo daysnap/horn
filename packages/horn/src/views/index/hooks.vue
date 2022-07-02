@@ -1,6 +1,6 @@
 
 <template>
-  <p>Hooks</p>
+  <hor-header :left-arrow="false"/>
 </template>
 
 <route>{ meta: { title: 'Hooks', icon: 'aim' } }</route>

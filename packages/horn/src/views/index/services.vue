@@ -1,6 +1,6 @@
 
 <template>
-  <p>services</p>
+    <hor-header :left-arrow="false"/>
 </template>
 
 <route>{ meta: { title: '服务', icon: 'smile-comment-o' } }</route>

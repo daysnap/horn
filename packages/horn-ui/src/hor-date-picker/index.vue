@@ -5,20 +5,22 @@
     position="bottom"
   >
     <van-date-picker
+        :modelValue="computedProps.value"
         title="选择日期"
         :columns-type="computedProps.columnsType"
         @confirm="confirm"
         @cancel="hide"
+        :formatter="computedProps.formatter"
     />
   </van-popup>
 </template>
 
 <script setup lang="ts">
 
-  import { computed, defineProps, ref } from 'vue'
-  import { useVisible } from '@daysnap/horn-use'
-  import { datePickerProps , DatePickerProps } from './types'
-  
+  import {computed, defineProps, ref,} from 'vue'
+  import { datePickerProps , DatePickerProps} from './types'
+  import {  PickerConfirmEventParams } from 'vant'
+  import {useVisible} from "@daysnap/horn-use";
   defineOptions({
     name: 'HorDatePicker',
   })
@@ -36,7 +38,8 @@
     confirm,
     visible,
   } = useVisible<
-      Partial<DatePickerProps>
+      Partial<DatePickerProps>,
+      PickerConfirmEventParams & {value:any}
     >({
       showCallback: options => {
         dynamicProps.value = options

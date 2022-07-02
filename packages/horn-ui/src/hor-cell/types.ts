@@ -4,4 +4,4 @@ export const cellProps = {
 
 }
 
-export type CellProps = ExtractPropTypes<typeof cellProps>
+export type Props = ExtractPropTypes<typeof cellProps>

@@ -2,6 +2,10 @@
   "name": "@daysnap/horn-ui",
   "version": "0.0.1",
   "description": "horn ui",
+  "scripts": {
+    "gen": "plop --plopfile ./scripts/create.js --force",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
   "keywords": [
     "horn",
     "ui",
@@ -26,9 +30,6 @@
     "type": "git",
     "url": "git+https://github.com/daysnap/horn.git"
   },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
-  },
   "bugs": {
     "url": "https://github.com/daysnap/horn/issues"
   },
@@ -36,9 +37,11 @@
     "@daysnap/horn-use": "workspace:^0.0.1"
   },
   "devDependencies": {
-    "vant": "4.0.0-alpha.4",
     "@daysnap/define-sass": "^0.0.9",
+    "node-dir": "^0.1.17",
+    "plop": "^3.1.1",
     "unplugin-vue-define-options": "^0.5.0",
+    "vant": "4.0.0-alpha.4",
     "vue": "^3.2.25"
   }
 }

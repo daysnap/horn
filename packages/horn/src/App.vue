@@ -1,8 +1,8 @@
 
 <template>
   <router-view v-slot="{ Component, route }">
-    <transition :name="transitionName" appear>
-      <keep-alive :include="includes">
+    <transition :name="transitionName">
+      <keep-alive :include="['index']">
         <component :is="Component"/>
       </keep-alive>
     </transition>

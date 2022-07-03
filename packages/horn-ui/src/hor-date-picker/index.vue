@@ -1,5 +1,6 @@
 <template>
   <van-popup
+    v-model="visible"
     round
     :show="visible"
     position="bottom"
@@ -11,6 +12,9 @@
         @confirm="confirm"
         @cancel="hide"
         :formatter="computedProps.formatter"
+        :min-date="computedProps.minDate"
+        :max-date="computedProps.maxDate"
+        :filter="computedProps.filter"
     />
   </van-popup>
 </template>

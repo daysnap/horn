@@ -1,15 +1,14 @@
 import type {  DatePickerColumnType,PickerOption } from 'vant';
 import {ExtractPropTypes, PropType} from "vue";
-import {pickerProps} from "@/hor-picker/types";
 export const datePickerProps = {
   value: Array<string>,
   minDate: {
-    type:[Date ],
+    type:Date,
   },
   maxDate: {
-    type:[Date ],
+    type:Date,
   },
-  columnsType: { type: Array as PropType<DatePickerColumnType[]>, default: ()=>['year', 'month'] },
+  columnsType: { type: Array as PropType<DatePickerColumnType[]>, default: ()=>['year' , 'month' , 'day'] },
   formatter:{
     type: Function as PropType<(type:string, val:PickerOption)  =>PickerOption>,
     default:(type:string, val:PickerOption) => {
@@ -24,6 +23,9 @@ export const datePickerProps = {
       }
       return val
     },
+  },
+  filter:{
+    type : Function as PropType<(columnType: string, options: PickerOption[]) => PickerOption[]>
   }
 }
 export type DatePickerProps = ExtractPropTypes<typeof datePickerProps>

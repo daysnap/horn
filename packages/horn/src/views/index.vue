@@ -3,7 +3,7 @@
   <div class="view-wrap">
     <!-- <hor-header></hor-header> -->
   <router-view v-slot="{ Component }">
-    <keep-alive :include="includes">
+    <keep-alive :include="['index-home', 'index-widgets']">
       <component :is="Component" />
     </keep-alive>
   </router-view>
@@ -37,6 +37,8 @@
   defineOptions({ name: 'index' })
 
   const age = ref<string>('')
+
+  console.log('index => ', 111)
 
   const [ includes ] = useKeepAliveIncludes({ name: 'index' })
 

@@ -3,10 +3,15 @@
   <router-view v-slot="{ Component, route }">
     <transition :name="transitionName" appear>
       <keep-alive :include="includes">
-        <component :is="Component" :key="route.name || route.path"/>
+        <component :is="Component"/>
       </keep-alive>
     </transition>
   </router-view>
+  <br>
+  <br>
+  <br>
+  <br>
+  <p style="paddingTop: 80%">includes => {{ includes }}</p>
 </template>
 
 <script setup lang="ts">
@@ -40,5 +45,6 @@
     @extend %h100;
     @extend %t0;
     @extend %b0;
+    bottom: 40%;
   }
 </style>

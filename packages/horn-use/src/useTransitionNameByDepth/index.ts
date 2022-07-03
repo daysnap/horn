@@ -2,15 +2,15 @@ import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 interface UseTransitionNameByDepthOptions {
-  toClass: string
-  fromClass: string
+  enterClass: string
+  leaveClass: string
   deep?: boolean
 }
 
 export const useTransitionNameByDepth = (
   {
-    toClass,
-    fromClass,
+    enterClass,
+    leaveClass,
     deep = false
   }: UseTransitionNameByDepthOptions
 ) => {
@@ -20,8 +20,8 @@ export const useTransitionNameByDepth = (
   watch(
     () => ({ ...route }),
     (to, from) => {
-      const { depth: td, toClass: tc } = to.meta || {}
-      const { depth: fd = td, fromClass: fc } = from.meta || {}
+      const { depth: td, enterClass: ec } = to.meta || {}
+      const { depth: fd = td, leaveClass: lc } = from.meta || {}
       name.value = 
         (
           typeof td === 'undefined'
@@ -30,8 +30,8 @@ export const useTransitionNameByDepth = (
         )
         ? ''
         : td > fd
-        ? tc ?? toClass
-        : fc ?? fromClass
+        ? ec ?? enterClass
+        : lc ?? leaveClass
     },
     { deep }
   )

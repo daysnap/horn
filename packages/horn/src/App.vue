@@ -16,8 +16,8 @@
   const [ includes ] = useKeepAliveIncludes(false)
 
   const transitionName = useTransitionNameByDepth({ 
-    toClass: 'slide-left',
-    fromClass: 'slide-right',
+    enterClass: 'slide-left',
+    leaveClass: 'slide-right',
   })
 
 </script>

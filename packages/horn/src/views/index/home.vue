@@ -18,7 +18,7 @@
 </div>
 </template>
 
-<route>{ meta: { title: '首页', icon: 'home-o' } }</route>
+<route>{ meta: { title: '首页', icon: 'home-o', depth: 1  } }</route>
 
 <script setup lang="ts">
   import { useKeepAliveIncludes } from '@daysnap/horn-use'

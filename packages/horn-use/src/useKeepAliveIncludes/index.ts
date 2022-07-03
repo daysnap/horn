@@ -26,8 +26,10 @@ export const useKeepAliveIncludes = (
         if (toDepth < fromDepth && data.value) {
           const index = data.value
             .findIndex(item => item.name === to.name)
-          data.value = data.value
-            .slice(0, index + 1)
+          // todo fix keepalive + transition 动画被缓存的奇怪 BUG
+          setTimeout(() => 
+            data.value = data.value?.slice(0, index + 1)
+          )
         }
       },
       { deep: true }

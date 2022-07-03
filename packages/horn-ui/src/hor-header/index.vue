@@ -29,14 +29,9 @@
   const emits = defineEmits(['click-left', 'click-right'])
   
   const handleClickLeft = () => {
-    console.log(1, props.useLeftEvent)
     emits('click-left')
     if (props.useLeftEvent) {
       window.history.back()
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  @import "../styles/define.scss";
-</style>

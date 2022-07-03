@@ -1,17 +1,12 @@
 
 <template>
-  <router-view v-slot="{ Component, route }">
+  <router-view v-slot="{ Component }">
     <transition :name="transitionName">
-      <keep-alive :include="['index']">
+      <keep-alive max="10" :include="includes">
         <component :is="Component"/>
       </keep-alive>
     </transition>
   </router-view>
-  <br>
-  <br>
-  <br>
-  <br>
-  <p style="paddingTop: 80%">includes => {{ includes }}</p>
 </template>
 
 <script setup lang="ts">

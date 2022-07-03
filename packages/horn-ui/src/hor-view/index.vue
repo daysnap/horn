@@ -1,7 +1,10 @@
 <template>
   <div class="hor-view">
-    <slot name="nav-bar">
+    <slot name="nav-bar" v-if="useNavBar">
       <hor-header
+        :use-left-event="useLeftEvent"
+        :left-arrow="leftArrow"
+        :title="title"
         @click-right="$emit('click-right')"
         @click-left="$emit('click-left')"
       >
@@ -22,7 +25,7 @@
 
 <script setup lang="ts">
   import { HorHeader } from '../hor-header'
-  import { horViewProps, HorViewProps } from './types'
+  import { horViewProps } from './types'
 
   defineOptions({ name: 'HorView' })
   // 如果定义属性 这里传 horViewProps， 在 types 里完善类型

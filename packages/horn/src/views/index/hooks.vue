@@ -1,6 +1,10 @@
 
 <template>
-  <hor-header :left-arrow="false"/>
+   <hor-view
+    :use-nav-bar="false"
+    :left-arrow="false">
+    hooks
+  </hor-view>
 </template>
 
 <route>{ meta: { title: 'Hooks', icon: 'aim' } }</route>

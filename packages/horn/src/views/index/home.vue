@@ -1,21 +1,10 @@
 
 <template>
-<div>
-
-  <hor-header :left-arrow="false"/>
-
-  <p>123123123</p>
-  <p>123123123</p>
-  <p>123123123</p>
-  <p>123123123</p>
-  <p>123123123</p>
-  <p>123123123</p>
-  <p>123123123</p>
-  <p>123123123</p>
-  <br/>
-  <br/>
-  <van-button @click="$router.push('/widgets/list')">去列表</van-button>
-</div>
+  <hor-view
+    :use-nav-bar="false"
+    :left-arrow="false">
+    首页
+  </hor-view>
 </template>
 
 <route>{ meta: { title: '首页', icon: 'home-o', depth: 1  } }</route>

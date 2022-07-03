@@ -1,32 +1,34 @@
 
 <template>
-  <div class="view-wrap">
-    <!-- <hor-header></hor-header> -->
-  <router-view v-slot="{ Component }">
-    <keep-alive :include="includes">
-      <component :is="Component" />
-    </keep-alive>
-  </router-view>
-  <br>
-  <br>
-  <input type="text" v-model="age">
-  <br>
-  <p>age => {{ age }}</p>
-
-  <van-tabbar
-    fixed
-    route
-    class="main-tab-bar"
+  <hor-view 
+    :title="title"
+    :left-arrow="false"
   >
-    <van-tabbar-item
-      v-for="(item) in arrTabBar"
-      :key="item.path"
-      replace
-      :to="item.path"
-      :icon="item.meta?.icon"
-    >{{ item.meta?.title }}</van-tabbar-item>
-  </van-tabbar>
-  </div>
+    <template #right>
+      <van-icon name="scan" size="24"/>
+    </template>
+
+    <router-view v-slot="{ Component }">
+      <keep-alive :include="includes">
+        <component :is="Component" />
+      </keep-alive>
+    </router-view>
+    
+    <van-tabbar
+      fixed
+      route
+      v-model="current"
+      class="main-tab-bar"
+    >
+      <van-tabbar-item
+        v-for="(item) in arrTabBar"
+        :key="item.path"
+        replace
+        :to="item.path"
+        :icon="item.meta?.icon"
+      >{{ item.meta?.title }}</van-tabbar-item>
+    </van-tabbar>
+  </hor-view>
 </template>
 
 <route>{ redirect: '/home', meta: { depth: 1 } }</route>
@@ -35,24 +37,17 @@
   import { useKeepAliveIncludes } from '@daysnap/horn-use'
 
   defineOptions({ name: 'index' })
-
-  const age = ref<string>('')
-
   const [ includes ] = useKeepAliveIncludes({ name: 'index' })
-
   const router = useRouter()
+  const route = useRoute()
 
-  const TabBarRoutes = computed(() => {
-    const { options } = router
-    const { routes } = options
-    return routes.find(item => item.path === '/')
-  })
+  console.log('route => ', route)
 
   const arrTabBar = computed(() => {
-    if (!TabBarRoutes.value) {
-      return
-    }
-    const { children, path } = TabBarRoutes.value
+    const { options } = router
+    const { routes } = options
+    const tabBarRoutes = routes.find(item => item.path === '/')
+    const { children, path = '' } = tabBarRoutes || {}
     return children?.map(item => {
       const { path: itemPath } = item
       return Object.assign({}, item, {
@@ -62,6 +57,12 @@
       })
     }) ?? []
   })
+
+  const current = ref(arrTabBar.value.findIndex(item => item.path === route.path))
+
+  const title = computed(() => 
+    arrTabBar.value[current.value]?.meta?.title ?? ''
+  )
 
 </script>
 

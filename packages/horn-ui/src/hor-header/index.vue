@@ -11,8 +11,9 @@
       </slot>
     </template>
     <template #title>
-      <span v-if="!title" v-once v-html="$route.meta?.title"></span>
-      <span v-else v-html="title"></span>
+      <span v-if="title" v-html="title" key="no-once"></span>
+      <!-- todo vue3 这里使用 v-else 时，v-once 失效 -->
+      <span v-if="!title" v-html="$route.meta?.title" v-once key="once"></span>
     </template>
     <template #right>
       <slot name="right"></slot>

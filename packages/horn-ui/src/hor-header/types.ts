@@ -8,7 +8,7 @@ export const horHeaderProps = {
   },
   useLeftEvent: {
     type: Boolean,
-    value: true,
+    default: true,
   },
 }
 

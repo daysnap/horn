@@ -1,9 +1,10 @@
 
 <template>
   <div class="view-wrap list-wrap">
+    <hor-header/>
     <p>hor-cell</p>
     <br>
-    <button @click="$router.push('/widgets/details')">去详情</button>
+    <button @click="$router.push('/widgets/details')">去详情1</button>
     <br>
     <button @click="$router.replace('/widgets/details')">去详情replace</button>
     <input type="text" v-model="name">
@@ -19,6 +20,19 @@
   defineOptions({ name: 'widgets-list' })
   const name = ref('')
   useKeepAliveIncludes()
+
+  onActivated(() => {
+    console.log('激活')
+  })
+
+  onDeactivated(() => {
+    console.log('卸载')
+  })
+
+  onUnmounted(() => {
+    console.log('销毁')
+  })
+  console.log('111')
 </script>
 
 <style lang="scss" scoped>

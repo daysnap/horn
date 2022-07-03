@@ -2,7 +2,8 @@
   <van-nav-bar
     fixed
     placeholder
-    @click-left="$emit('click-right', $event)"
+    @click-right="$emit('click-right', $event)"
+    @click-left="handleClickLeft"
   >
     <template #left>
       <slot name="left">
@@ -10,7 +11,8 @@
       </slot>
     </template>
     <template #title>
-      <span>{{ title ?? $route.meta?.title }}</span>
+      <span v-if="!title" v-once v-html="$route.meta?.title"></span>
+      <span v-else v-html="title"></span>
     </template>
     <template #right>
       <slot name="right"></slot>
@@ -20,10 +22,19 @@
 
 <script setup lang="ts">
   import { horHeaderProps } from './types'
+
   defineOptions({ name: 'HorHeader' })
   // 如果定义属性 这里传 headerProps， 在 types 里完善类型
-  defineProps(horHeaderProps)
-  defineEmits(['click-left', 'click-right'])
+  const props = defineProps(horHeaderProps)
+  const emits = defineEmits(['click-left', 'click-right'])
+  
+  const handleClickLeft = () => {
+    console.log(1, props.useLeftEvent)
+    emits('click-left')
+    if (props.useLeftEvent) {
+      window.history.back()
+    }
+  }
 </script>
 
 <style lang="scss" scoped>

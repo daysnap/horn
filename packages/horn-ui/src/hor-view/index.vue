@@ -31,9 +31,16 @@
   // 如果定义属性 这里传 horViewProps， 在 types 里完善类型
   defineProps(horViewProps)
   defineEmits(['click-left', 'click-right'])
-
 </script>
 
 <style lang="scss" scoped>
   @import "../styles/define.scss";
+  
+  @include b(view) {
+    @extend %h100;
+    @extend %oya;
+    @extend %df;
+    @extend %fdc;
+    @extend %df1;
+  }
 </style>

@@ -2,7 +2,7 @@
 <template>
   <router-view v-slot="{ Component }">
     <transition :name="transitionName">
-      <keep-alive max="10" :include="includes">
+      <keep-alive max="10" :include="includes" exclude="index">
         <component :is="Component"/>
       </keep-alive>
     </transition>
@@ -28,6 +28,7 @@
   body{
     @extend %w100;
     @extend %h100;
+    background-color: $color-background;
   }
   #app {
     @extend %w100;

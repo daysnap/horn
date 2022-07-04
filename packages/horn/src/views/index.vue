@@ -17,6 +17,7 @@
     <van-tabbar
       fixed
       route
+      placeholder
       v-model="current"
       class="main-tab-bar"
     >

@@ -61,7 +61,6 @@ export default defineConfig({
     }),
 
     Markdown({
-      // headEnabled: true,
       markdownItSetup(md) {
         md.use(Prism)
         md.use(LinkAttributes, {

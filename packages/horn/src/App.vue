@@ -22,6 +22,10 @@
 
 </script>
 
+<style>
+@import 'prism-theme-vars/base.css';
+</style>
+
 <style lang="scss">
   @import 'src/assets/scss/common.scss';
   html,

@@ -3,10 +3,11 @@
   <hor-view :title="title">
     <hor-skeleton 
       :error="refError"
-      @refresh="handleRefresh"
+      :error-btn-visible="false"
       v-if="refError"
     />
-    <hor-widget 
+    <hor-widget
+      calss="content"
       v-else
     />
   </hor-view>
@@ -25,12 +26,11 @@
       .catch(err => refError.value = err)
   )
   const title = computed(() => humps.pascalize(name))
-
-  const handleRefresh = () => {
-    refError.value = ''
-  }
 </script>
 
 <style lang="scss" scoped>
   @import "src/assets/scss/define";
+  .content{
+    padding: 0 16px;
+  }
 </style>

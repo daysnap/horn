@@ -6,6 +6,10 @@ export const horSkeletonProps = {
     type: String,
     default: '刷新',
   },
+  errorBtnVisible: {
+    type: Boolean,
+    default: true,
+  },
   loading: {
     type: Boolean,
     default: true,

@@ -4,6 +4,7 @@
     <div class="hor-skeleton-error" v-if="error">
       <span>{{ error }}</span>
       <van-button 
+        v-if="errorBtnVisible"
         @click="$emit('refresh')"
         round 
         type="primary"

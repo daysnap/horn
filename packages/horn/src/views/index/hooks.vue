@@ -1,6 +1,6 @@
 
 <template>
-   <hor-view
+  <hor-view
     :use-nav-bar="false"
     :left-arrow="false">
     hooks

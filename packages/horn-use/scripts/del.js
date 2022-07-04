@@ -5,13 +5,13 @@ const { rc } = require('./utils')
 
 module.exports = plop => {
   plop.setGenerator('remove', {
-    description: '删除一个组件',
+    description: '删除一个Hooks',
     prompts: [
       { 
         type: 'input',
         name: 'name', 
         message: '请输入名称？',
-        filter: v => v.toLocaleLowerCase().startsWith('hor') ? v : `hor-${v}`
+        filter: v => v.toLocaleLowerCase().startsWith('use') ? v : `use-${v}`
       },
       { type: 'confirm', name: 'ok', message: '确认删除？' },
     ],

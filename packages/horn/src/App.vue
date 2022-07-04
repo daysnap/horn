@@ -35,12 +35,9 @@
     @extend %h100;
     @extend %oh;
   }
-  .view-wrap{
-    @extend %pa;
-    @extend %w100;
-    @extend %h100;
-    @extend %t0;
-    @extend %b0;
-    bottom: 40%;
+  .van-grid-item{
+    span{
+      @include twno(1);
+    }
   }
 </style>

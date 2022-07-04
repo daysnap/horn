@@ -12,34 +12,24 @@ module.exports = plop => {
 	})
 
   plop.setGenerator('component', {
-    description: '创建一个新组件',
+    description: '创建一个新Hooks',
     prompts: [
       { 
         type: 'input',
         name: 'name', 
         message: '请输入名称？',
-        filter: v => v.toLocaleLowerCase().startsWith('hor') ? v : `hor-${v}`
+        filter: v => v.toLocaleLowerCase().startsWith('use') ? v : `use-${v}`
       },
     ],
     actions: [
       {
         type: 'add',
-        path: rc('{{ dashCase name }}/index.ts'),
+        path: rc('{{ camelCase name }}/index.ts'),
         templateFile: rt('index.hbs'),
       },
       {
         type: 'add',
-        path: rc('{{ dashCase name }}/index.vue'),
-        templateFile: rt('vue.hbs'),
-      },
-      {
-        type: 'add',
-        path: rc('{{ dashCase name }}/types.ts'),
-        templateFile: rt('types.hbs'),
-      },
-      {
-        type: 'add',
-        path: rc('{{ dashCase name }}/index.md'),
+        path: rc('{{ camelCase name }}/index.md'),
         templateFile: rt('md.hbs'),
       },
       {

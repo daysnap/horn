@@ -7,6 +7,9 @@
     "ui:gen": "pnpm -C ./packages/horn-ui gen",
     "ui:del": "pnpm -C ./packages/horn-ui del",
     "ui:entry": "pnpm -C ./packages/horn-ui entry",
+    "use:gen": "pnpm -C ./packages/horn-use gen",
+    "use:del": "pnpm -C ./packages/horn-use del",
+    "use:entry": "pnpm -C ./packages/horn-use entry",
     "clean": "rimraf **/node_modules",
     "prepare": "husky install && echo 'export PATH=\"/usr/local/bin/:$PATH\"' >> ~/.huskyrc"
   },

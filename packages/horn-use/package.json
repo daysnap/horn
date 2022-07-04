@@ -4,6 +4,9 @@
   "description": "horn use",
   "main": "src/index.ts",
   "scripts": {
+    "gen": "plop --plopfile ./scripts/gen.js --force",
+    "del": "plop --plopfile ./scripts/del.js --force",
+    "entry": "plop --plopfile ./scripts/entry.js --force",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -15,6 +18,9 @@
   "homepage": "https://github.com/daysnap/horn#readme",
   "license": "ISC",
   "devDependencies": {
+    "node-dir": "^0.1.17",
+    "plop": "^3.1.1",
+    "rimraf": "^3.0.2",
     "vue": "^3.2.25",
     "vue-router": "^4.0.16"
   }

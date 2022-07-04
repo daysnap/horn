@@ -5,6 +5,9 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import DefineOptions from 'unplugin-vue-define-options/vite'
 import Pages from 'vite-plugin-pages'
+import Markdown from 'vite-plugin-vue-markdown'
+import Prism from 'markdown-it-prism'
+import LinkAttributes from 'markdown-it-link-attributes'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
 import legacy from '@vitejs/plugin-legacy'
 
@@ -20,11 +23,17 @@ export default defineConfig({
     host: '0.0.0.0',
   },
   plugins: [
+    
     legacy({
       targets: ['ie >= 8', 'chrome 52', '> 1%', 'last 2 versions', 'not dead']
     }),
-    vue(),
+    
+    vue({
+      include: [/\.vue$/, /\.md$/],
+    }),
+    
     DefineOptions(),
+
     AutoImport({
       imports: ['vue', 'vue-router'],
       dts: 'typings/auto-imports.d.ts',
@@ -32,6 +41,7 @@ export default defineConfig({
         VantResolver()
       ],
     }),
+
     Components({
       dts: 'typings/components.d.ts',
       extensions: ['vue', 'jsx', 'tsx', 'ts', 'js'],
@@ -43,11 +53,27 @@ export default defineConfig({
         },
       ]
     }),
+
     Pages({
       dirs: [{ dir: resolve('src/views'), baseRoute: '' }],
       extensions: ['vue'],
       exclude: ['**/components/*.vue'],
+    }),
+
+    Markdown({
+      // headEnabled: true,
+      markdownItSetup(md) {
+        md.use(Prism)
+        md.use(LinkAttributes, {
+          matcher: (link: string) => /^https?:\/\//.test(link),
+          attrs: {
+            target: '_blank',
+            rel: 'noopener',
+          },
+        })
+      }
     })
+
   ],
   resolve: {
     alias: {

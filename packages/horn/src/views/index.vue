@@ -5,11 +5,24 @@
     :left-arrow="false"
   >
     <template #right>
-      <van-icon name="scan" size="24"/>
+      <van-popover 
+        class="popover"
+        v-model:show="showPopover" 
+        placement="bottom-end"
+        theme="dark"
+        :offset="[10, 10]"
+        :actions="[
+          { text: '扫一扫', icon: 'scan' },
+          { text: 'Github', icon: 'link-o' },
+        ]">
+        <template #reference>
+          <van-icon name="ellipsis" size="24"/>
+        </template>
+      </van-popover>
     </template>
 
     <router-view v-slot="{ Component }">
-      <keep-alive :include="includes">
+      <keep-alive>
         <component :is="Component" />
       </keep-alive>
     </router-view>
@@ -41,8 +54,8 @@
   const [ includes ] = useKeepAliveIncludes({ name: 'index' })
   const router = useRouter()
   const route = useRoute()
-
-  console.log('route => ', route)
+  
+  const showPopover = ref(false);
 
   const arrTabBar = computed(() => {
     const { options } = router
@@ -67,16 +80,19 @@
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+  .popover{
+    .van-popover__arrow{
+      right: 10px !important;
+    }
+  }
+</style>
+
+<style lang="scss">
   @import "src/assets/scss/define";
 
-  .view-wrap{
-    // transform: translate3d(-20%,0,0)
-  }
-  :deep {
-    .van-tabbar--fixed{
-      // background-color: red !important;
-    }
+  .index-wrap{
+    
   }
 
   .main-tab-bar{

@@ -2,6 +2,7 @@
 <template>
   <hor-view :title="title">
     <p>props {{ props }}</p>
+    <hor-cell-md></hor-cell-md>
   </hor-view>
 </template>
 
@@ -9,6 +10,7 @@
 
 <script setup lang="ts">
   import humps from 'humps'
+  import HorCellMd from '@daysnap/horn-ui/src/hor-cell/index.md'
 
   const props = defineProps<{ name: string }>()
   

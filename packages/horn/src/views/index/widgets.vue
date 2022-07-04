@@ -5,12 +5,14 @@
     :left-arrow="false">
     <van-grid 
       :column-num="3" 
+      clickable
       square>
       <van-grid-item 
-        v-for="value in arrComponents" 
-        :key="value" 
+        v-for="(item) in arrComponents" 
+        :key="item.text" 
         icon="photo-o"
-        :text="value" 
+        :text="item.text" 
+        :to="`/widgets/${ item.name }`"
       />
     </van-grid>
   </hor-view>
@@ -21,11 +23,17 @@
 <script setup lang="ts">
 
   import * as HorUi from '@daysnap/horn-ui'
+  import humps from 'humps'
 
   defineOptions({ name: 'index-widgets' })
 
   const arrComponents = computed(() => {
-    return Object.keys(HorUi).filter(item => item.startsWith('Hor'))
+    return Object.keys(HorUi)
+      .filter(item => item.startsWith('Hor'))
+      .map(text => ({
+        text,
+        name: humps.decamelize(text, { separator: '-' })
+      }))
   })
 
 </script>

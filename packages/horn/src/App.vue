@@ -2,7 +2,7 @@
 <template>
   <router-view v-slot="{ Component }">
     <transition :name="transitionName">
-      <keep-alive max="10" :include="includes" exclude="index">
+      <keep-alive max="10">
         <component :is="Component"/>
       </keep-alive>
     </transition>
@@ -13,7 +13,10 @@
 
   import { useKeepAliveIncludes, useTransitionNameByDepth } from '@daysnap/horn-use'
 
-  const [ includes ] = useKeepAliveIncludes(false)
+  // const [ includes ] = useKeepAliveIncludes(false)
+
+  const route = useRoute()
+  console.log('app => route => ', route)
 
   const transitionName = useTransitionNameByDepth({ 
     enterClass: 'slide-left',
@@ -21,10 +24,6 @@
   })
 
 </script>
-
-<style>
-@import 'prism-theme-vars/base.css';
-</style>
 
 <style lang="scss">
   @import 'src/assets/scss/common.scss';
@@ -42,6 +41,13 @@
   .van-grid-item{
     span{
       @include twno(1);
+    }
+  }
+
+  // markdown 文章的
+  .markdown-body{
+    .language-js{
+      margin: 10px;
     }
   }
 </style>

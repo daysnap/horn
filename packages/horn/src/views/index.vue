@@ -51,7 +51,7 @@
   import { useKeepAliveIncludes } from '@daysnap/horn-use'
 
   defineOptions({ name: 'index' })
-  const [ includes ] = useKeepAliveIncludes({ name: 'index' })
+  // const [ includes ] = useKeepAliveIncludes({ name: 'index' })
   const router = useRouter()
   const route = useRoute()
   

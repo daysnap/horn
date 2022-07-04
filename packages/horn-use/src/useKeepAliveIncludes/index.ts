@@ -17,6 +17,8 @@ export const useKeepAliveIncludes = (
   if (typeof data.value === 'undefined') {
     const route = useRoute()
     data.value = []
+
+    console.log('route => ', route.path, options)
     
     watch(
       () => ({ ...route }),

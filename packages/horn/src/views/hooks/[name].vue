@@ -6,7 +6,7 @@
       :error-btn-visible="false"
       v-if="refError"
     />
-    <hor-widget
+    <hor-hook
       calss="content"
       v-else
     />
@@ -21,8 +21,8 @@
 
   const { name } = defineProps<{ name: string }>()
   const refError = ref<any>()
-  const HorWidget = defineAsyncComponent(() => 
-    import(`../../../node_modules/@daysnap/horn-ui/src/${name}/index.md`)
+  const HorHook = defineAsyncComponent(() => 
+    import(`../../../node_modules/@daysnap/horn-use/src/${name}/index.md`)
       .catch(err => refError.value = err)
   )
   const title = computed(() => humps.pascalize(name))

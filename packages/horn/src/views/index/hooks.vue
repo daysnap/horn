@@ -22,7 +22,6 @@
 
 <script setup lang="ts">
   import * as HorUse from '@daysnap/horn-use'
-  import humps from 'humps'
 
   defineOptions({ name: 'index-hooks' })
 
@@ -31,7 +30,9 @@
       .filter(item => item.startsWith('use'))
       .map(text => ({
         text,
-        name: humps.decamelize(text, { separator: '-' })
+        name: text
       }))
   })
+
+  console.log('arrData => ', arrData)
 </script>

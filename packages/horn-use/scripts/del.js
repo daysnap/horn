@@ -18,7 +18,8 @@ module.exports = plop => {
     actions: (res) => {
       const { name, ok } = res
       if (ok) {
-        const dirname = plop.getHelper('dashCase')(name)
+        const dirname = plop.getHelper('camelCase')(name)
+        console.log('dirname => ', dirname)
         rimraf.sync(rc(dirname))
         console.log('✔ 删除成功')
         execSync('npm run entry')

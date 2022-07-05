@@ -15,6 +15,7 @@
         :to="`/hooks/${ item.name }`"
       />
     </van-grid>
+    <img src="src/assets/logo.png" alt="logo"/>
   </hor-view>
 </template>
 

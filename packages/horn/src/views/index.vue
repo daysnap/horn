@@ -7,14 +7,12 @@
     <template #right>
       <van-popover 
         class="popover"
-        v-model:show="showPopover" 
+        v-model:show="popoverVisible" 
         placement="bottom-end"
         theme="dark"
+        @select="handlePopoverSelect"
         :offset="[10, 10]"
-        :actions="[
-          { text: '扫一扫', icon: 'scan' },
-          { text: 'Github', icon: 'link-o' },
-        ]">
+        :actions="popoverActions">
         <template #reference>
           <van-icon name="ellipsis" size="24"/>
         </template>
@@ -22,7 +20,7 @@
     </template>
 
     <router-view v-slot="{ Component }">
-      <keep-alive>
+      <keep-alive :include="includes">
         <component :is="Component" />
       </keep-alive>
     </router-view>
@@ -51,11 +49,11 @@
   import { useKeepAliveIncludes } from '@daysnap/horn-use'
 
   defineOptions({ name: 'index' })
-  // const [ includes ] = useKeepAliveIncludes({ name: 'index' })
+
+  const [ includes ] = useKeepAliveIncludes({ name: 'index' })
   const router = useRouter()
   const route = useRoute()
   
-  const showPopover = ref(false);
 
   const arrTabBar = computed(() => {
     const { options } = router
@@ -77,6 +75,18 @@
   const title = computed(() => 
     arrTabBar.value[current.value]?.meta?.title ?? ''
   )
+
+  const popoverActions = [
+    { text: '扫一扫', icon: 'scan' },
+    { text: 'Github', icon: 'link-o' },
+    { text: '设置', icon: 'setting-o' },
+  ]
+  const popoverVisible = ref(false)
+  const handlePopoverSelect = (item: any) => {
+    const { to } = item
+  }
+
+
 
 </script>
 

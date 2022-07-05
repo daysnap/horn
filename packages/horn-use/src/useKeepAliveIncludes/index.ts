@@ -1,8 +1,6 @@
 import { computed, ComputedRef, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
-const data = ref<{ name: string, depth: number }[]>()
-
 type UseKeepAliveIncludesOptions = {
   name?: string // 须跟 component > name 一致
   depth?: number
@@ -10,19 +8,27 @@ type UseKeepAliveIncludesOptions = {
 
 type UseKeepAliveIncludesResult = [ ComputedRef<string[]>, typeof data ]
 
+interface UseKeepAliveIncludesData {
+  name: string
+  depth: number
+}
+
+const data = ref<UseKeepAliveIncludesData[]>()
+
+// todo 这里有bug后续修改
 export const useKeepAliveIncludes = (
   options?: UseKeepAliveIncludesOptions
 ) : UseKeepAliveIncludesResult => {
 
   if (typeof data.value === 'undefined') {
     const route = useRoute()
-    data.value = []
+    data.value = [] as UseKeepAliveIncludesData[]
     
     watch(
       () => ({ ...route }),
       (to, from) => {
-        const toDepth = to.meta?.depth as number
-        const fromDepth = from.meta?.depth as number
+        const { depth: toDepth = 0 } = to.meta || {}
+        const { depth: fromDepth = 0 } = from.meta || {}
         if (toDepth < fromDepth && data.value) {
           const index = data.value
             .findIndex(item => item.name === to.name)

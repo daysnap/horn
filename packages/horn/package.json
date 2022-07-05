@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@daysnap/define-sass": "^0.0.9",
+    "@daysnap/horn-jssdk": "workspace:^0.0.1",
     "@daysnap/horn-ui": "^0.0.1",
     "@daysnap/horn-use": "workspace:^0.0.1",
     "humps": "^2.0.1",

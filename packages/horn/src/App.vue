@@ -10,7 +10,6 @@
 </template>
 
 <script setup lang="ts">
-
   import { useKeepAliveIncludes, useTransitionNameByDepth } from '@daysnap/horn-use'
 
   const [ includes ] = useKeepAliveIncludes(false)
@@ -19,7 +18,6 @@
     enterClass: 'slide-left',
     leaveClass: 'slide-right',
   })
-
 </script>
 
 <style lang="scss">
@@ -43,12 +41,5 @@
 
   .hor-view{
     background-color: $color-background;
-  }
-
-  // markdown 文章的
-  .markdown-body{
-    .language-js{
-      margin: 10px;
-    }
   }
 </style>

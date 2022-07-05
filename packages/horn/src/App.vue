@@ -2,7 +2,7 @@
 <template>
   <router-view v-slot="{ Component }">
     <transition :name="transitionName">
-      <keep-alive max="10">
+      <keep-alive max="10" :include="includes" exclude="index">
         <component :is="Component"/>
       </keep-alive>
     </transition>
@@ -13,10 +13,7 @@
 
   import { useKeepAliveIncludes, useTransitionNameByDepth } from '@daysnap/horn-use'
 
-  // const [ includes ] = useKeepAliveIncludes(false)
-
-  const route = useRoute()
-  console.log('app => route => ', route)
+  const [ includes ] = useKeepAliveIncludes(false)
 
   const transitionName = useTransitionNameByDepth({ 
     enterClass: 'slide-left',

@@ -33,6 +33,4 @@
         name: text
       }))
   })
-
-  console.log('arrData => ', arrData)
 </script>

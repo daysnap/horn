@@ -41,6 +41,10 @@
     }
   }
 
+  .hor-view{
+    background-color: $color-background;
+  }
+
   // markdown 文章的
   .markdown-body{
     .language-js{

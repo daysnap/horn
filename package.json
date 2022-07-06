@@ -11,8 +11,8 @@
     "use:del": "pnpm -C ./packages/horn-use del",
     "use:entry": "pnpm -C ./packages/horn-use entry",
     "clean": "rimraf **/node_modules",
-    "l": "lint-staged",
     "lint": "eslint --ext packages/**/*.{js,ts,vue}",
+    "lint-fix": "eslint --fix --ext packages/**/*.{js,ts,vue}",
     "prepare": "husky install && echo 'export PATH=\"/usr/local/bin/:$PATH\"' >> ~/.huskyrc"
   },
   "devDependencies": {

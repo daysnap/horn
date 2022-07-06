@@ -3,8 +3,8 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
-  xxx: string,
-  va: number
-}>()
+  defineProps<{
+    xxx: string
+    va: number
+  }>()
 </script>

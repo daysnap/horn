@@ -1,13 +1,10 @@
-
 <template>
-  <hor-view
-    :use-nav-bar="false"
-    :left-arrow="false">
-    <hor-cell 
+  <hor-view :use-nav-bar="false" :left-arrow="false">
+    <hor-cell
       v-for="(name, index) in arrData"
       :key="index"
       :label="name"
-      @click="$router.push(`/hooks/${ humps.decamelize(name, { separator: '-' }) }`)"
+      @click="$router.push(`/hooks/${humps.decamelize(name, { separator: '-' })}`)"
     ></hor-cell>
   </hor-view>
 </template>
@@ -21,7 +18,6 @@
   defineOptions({ name: 'index-hooks' })
 
   const arrData = computed(() => {
-    return Object.keys(HorUse)
-      .filter(item => item.startsWith('use'))
+    return Object.keys(HorUse).filter((item) => item.startsWith('use'))
   })
 </script>

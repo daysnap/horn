@@ -1,18 +1,12 @@
-
 <template>
-  <hor-view
-    :use-nav-bar="false"
-    :left-arrow="false">
-    <van-grid 
-      :column-num="3" 
-      clickable
-      square>
-      <van-grid-item 
-        v-for="(item) in arrData" 
-        :key="item.text" 
+  <hor-view :use-nav-bar="false" :left-arrow="false">
+    <van-grid :column-num="3" clickable square>
+      <van-grid-item
+        v-for="item in arrData"
+        :key="item.text"
         icon="photo-o"
-        :text="item.text" 
-        :to="`/widgets/${ item.name }`"
+        :text="item.text"
+        :to="`/widgets/${item.name}`"
       />
     </van-grid>
   </hor-view>
@@ -28,10 +22,10 @@
 
   const arrData = computed(() => {
     return Object.keys(HorUi)
-      .filter(item => item.startsWith('Hor'))
-      .map(text => ({
+      .filter((item) => item.startsWith('Hor'))
+      .map((text) => ({
         text,
-        name: humps.decamelize(text, { separator: '-' })
+        name: humps.decamelize(text, { separator: '-' }),
       }))
   })
 </script>

@@ -17,29 +17,26 @@ const resolve = (dir: string) => path.join(__dirname, dir)
 export default defineConfig({
   base: './',
   build: {
-    target: 'es2015'
+    target: 'es2015',
   },
-  server:{
+  server: {
     host: '0.0.0.0',
   },
   plugins: [
-    
     legacy({
-      targets: ['ie >= 8', 'chrome 52', '> 1%', 'last 2 versions', 'not dead']
+      targets: ['ie >= 8', 'chrome 52', '> 1%', 'last 2 versions', 'not dead'],
     }),
-    
+
     vue({
       include: [/\.vue$/, /\.md$/],
     }),
-    
+
     DefineOptions(),
 
     AutoImport({
       imports: ['vue', 'vue-router'],
       dts: 'typings/auto-imports.d.ts',
-      resolvers: [
-        VantResolver()
-      ],
+      resolvers: [VantResolver()],
     }),
 
     Components({
@@ -51,7 +48,7 @@ export default defineConfig({
           if (componentName.startsWith('Hor'))
             return { name: componentName, from: '@daysnap/horn-ui' }
         },
-      ]
+      ],
     }),
 
     Pages({
@@ -70,19 +67,18 @@ export default defineConfig({
             rel: 'noopener',
           },
         })
-      }
-    })
-
+      },
+    }),
   ],
   resolve: {
     alias: {
       '@': resolve('src'),
-      'src': resolve('src'),
-    }
+      src: resolve('src'),
+    },
   },
   css: {
     preprocessorOptions: {
-      scss: {}
-    }
+      scss: {},
+    },
   },
 })

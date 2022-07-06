@@ -1,11 +1,5 @@
-
 <template>
-  <van-popup
-    round
-    :show="visible"
-    @click-overlay="hide"
-    position="bottom"
-  >
+  <van-popup round :show="visible" @click-overlay="hide" position="bottom">
     <van-picker
       :title="computedProps.title"
       :modelValue="computedValues"
@@ -24,7 +18,6 @@
 </template>
 
 <script setup lang="ts">
-
   import { PickerColumn, PickerConfirmEventParams } from 'vant'
   import { ref, computed } from 'vue'
   import { useVisible } from '@daysnap/horn-use'
@@ -37,16 +30,12 @@
 
   const dynamicProps = ref<Partial<HorPickerProps>>()
 
-  const computedProps = computed<HorPickerProps>(() =>
-    Object.assign({}, props, dynamicProps.value)
-  )
+  const computedProps = computed<HorPickerProps>(() => Object.assign({}, props, dynamicProps.value))
   const computedValues = computed(() => {
     const { value } = computedProps.value
     let values: Numeric[] = []
     if (Array.isArray(value)) {
-      values = value.map(item =>
-        typeof item === 'object' ? item.value : value
-      )
+      values = value.map((item) => (typeof item === 'object' ? item.value : value))
     } else {
       const item = typeof value === 'object' ? value.value : value
       if (item) {
@@ -66,8 +55,8 @@
   const computedColumns = computed(() => {
     let { columns = [], filterable } = computedProps.value
     if (filterable && keyword.value.length) {
-      columns = (columns as PickerColumn).filter(item =>
-        item?.text?.toString().includes(keyword.value)
+      columns = (columns as PickerColumn).filter((item) =>
+        item?.text?.toString().includes(keyword.value),
       )
     }
     if (!columns.length) {
@@ -76,16 +65,11 @@
     return columns
   })
 
-  const {
-    show,
-    hide,
-    confirm,
-    visible,
-  } = useVisible<
+  const { show, hide, confirm, visible } = useVisible<
     Partial<HorPickerProps>,
     PickerConfirmEventParams & { value: any }
   >({
-    showCallback: options => {
+    showCallback: (options) => {
       keyword.value = ''
       dynamicProps.value = options
     },
@@ -93,9 +77,7 @@
       let { value, columns } = computedProps.value
       let { selectedOptions, selectedValues } = res
       if (selectedValues[0] === 'ERR_NO_DATA') {
-        const selected = (columns as PickerColumn)?.find(item =>
-          item.value === value
-        )
+        const selected = (columns as PickerColumn)?.find((item) => item.value === value)
         selectedOptions = []
         selectedValues = []
         if (selected) {
@@ -107,7 +89,7 @@
           if (typeof value === 'object') {
             value = selectedOptions[0]
           } else {
-            value = selectedValues [0]
+            value = selectedValues[0]
           }
         } else {
           value = selectedOptions
@@ -122,11 +104,10 @@
     hide,
     confirm,
   })
-
 </script>
 
 <style lang="scss" scoped>
-  @import "../styles/define.scss";
+  @import '../styles/define.scss';
 
   @include b(picker-filter) {
     @extend %bsb;

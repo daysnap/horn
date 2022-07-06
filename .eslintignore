@@ -2,6 +2,9 @@
 *.md
 *.woff
 *.ttf
+
+*hbs
+
 .vscode
 .idea
 .husky

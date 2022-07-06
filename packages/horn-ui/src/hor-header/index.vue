@@ -7,7 +7,7 @@
   >
     <template #left>
       <slot name="left">
-        <van-icon v-if="leftArrow" name="arrow-left" size="18"/>
+        <van-icon v-if="leftArrow" name="arrow-left" size="18" />
       </slot>
     </template>
     <template #title>
@@ -28,7 +28,7 @@
   // 如果定义属性 这里传 headerProps， 在 types 里完善类型
   const props = defineProps(horHeaderProps)
   const emits = defineEmits(['click-left', 'click-right'])
-  
+
   const handleClickLeft = () => {
     emits('click-left')
     if (props.useLeftEvent) {

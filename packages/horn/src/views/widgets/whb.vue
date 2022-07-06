@@ -1,13 +1,12 @@
-
 <template>
   <div class="view-wrap list-wrap">
-    <hor-header title='海波御用组件页'/>
+    <hor-header title="海波御用组件页" />
     <!-- 志刚别删 -->
-    <!-- <van-button @click="handlerDatePicker">Click me</van-button>
+    <van-button @click="handlerDatePicker">Click me</van-button>
     <hor-date-picker ref="refDatePicker"></hor-date-picker>
-    <hor-picker ref="refPicker"></hor-picker> -->
-    <hor-scroll @load="load" @refresh="refresh" >
-      <div style="height:30px" v-for="i in list" >{{i}}</div>
+    <hor-picker ref="refPicker"></hor-picker>
+    <hor-scroll @load="load" @refresh="refresh">
+      <div :key="i" style="height: 30px" v-for="i in list">{{ i }}</div>
     </hor-scroll>
   </div>
 </template>
@@ -18,28 +17,28 @@
   import { useKeepAliveIncludes } from '@daysnap/horn-use'
   import { HorDatePickerInstance } from '@daysnap/horn-ui'
   defineOptions({ name: 'whb' })
-  
-  const refHorList = ref();
+
+  // const refHorList = ref<any>()
 
   const refDatePicker = ref<HorDatePickerInstance>()
   const handlerDatePicker = () => {
     refDatePicker.value?.show({
-      minDate:new Date('2022/01/01'),
-      maxDate:new Date('2022/12/30'),
-      filter:(type , options)=>{
-        if(type == 'day') return options.filter( i =>  Number(i.value) % 5 === 0 )
+      minDate: new Date('2022/01/01'),
+      maxDate: new Date('2022/12/30'),
+      filter: (type, options) => {
+        if (type == 'day') return options.filter((i) => Number(i.value) % 5 === 0)
         return options
-      }
+      },
     })
   }
   const list = ref(20)
-  const load = (cb)=>{
-    list.value+=20;
-    cb( '内部错误');
-    console.log('load了');
+  const load = (cb) => {
+    list.value += 20
+    cb('内部错误')
+    console.log('load了')
   }
-  const refresh = (cb)=>{
-    list.value = 20;
+  const refresh = (cb) => {
+    list.value = 20
     console.log('refresh了')
     cb('内部错误')
   }
@@ -60,7 +59,7 @@
 </script>
 
 <style lang="scss" scoped>
-  .view-wrap{
+  .view-wrap {
     display: flex;
     flex-direction: column;
     height: 100%;

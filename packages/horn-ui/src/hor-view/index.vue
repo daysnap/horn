@@ -34,8 +34,8 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "../styles/define.scss";
-  
+  @import '../styles/define.scss';
+
   @include b(view) {
     @extend %h100;
     @extend %oya;

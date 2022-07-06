@@ -5,7 +5,7 @@ module.exports = defineConfig({
   env: {
     browser: true,
     node: true,
-    es6: true
+    es6: true,
   },
   parser: 'vue-eslint-parser',
   parserOptions: {
@@ -14,14 +14,14 @@ module.exports = defineConfig({
     sourceType: 'module',
     jsxPragma: 'React',
     ecmaFeatures: {
-      jsx: true
-    }
+      jsx: true,
+    },
   },
   extends: [
     'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier',
-    'plugin:prettier/recommended' // 一定要放在最后。因为 extends 中后引入的规则会覆盖前面的规则。
+    'plugin:prettier/recommended',
   ],
   rules: {
     // @typescript-eslint
@@ -38,9 +38,11 @@ module.exports = defineConfig({
       'error',
       {
         argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_'
-      }
+        varsIgnorePattern: '^_',
+      },
     ], // 禁止未使用的变量
+    '@typescript-eslint/no-empty-interface': 'off',
+
     // vue
     'vue/custom-event-name-casing': 'off', // 为自定义事件名称强制使用特定大小写
     'vue/attributes-order': 'off', // 强制执行属性顺序
@@ -56,8 +58,9 @@ module.exports = defineConfig({
     'vue/multi-word-component-names': 'off', // 是否开启组件命名规则校验（强制多个单词以驼峰或'-'链接的命名规则）
     // ESLint
     'no-use-before-define': 'off', // 禁止在变量定义之前使用它们
-    'space-before-function-paren': 'off' // 强制在 function的左括号之前使用一致的空格
-  }
+    'space-before-function-paren': 'off', // 强制在 function的左括号之前使用一致的空格
+    'vue/no-v-html': 'off',
+  },
   //  overrides: [ // 若要开启组件命名规则校验，建议选这种方式
   //    {
   //      files: ['src/views/index.vue', 'src/views/**/index.vue'], // 匹配 views 和任意多级路径中的 index.vue

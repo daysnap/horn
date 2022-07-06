@@ -12,28 +12,18 @@ interface TransferOptions {
 
 export const useTransfer = () => {
   const router = useRouter()
-  const transfer = (
-    options: TransferOptions = {},
-    event?: any
-  ) => {
-    const { 
-      disabled,
-      path,
-      replace = false,
-      fn,
-      ...rest
-    } = options
+  return (options: TransferOptions = {}, event?: any) => {
+    const { disabled, path, replace = false, fn, ...rest } = options
     if (disabled) {
       return
     }
     if (path) {
-      router.push({ path, ...rest })
-      return 
+      router.push({ path, replace, ...rest })
+      return
     }
     if (fn) {
       fn(options, event)
       return
     }
   }
-  return transfer
 }

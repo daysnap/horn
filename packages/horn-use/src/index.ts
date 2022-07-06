@@ -3,5 +3,6 @@
 export * from './useKeepAliveIncludes'
 export * from './useRouteStack'
 export * from './useTitle'
+export * from './useTransfer'
 export * from './useTransitionNameByDepth'
 export * from './useVisible'

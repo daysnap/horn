@@ -22,15 +22,8 @@
   const { name } = defineProps<{ name: string }>()
   const refError = ref<any>()
   const HorHook = defineAsyncComponent(() => 
-    import(`../../../node_modules/@daysnap/horn-use/src/${name}/index.md`)
+    import(`../../../../node_modules/@daysnap/horn-use/src/${name}/index.md`)
       .catch(err => refError.value = err)
   )
   const title = computed(() => humps.pascalize(name))
 </script>
-
-<style lang="scss" scoped>
-  @import "src/assets/scss/define";
-  .content{
-    padding: 0 16px;
-  }
-</style>

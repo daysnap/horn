@@ -19,7 +19,7 @@
 
     <div class="hor-skeleton-empty"
       v-else>
-      <img src="./empty-image-default.png" alt="无数据">
+      <img :src="empty" alt="无数据">
       <span>{{ emptyPrompt }}</span>
     </div>
 
@@ -28,11 +28,14 @@
 
 <script setup lang="ts">
   import { horSkeletonProps } from './types'
-  
+  import { url } from '../utils'
+
   defineOptions({ name: 'HorSkeleton' })
   // 如果定义属性 这里传 horSkeletonProps， 在 types 里完善类型
   defineProps(horSkeletonProps)
   defineEmits(['refresh'])
+
+  const empty = url('./empty-image-default.png', import.meta.url)
 </script>
 
 <style lang="scss" scoped>
@@ -100,7 +103,6 @@
         height: j(120);
         margin-bottom: j(30);
       }
-        background: url(./empty-image-default.png);
     }
 
   }

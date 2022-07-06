@@ -14,7 +14,7 @@ export const useTransitionNameByDepth = (
     deep = false
   }: UseTransitionNameByDepthOptions
 ) => {
-  const name = ref<string>('')
+  const name = ref('')
   const route = useRoute()
 
   watch(
@@ -22,7 +22,7 @@ export const useTransitionNameByDepth = (
     (to, from) => {
       const { depth: td, enterClass: ec } = to.meta || {}
       const { depth: fd = td, leaveClass: lc } = from.meta || {}
-      name.value = 
+      ;(name.value as any) = 
         (
           typeof td === 'undefined'
           || typeof fd === 'undefined' 

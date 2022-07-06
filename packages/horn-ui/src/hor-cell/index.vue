@@ -39,13 +39,14 @@
 
   @include b(cell) {
     @extend %df;
+    @extend %bw05;
     @extend %bwb;
     @extend %bsb;
     @extend %w100;
     @extend %c3;
+    background-color: #fff;
     font-size: j(14);
     padding: j(10) j(16);
-    //min-height: j(50);
     line-height: 1.6;
 
     flex-direction: row;

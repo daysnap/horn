@@ -37,7 +37,7 @@ import { horListProps , HorListProps } from './types'
   const resetError = ()=>{
       error.value = false;
       errorText.value = '';
-      refList.value.check
+      refList.value.check();
   }
   defineExpose({
     resetError
@@ -45,10 +45,4 @@ import { horListProps , HorListProps } from './types'
 </script>
 
 <style lang='scss' scoped>
-  @import "../styles/define.scss";
-  .hor-list{
-    @extend %df1;
-    @extend %h100;
-    @extend %oya;
-  }
 </style>

@@ -6,11 +6,9 @@
     <!-- <van-button @click="handlerDatePicker">Click me</van-button>
     <hor-date-picker ref="refDatePicker"></hor-date-picker>
     <hor-picker ref="refPicker"></hor-picker> -->
-    <hor-pull-refresh @refresh="refresh">
-        <hor-list ref="refHorList" :finished="list>100" @load="load" >
-          <div style="height: 50px" v-for="i in list" >{{i}}</div>
-        </hor-list>
-    </hor-pull-refresh>
+    <hor-scroll @load="load" @refresh="refresh" >
+      <div style="height:30px" v-for="i in list" >{{i}}</div>
+    </hor-scroll>
   </div>
 </template>
 
@@ -42,7 +40,8 @@
   }
   const refresh = (cb)=>{
     list.value = 20;
-    cb()
+    console.log('refresh了')
+    cb('内部错误')
   }
 
   useKeepAliveIncludes()

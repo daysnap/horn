@@ -1,6 +1,6 @@
 
 <template>
-  <hor-view :title="title">
+  <hor-view :title="humps.pascalize(name)">
     <hor-skeleton 
       :error="refError"
       :error-btn-visible="false"
@@ -25,5 +25,4 @@
     import(`../../../../node_modules/@daysnap/horn-ui/src/${name}/demo/${demo}`)
       .catch(err => refError.value = err)
   )
-  const title = computed(() => humps.pascalize(name))
 </script>

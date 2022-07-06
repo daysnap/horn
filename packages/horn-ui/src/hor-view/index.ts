@@ -7,6 +7,6 @@ export type HorViewInstance = InstanceType<typeof HorView>
 
 declare module 'vue' {
   export interface GlobalComponents {
-    HorView: typeof HorView;
+    HorView: typeof HorView
   }
 }

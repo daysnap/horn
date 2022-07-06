@@ -7,6 +7,6 @@ export type HorHeaderInstance = InstanceType<typeof HorHeader>
 
 declare module 'vue' {
   export interface GlobalComponents {
-    HorHeader: typeof HorHeader;
+    HorHeader: typeof HorHeader
   }
 }

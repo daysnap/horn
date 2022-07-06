@@ -7,6 +7,6 @@ export type HorIconInstance = InstanceType<typeof HorIcon>
 
 declare module 'vue' {
   export interface GlobalComponents {
-    HorIcon: typeof HorIcon;
+    HorIcon: typeof HorIcon
   }
 }

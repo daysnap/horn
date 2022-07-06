@@ -7,6 +7,6 @@ export type HorPickerInstance = InstanceType<typeof HorPicker>
 
 declare module 'vue' {
   export interface GlobalComponents {
-    HorPicker: typeof HorPicker;
+    HorPicker: typeof HorPicker
   }
 }

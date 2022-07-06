@@ -7,6 +7,6 @@ export type HorSkeletonInstance = InstanceType<typeof HorSkeleton>
 
 declare module 'vue' {
   export interface GlobalComponents {
-    HorSkeleton: typeof HorSkeleton;
+    HorSkeleton: typeof HorSkeleton
   }
 }

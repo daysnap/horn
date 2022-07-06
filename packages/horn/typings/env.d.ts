@@ -14,3 +14,8 @@ declare module '*.md' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+
+declare module 'humps' {
+  const humps: any = {}
+  export default humps
+}

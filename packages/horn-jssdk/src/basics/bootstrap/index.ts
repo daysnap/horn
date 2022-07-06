@@ -5,7 +5,5 @@ export interface BootstrapOptions {
   fail?: (err: FailCallbackResult) => void
 }
 
-export const bootstrap = <
-  T extends BootstrapOptions = BootstrapOptions
->(options?: T) =>
+export const bootstrap = <T extends BootstrapOptions = BootstrapOptions>(options?: T) =>
   withBasics<T, BootstrapOptions>(BaseActions.BOOTSTRAP)(options)

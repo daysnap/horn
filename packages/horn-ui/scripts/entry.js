@@ -1,11 +1,8 @@
-
 const { requireFilePath, rc, rt, requireDirname } = require('./utils')
 
-const components = requireDirname(
-  requireFilePath(rc(), true, /\/index\.ts$/)
-)
+const components = requireDirname(requireFilePath(rc(), true, /\/index\.ts$/))
 
-module.exports = plop => {
+module.exports = (plop) => {
   plop.setGenerator('entry', {
     description: '创建入口文件',
     prompts: [],
@@ -16,6 +13,6 @@ module.exports = plop => {
         templateFile: rt('entry.hbs'),
         data: { components },
       },
-    ]
+    ],
   })
 }

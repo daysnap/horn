@@ -1,4 +1,3 @@
-
 // 基础服务方法
 export enum BaseActions {
   // h5 通知容器

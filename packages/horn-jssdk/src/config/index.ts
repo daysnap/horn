@@ -1,6 +1,5 @@
-
 interface Config {
-  log?: ((...args: any[]) => void) | boolean,
+  log?: ((...args: any[]) => void) | boolean
 }
 
 // 配置

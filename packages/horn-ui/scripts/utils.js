@@ -6,12 +6,13 @@ const r = (...args) => path.resolve(__dirname, '..', ...args)
 const rt = (...args) => r('scripts/templates', ...args)
 const rc = (...args) => r('src', ...args)
 
-const execAsync = cmd => new Promise((resolve, reject) => {
-  exec(cmd, (err,stdout,stderr) => {
-    if (err || stderr) reject(err || stderr)
-    else resolve(stdout)
+const execAsync = (cmd) =>
+  new Promise((resolve, reject) => {
+    exec(cmd, (err, stdout, stderr) => {
+      if (err || stderr) reject(err || stderr)
+      else resolve(stdout)
+    })
   })
-})
 
 const requireFilePath = (directory = '', recursive, regExp) => {
   if (directory[0] === '.') {
@@ -24,19 +25,21 @@ const requireFilePath = (directory = '', recursive, regExp) => {
   return nodeDir
     .files(directory, {
       sync: true,
-      recursive: recursive || false
+      recursive: recursive || false,
     })
-    .filter((file) =>  {
+    .filter((file) => {
       return file.replace(/\\/g, '/').match(regExp || /\.(json|js|tsx)$/)
     })
 }
 
 const requireDirname = (data) => {
   const reg = /src\/(.+)\/index\.ts$/
-  return data.map(p => {
-    const res = p.replace(/\\/g, '/').match(reg)
-    return res ? res[1] : ''
-  }).filter(Boolean)
+  return data
+    .map((p) => {
+      const res = p.replace(/\\/g, '/').match(reg)
+      return res ? res[1] : ''
+    })
+    .filter(Boolean)
 }
 
 module.exports = {

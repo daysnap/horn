@@ -11,16 +11,16 @@ export interface FailCallbackResult {
 
 export type PromisifySuccessResult<
   P,
-  T extends { success?: (...args: any[]) => void }
+  T extends { success?: (...args: any[]) => void },
 > = P extends { success: any }
   ? void
   : P extends { fail: any }
-    ? void
-    : Promise<Parameters<Exclude<T['success'], undefined>>[0]>
+  ? void
+  : Promise<Parameters<Exclude<T['success'], undefined>>[0]>
 
-export type Options<T> =  {
-  success? (data: T): void
-  fail? (err: FailCallbackResult): void
+export type Options<T> = {
+  success?(data: T): void
+  fail?(err: FailCallbackResult): void
   service: Services
   action: BaseActions | PolymerizeActions | SDKActions
   [props: string]: any
@@ -30,49 +30,35 @@ export type Options<T> =  {
  * jssdk 核心 无需直接调用
  */
 export const core = <T>(options: Options<T>): void => {
-  const {
-    success = nf,
-    fail = nf,
-    service,
-    action,
-    ...params
-  } = options
+  const { success = nf, fail = nf, service, action, ...params } = options
   DsBox.call<T>(
-    res => {
+    (res) => {
       log(service, action, '请求返回 => ', res)
       const { code, data } = res
       code === Code.SUCCESS ? success(data) : fail(res)
     },
-    err => {
+    (err) => {
       log(service, action, '请求错误 => ', err)
       fail(err)
     },
     service,
     action,
-    params
+    params,
   )
 }
 
 /**
  * 包装函数
  */
-export const call = <
-  T extends Options<any>,
-  P extends Partial<Options<any>>
->(
-  options: T
+export const call = <T extends Options<any>, P extends Partial<Options<any>>>(
+  options: T,
 ): PromisifySuccessResult<T, P> => {
-  const {
-    success,
-    fail,
-  } = options
+  const { success, fail } = options
 
   if (success || fail) {
     core(options)
     return
   }
 
-  return new Promise((success, fail) =>
-    core(Object.assign({}, options, { success, fail }))
-  ) as any
+  return new Promise((success, fail) => core(Object.assign({}, options, { success, fail }))) as any
 }

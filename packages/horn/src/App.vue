@@ -13,8 +13,6 @@
 
   const [includes] = useKeepAliveIncludes(false)
 
-  const i = ""
-
   const transitionName = useTransitionNameByDepth({
     enterClass: 'slide-left',
     leaveClass: 'slide-right',

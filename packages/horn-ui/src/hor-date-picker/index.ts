@@ -5,6 +5,6 @@ export type HorDatePickerInstance = InstanceType<typeof HorDatePicker>
 
 declare module 'vue' {
   export interface GlobalComponents {
-    HorDatePicker: typeof HorDatePicker;
+    HorDatePicker: typeof HorDatePicker
   }
 }

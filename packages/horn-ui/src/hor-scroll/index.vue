@@ -11,6 +11,7 @@
   import { HorList } from '..//hor-list'
   import { ref } from 'vue'
   const refList = ref()
+
   defineProps({
     finished: {
       type: Boolean,

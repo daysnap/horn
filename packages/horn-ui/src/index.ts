@@ -2,6 +2,9 @@
 
 export * from './hor-cell'
 export * from './hor-date-picker'
+export * from './hor-list'
+export * from './hor-pull-refresh'
+export * from './hor-scroll'
 export * from './hor-header'
 export * from './hor-icon'
 export * from './hor-picker'

@@ -2,12 +2,13 @@
 <template>
   <div class="view-wrap list-wrap">
     <hor-header title='海波御用组件页'/>
-    志刚别删
-    <van-button @click="handlerDatePicker">Click me</van-button>
+    <!-- 志刚别删 -->
+    <!-- <van-button @click="handlerDatePicker">Click me</van-button>
     <hor-date-picker ref="refDatePicker"></hor-date-picker>
-    <hor-picker ref="refPicker"></hor-picker>
-    <div>
-    </div>
+    <hor-picker ref="refPicker"></hor-picker> -->
+    <hor-scroll @load="load" @refresh="refresh" >
+      <div style="height:30px" v-for="i in list" >{{i}}</div>
+    </hor-scroll>
   </div>
 </template>
 
@@ -18,7 +19,7 @@
   import { HorDatePickerInstance } from '@daysnap/horn-ui'
   defineOptions({ name: 'whb' })
   
-  const refPicker = ref();
+  const refHorList = ref();
 
   const refDatePicker = ref<HorDatePickerInstance>()
   const handlerDatePicker = () => {
@@ -30,6 +31,17 @@
         return options
       }
     })
+  }
+  const list = ref(20)
+  const load = (cb)=>{
+    list.value+=20;
+    cb( '内部错误');
+    console.log('load了');
+  }
+  const refresh = (cb)=>{
+    list.value = 20;
+    console.log('refresh了')
+    cb('内部错误')
   }
 
   useKeepAliveIncludes()
@@ -48,5 +60,9 @@
 </script>
 
 <style lang="scss" scoped>
-  
+  .view-wrap{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
 </style>

@@ -1,15 +1,10 @@
 
 <template>
-  <div class="view-wrap list-wrap">
-    <hor-header title='海波御用组件页'/>
-    <!-- 志刚别删 -->
-    <!-- <van-button @click="handlerDatePicker">Click me</van-button>
-    <hor-date-picker ref="refDatePicker"></hor-date-picker>
-    <hor-picker ref="refPicker"></hor-picker> -->
-    <hor-scroll @load="load" @refresh="refresh" >
+  <hor-view title="海波御用">
+    <hor-scroll :finished="list>=100" @load="load" @refresh="refresh" >
       <div style="height:30px" v-for="i in list" >{{i}}</div>
     </hor-scroll>
-  </div>
+  </hor-view>
 </template>
 
 <route>{ meta: { title: 'hor-cell', depth: 2 } }</route>

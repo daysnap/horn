@@ -1,15 +1,7 @@
 <template>
-  <hor-pull-refresh
-    class="hor-scroll"
-    @refresh="emit('refresh', $event)"
-    :refList="refList"
-  >
-    <hor-list
-      :finished="finished"
-      ref="refList"
-      @load="emit('load', $event)"
-    >
-    <slot></slot>
+  <hor-pull-refresh class="hor-scroll" @refresh="emit('refresh', $event)" :refList="refList">
+    <hor-list :finished="finished" ref="refList" @load="emit('load', $event)">
+      <slot></slot>
     </hor-list>
   </hor-pull-refresh>
 </template>
@@ -20,8 +12,8 @@ import { HorList } from '..//hor-list';
 import { ref } from 'vue';
 const refList = ref();
 defineProps({
-  finished:{
-    type:Boolean,
+  finished: {
+    type: Boolean,
     default: false,
   }
 })
@@ -30,9 +22,10 @@ const emit = defineEmits(['refresh', 'load'])
 
 <style lang='scss' scoped>
 @import "../styles/define.scss";
-  .hor-scroll{
-    @extend %df1;
-    @extend %h100;
-    @extend %oya;
-  }
+
+@include b(scroll) {
+  @extend %df1;
+  @extend %h100;
+  @extend %oya;
+}
 </style>

@@ -1,16 +1,13 @@
 
-## hor-cell
+# HorCell
 
-```html
-<div>点击跳转</div>
-```
+## 基础用法
 
-<div class="text-center" @click="$router.push('/widgets/hor-cell/index.vue')">
-  <!-- You can use Vue components inside markdown -->
-  <div i-carbon-dicom-overlay class="text-4xl -mb-6 m-auto" />
-  <h3>About</h3>
-  <hor-cell label="11" value="222"></hor-cell>
-</div>
+<hor-cell label="单元格" value="内容"/>
+
+- 箭头
+
+<hor-cell label="单元格" value="内容"/>
 
 ```js
 // syntax highlighting example

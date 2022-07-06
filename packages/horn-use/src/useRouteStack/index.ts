@@ -14,62 +14,24 @@ const stack = ref<_RouteLocationBase[]>([])
 export const useRouteStack = () => {
   const route = useRoute()
 
-  // window.addEventListener(
-  //   'popstate',
-  //   (e) => {
-  //     console.log('popstate => ', e)
-  //       // 在这个可以添加条件判断
-  //   },
-  //   false
-  // )
-
-  // window.addEventListener(
-  //   'replaceState',
-  //   (e) => {
-  //     console.log('replaceState => ', e)
-  //       // 在这个可以添加条件判断
-  //   },
-  //   false
-  // )
-  // window.addEventListener(
-  //   'pushState',
-  //   (e) => {
-  //     console.log('pushState => ', e)
-  //       // 在这个可以添加条件判断
-  //   },
-  //   false
-  // )  
-
   watch(
     () => ({ ...route }),
-    (to, from, dd) => {
-
-      console.log('to => ', to.meta)
-      console.log('from => ', from.meta)
-
-      // console.log('dd => ', dd)
-      // console.log('to => ', to)
-      // console.log('from => ', from)
-
-      const toIndex = stack.value
-        .findIndex(item => 
-          item.fullPath === to.fullPath
-        )
+    (to, from) => {
+      const toIndex = stack.value.findIndex((item) => item.fullPath === to.fullPath)
       if (toIndex === -1) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { matched, ...rest } = to
         stack.value.push(rest)
       }
-      
-      const fromIndex = stack.value
-        .findIndex(item => 
-          item.fullPath === from.fullPath
-        )
+
+      const fromIndex = stack.value.findIndex((item) => item.fullPath === from.fullPath)
       if (toIndex > -1 && fromIndex > -1) {
         // 返回：B -> A
         stack.value = stack.value.slice(0, toIndex + 1)
       }
     },
-    { deep: true }
+    { deep: true },
   )
+
   return stack
 }

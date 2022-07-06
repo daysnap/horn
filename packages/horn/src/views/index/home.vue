@@ -1,14 +1,8 @@
-
 <template>
-  <hor-view
-    :use-nav-bar="false"
-    :left-arrow="false">
-
-    <br>
+  <hor-view :use-nav-bar="false" :left-arrow="false">
+    <br />
     <van-button @click="$router.push('/setting')">设置</van-button>
-    首页首页首页首页首页首页首页首页首页首页首页首页首页首页
-    首页
-    首页首页首页首页首页首页首页首页首页首页首页首页首页首页
+    首页首页首页首页首页首页首页首页首页首页首页首页首页首页 首页
     首页首页首页首页首页首页首页首页首页首页首页首页首页首页
     首页首页首页首页首页首页首页首页首页首页首页首页首页首页
     首页首页首页首页首页首页首页首页首页首页首页首页首页首页
@@ -16,14 +10,7 @@
     首页首页首页首页首页首页首页首页首页首页首页首页首页首页
     首页首页首页首页首页首页首页首页首页首页首页首页首页首页
     首页首页首页首页首页首页首页首页首页首页首页首页首页首页
-    首页
-    首页
-    首页
-    首页
-    首页
-    首页
-    首页
-    首页
+    首页首页首页首页首页首页首页首页首页首页首页首页首页首页 首页 首页 首页 首页 首页 首页 首页 首页
   </hor-view>
 </template>
 
@@ -36,6 +23,4 @@
   useKeepAliveIncludes()
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

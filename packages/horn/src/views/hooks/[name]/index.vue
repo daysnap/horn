@@ -1,15 +1,7 @@
-
 <template>
-  <hor-view :title="title">
-    <hor-skeleton 
-      :error="refError"
-      :error-btn-visible="false"
-      v-if="refError"
-    />
-    <hor-hook
-      calss="content"
-      v-else
-    />
+  <hor-view :title="humps.pascalize(name)">
+    <hor-skeleton :error="refError" :error-btn-visible="false" v-if="refError" />
+    <hor-hook calss="content" v-else />
   </hor-view>
 </template>
 
@@ -17,13 +9,12 @@
 
 <script setup lang="ts">
   import humps from 'humps'
-  import { HorSkeleton } from '@daysnap/horn-ui'
 
-  const { name } = defineProps<{ name: string }>()
+  const props = defineProps<{ name: string }>()
   const refError = ref<any>()
-  const HorHook = defineAsyncComponent(() => 
-    import(`../../../../node_modules/@daysnap/horn-use/src/${name}/index.md`)
-      .catch(err => refError.value = err)
+  const HorHook = defineAsyncComponent(() =>
+    import(
+      `../../../../node_modules/@daysnap/horn-use/src/${humps.camelize(props.name)}/index.md`
+    ).catch((err) => (refError.value = err)),
   )
-  const title = computed(() => humps.pascalize(name))
 </script>

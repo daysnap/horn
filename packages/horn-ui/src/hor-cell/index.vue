@@ -1,7 +1,5 @@
 <template>
-  <div class="hor-cell"
-       :class="[`is-${direction}`]"
-  >
+  <div class="hor-cell" :class="[`is-${direction}`]">
     <div class="hor-cell-label">
       <slot name="prefix"></slot>
       <slot name="label">
@@ -18,7 +16,6 @@
 </template>
 
 <script setup lang="ts">
-
   defineOptions({
     name: 'HorCell',
   })
@@ -28,14 +25,13 @@
     value: String,
     direction: {
       type: String,
-      default: 'row'
+      default: 'row',
     },
   })
-
 </script>
 
 <style lang="scss" scoped>
-  @import "../styles/define.scss";
+  @import '../styles/define.scss';
 
   @include b(cell) {
     @extend %df;
@@ -59,13 +55,12 @@
       @extend %aie;
       align-items: flex-start;
 
-      .#{$namespace}-cell-value{
+      .#{$namespace}-cell-value {
         @extend %jce;
-        span{
+        span {
           @extend %tar;
         }
       }
-
     }
 
     @include when(column) {
@@ -76,7 +71,7 @@
       @extend %df;
       @extend %aic;
       //background-color: #ff0088;
-      span{
+      span {
         padding: j(4) 0;
       }
     }
@@ -87,7 +82,7 @@
       @extend %aic;
       @extend %c9;
       //background-color: #0073ff;
-      span{
+      span {
         padding: j(4) 0;
       }
     }

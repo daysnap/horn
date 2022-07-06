@@ -1,28 +1,24 @@
 <template>
   <div class="hor-skeleton">
-    
     <div class="hor-skeleton-error" v-if="error">
       <span>{{ error }}</span>
-      <van-button 
+      <van-button
         v-if="errorBtnVisible"
         @click="$emit('refresh')"
-        round 
+        round
         type="primary"
         class="hor-skeleton-error-btn"
-        >{{ errorBtnText }}</van-button>
+      >
+        {{ errorBtnText }}
+      </van-button>
     </div>
 
-    <van-loading
-      v-else-if="loading" 
-      vertical
-    >加载中</van-loading>
+    <van-loading v-else-if="loading" vertical>加载中</van-loading>
 
-    <div class="hor-skeleton-empty"
-      v-else>
-      <img :src="empty" alt="无数据">
+    <div class="hor-skeleton-empty" v-else>
+      <img :src="empty" alt="无数据" />
       <span>{{ emptyPrompt }}</span>
     </div>
-
   </div>
 </template>
 
@@ -39,10 +35,9 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "../styles/define.scss";
-  
-  @include b(skeleton) {
+  @import '../styles/define.scss';
 
+  @include b(skeleton) {
     @extend %pa;
     @extend %t0;
     @extend %l0;
@@ -58,25 +53,24 @@
     padding-bottom: j(80);
 
     @include e(error) {
-
       @extend %df;
-        @extend %fdc;
-        @extend %aic;
-        @extend %jcc;
+      @extend %fdc;
+      @extend %aic;
+      @extend %jcc;
 
-        span {
-          @extend %tac;
-          @extend %c9;
-          @include twno(5);
-          width: j(250);
-          margin-bottom: j(10);
-        }
+      span {
+        @extend %tac;
+        @extend %c9;
+        @include twno(5);
+        width: j(250);
+        margin-bottom: j(10);
+      }
 
-        @include m(btn) {
-          pointer-events: auto;
-          margin-top: j(30);
-          width: j(160);
-        }
+      @include m(btn) {
+        pointer-events: auto;
+        margin-top: j(30);
+        width: j(160);
+      }
     }
 
     @include e(loading) {
@@ -86,7 +80,7 @@
       width: j(60);
       height: j(60);
       border-radius: j(10);
-      background-color: rgba(0, 0, 0, .05);
+      background-color: rgba(0, 0, 0, 0.05);
     }
 
     @include e(empty) {
@@ -104,6 +98,5 @@
         margin-bottom: j(30);
       }
     }
-
   }
 </style>

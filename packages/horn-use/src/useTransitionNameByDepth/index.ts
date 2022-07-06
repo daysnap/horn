@@ -7,13 +7,11 @@ interface UseTransitionNameByDepthOptions {
   deep?: boolean
 }
 
-export const useTransitionNameByDepth = (
-  {
-    enterClass,
-    leaveClass,
-    deep = false
-  }: UseTransitionNameByDepthOptions
-) => {
+export const useTransitionNameByDepth = ({
+  enterClass,
+  leaveClass,
+  deep = false,
+}: UseTransitionNameByDepthOptions) => {
   const name = ref('')
   const route = useRoute()
 
@@ -22,18 +20,14 @@ export const useTransitionNameByDepth = (
     (to, from) => {
       const { depth: td, enterClass: ec } = to.meta || {}
       const { depth: fd = td, leaveClass: lc } = from.meta || {}
-      ;(name.value as any) = 
-        (
-          typeof td === 'undefined'
-          || typeof fd === 'undefined' 
-          || td === fd
-        )
-        ? ''
-        : td > fd
-        ? ec ?? enterClass
-        : lc ?? leaveClass
+      ;(name.value as any) =
+        typeof td === 'undefined' || typeof fd === 'undefined' || td === fd
+          ? ''
+          : td > fd
+          ? ec ?? enterClass
+          : lc ?? leaveClass
     },
-    { deep }
+    { deep },
   )
 
   return name

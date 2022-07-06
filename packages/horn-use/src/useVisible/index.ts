@@ -1,20 +1,16 @@
-
 import { ref } from 'vue'
 
 export interface UseVisibleOptions<T> {
-  showCallback?: (options?: T) => void | Promise<void>,
-  hideCallback?: () => void | Promise<void>,
-  confirmCallback?: (...args: any[]) => any | Promise<any>,
+  showCallback?: (options?: T) => void | Promise<void>
+  hideCallback?: () => void | Promise<void>
+  confirmCallback?: (...args: any[]) => any | Promise<any>
 }
 
 export interface UseVisibleShowOptions {
   beforeClose?: (action: string, ...args: any[]) => boolean | Promise<boolean>
 }
 
-export const useVisible = <T extends {}, P = any>(
-  options: UseVisibleOptions<T> = {}
-) => {
-
+export const useVisible = <T extends {}, P = any>(options: UseVisibleOptions<T> = {}) => {
   const { showCallback, hideCallback, confirmCallback } = options
 
   const visible = ref(false)
@@ -24,7 +20,7 @@ export const useVisible = <T extends {}, P = any>(
 
   // 显示
   const show = <R = P>(options?: UseVisibleShowOptions & T) => {
-    return new Promise<R> (async (_resolve, _reject) => {
+    return new Promise<R>(async (_resolve, _reject) => {
       beforeClose = options?.beforeClose
       await showCallback?.(options)
       visible.value = true
@@ -35,7 +31,7 @@ export const useVisible = <T extends {}, P = any>(
 
   // 隐藏
   const hide = async (reason?: any) => {
-    const result = await beforeClose?.('cancel', reason) ?? true
+    const result = (await beforeClose?.('cancel', reason)) ?? true
     if (!result) {
       return
     }
@@ -46,7 +42,7 @@ export const useVisible = <T extends {}, P = any>(
 
   // 确认
   const confirm = async (...args: any[]) => {
-    const result = await beforeClose?.('confirm', ...args) ?? true
+    const result = (await beforeClose?.('confirm', ...args)) ?? true
     if (!result) {
       return
     }

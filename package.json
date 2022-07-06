@@ -38,6 +38,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
   "lint-staged": {
     "*.{vue,js,ts,jsx,tsx,md,json}": "eslint --fix"
   }

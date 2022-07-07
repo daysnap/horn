@@ -52,7 +52,6 @@
 
 
   p {
-    line-height: 1.8rem;
     word-spacing: .05rem;
     /* color: #3f3f3f; */
     color: var(--mid-13);
@@ -193,7 +192,7 @@
     margin: 0.2em auto 0;
     width: 1200px;
     height: 2px;
-    border-bottom: 2px solid var(--main-6);
+    // border-bottom: 2px solid var(--main-6);
   }
 
   h2 {
@@ -204,7 +203,7 @@
     font-size: 1.8em;
     /* border-left: 9px solid var(--main-6); */
     /* border-bottom: 1px solid #ddd; */
-    border-bottom: 1px solid var(--main-6);
+    // border-bottom: 1px solid var(--main-6);
   }
 
   h2::before {

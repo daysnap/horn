@@ -1,6 +1,6 @@
 <template>
   <hor-view class="setting">
-    <hor-cell label="" value=""></hor-cell>
+    <hor-cell label="" value="" direction="row"></hor-cell>
   </hor-view>
 </template>
 

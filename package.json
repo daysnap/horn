@@ -31,6 +31,7 @@
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
     "typescript": "^4.7.4",
+    "vitest": "^0.17.0",
     "vue-eslint-parser": "^9.0.3"
   },
   "workspaces": [
@@ -43,6 +44,6 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,ts,vue}": "eslint --fix"
+    "*.{vue,js,ts,jsx,tsx,md,json}": "eslint --fix"
   }
 }

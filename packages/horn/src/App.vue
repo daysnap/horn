@@ -31,6 +31,7 @@
     @extend %w100;
     @extend %h100;
     @extend %oh;
+    font-size: 13px;
   }
   .van-grid-item {
     span {

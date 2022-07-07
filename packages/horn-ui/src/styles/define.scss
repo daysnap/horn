@@ -4,13 +4,18 @@
 $namespace: 'hor';
 $base-font-size: 37.5px;
 
+// @function j($px, $bfs: $base-font-size) {
+//   @if (unitless($px)) {
+//     @return math.div($px + 0px, $bfs) * 1rem;
+//   } @else if (unit($px) == rem) {
+//     @return $px;
+//   } @else if (unit($px) == px) {
+//     @return $px;
+//   }
+// }
+
 @function j($px, $bfs: $base-font-size) {
-  @if (unitless($px)) {
-    @return math.div($px + 0px, $bfs) * 1rem;
-  } @else if (unit($px) == rem) {
-    @return $px;
-  } @else if (unit($px) == px) {
-    @return $px;
-  }
+  @return $px + 0px;
 }
+
 

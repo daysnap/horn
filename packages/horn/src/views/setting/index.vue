@@ -1,5 +1,7 @@
 <template>
-  <hor-view class="setting"> </hor-view>
+  <hor-view class="setting">
+    <hor-cell label="" value=""></hor-cell>
+  </hor-view>
 </template>
 
 <route>{ meta: { title: '设置', depth: 2 } }</route>
@@ -9,7 +11,6 @@
 <style lang="scss" scoped>
   @import 'src/assets/scss/define';
   .setting {
-    position: absolute;
     z-index: 9;
   }
 </style>

@@ -16,18 +16,10 @@
 </template>
 
 <script setup lang="ts">
-  defineOptions({
-    name: 'HorCell',
-  })
+  import { cellProps } from './types'
 
-  defineProps({
-    label: String,
-    value: String,
-    direction: {
-      type: String,
-      default: 'row',
-    },
-  })
+  defineOptions({ name: 'HorCell' })
+  defineProps(cellProps)
 </script>
 
 <style lang="scss" scoped>

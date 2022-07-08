@@ -1,5 +1,5 @@
 <template>
-  <van-popup v-model="visible" round :show="visible" position="bottom">
+  <van-popup round @click-overlay="hide" :show="visible" position="bottom">
     <van-date-picker
       :modelValue="computedProps.value"
       title="选择日期"

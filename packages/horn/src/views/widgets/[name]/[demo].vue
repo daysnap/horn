@@ -17,7 +17,7 @@
   }>()
   const refError = ref<any>()
   const HorHook = defineAsyncComponent(() =>
-    import(`../../../../node_modules/@daysnap/horn-ui/src/${props.name}/demo/${props.demo}`).catch(
+    import(`../../../../node_modules/@daysnap/horn-ui/src/${props.name}/demos/${props.demo}`).catch(
       (err) => (refError.value = err),
     ),
   )

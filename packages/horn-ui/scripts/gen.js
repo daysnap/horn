@@ -44,6 +44,11 @@ module.exports = (plop) => {
       },
       {
         type: 'add',
+        path: rc('{{ dashCase name }}/demos/index.vue'),
+        templateFile: rt('demos/vue.hbs'),
+      },
+      {
+        type: 'add',
         path: rc('{{ dashCase name }}/__tests__/{{ dashCase name }}.test.ts'),
         templateFile: rt('__tests__/test.hbs'),
       },

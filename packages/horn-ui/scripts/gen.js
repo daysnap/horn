@@ -43,6 +43,11 @@ module.exports = (plop) => {
         templateFile: rt('md.hbs'),
       },
       {
+        type: 'add',
+        path: rc('{{ dashCase name }}/__tests__/{{ dashCase name }}.test.ts'),
+        templateFile: rt('__tests__/test.hbs'),
+      },
+      {
         type: 'end',
       },
     ],

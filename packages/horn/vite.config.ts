@@ -10,6 +10,7 @@ import Prism from 'markdown-it-prism'
 import LinkAttributes from 'markdown-it-link-attributes'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
 import legacy from '@vitejs/plugin-legacy'
+import postCssPxToRem from 'postcss-pxtorem'
 
 const resolve = (dir: string) => path.join(__dirname, dir)
 
@@ -79,6 +80,14 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {},
+    },
+    postcss: {
+      plugins: [
+        postCssPxToRem({
+          rootValue: 37.5, // 1rem的大小
+          propList: ['*'], // 需要转换的属性，这里选择全部都进行转换
+        }),
+      ],
     },
   },
 })

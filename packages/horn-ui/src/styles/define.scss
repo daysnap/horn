@@ -1,16 +1,38 @@
 @use "sass:math";
 @import "@daysnap/define-sass/index.scss";
+@import "var.scss";
 
 $namespace: 'hor';
 $base-font-size: 37.5px;
 
+// @function j($px, $bfs: $base-font-size) {
+//   @if (unitless($px)) {
+//     @return math.div($px + 0px, $bfs) * 1rem;
+//   } @else if (unit($px) == rem) {
+//     @return $px;
+//   } @else if (unit($px) == px) {
+//     @return $px;
+//   }
+// }
+
 @function j($px, $bfs: $base-font-size) {
-  @if (unitless($px)) {
-    @return math.div($px + 0px, $bfs) * 1rem;
-  } @else if (unit($px) == rem) {
-    @return $px;
-  } @else if (unit($px) == px) {
-    @return $px;
-  }
+  @return $px + 0px;
 }
+
+// 主题色
+$color-primary: var(--hor-primary-color);
+$color-success: var(--hor-success-color);
+$color-danger: var(--hor-danger-color);
+$color-warning: var(--hor-warning-color);
+$color-info: var(--hor-info-color);
+$color-text: var(--hor-text-color);
+$color-active: var(--hor-active-color);
+$color-background: var(--hor-background-color);
+$color-background-light: var(--hor-background-color-light);
+$color-text-link: var(--hor-text-link-color);
+$color-primaryOpacity:rgba(0,149,217,.2);
+// 边框
+$border-color: var(--hor-border-color);
+
+
 

@@ -33,7 +33,7 @@
   defineEmits(['click-left', 'click-right'])
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   @import '../styles/define.scss';
 
   @include b(view) {
@@ -42,5 +42,8 @@
     @extend %df;
     @extend %fdc;
     @extend %df1;
+    > * {
+      flex-shrink: 0;
+    }
   }
 </style>

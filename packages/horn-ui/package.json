@@ -6,7 +6,7 @@
     "gen": "plop --plopfile ./scripts/gen.js --force",
     "del": "plop --plopfile ./scripts/del.js --force",
     "entry": "plop --plopfile ./scripts/entry.js --force",
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "vitest"
   },
   "keywords": [
     "horn",
@@ -40,12 +40,14 @@
   },
   "devDependencies": {
     "@daysnap/define-sass": "^0.0.9",
+    "@vue/test-utils": "^2.0.2",
     "node-dir": "^0.1.17",
     "plop": "^3.1.1",
     "rimraf": "^3.0.2",
     "unplugin-vue-define-options": "^0.5.0",
     "vant": "4.0.0-alpha.4",
     "vue": "^3.2.25",
+    "vitest": "^0.17.0",
     "vue-router": "^4.0.16"
   }
 }

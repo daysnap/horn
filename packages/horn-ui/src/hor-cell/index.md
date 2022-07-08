@@ -40,7 +40,7 @@
 ### 复杂案例
 
 <div>
-  <hor-cell label="查看复杂案例" clickable arrow @click="$router.push('/widgets/hor-cell/index.vue')"/>
+  <hor-cell label="查看复杂案例" clickable arrow @click="$router.push('/widgets/hor-cell/index')"/>
 </div>
 
 

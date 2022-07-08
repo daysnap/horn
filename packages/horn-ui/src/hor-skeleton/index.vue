@@ -24,14 +24,13 @@
 
 <script setup lang="ts">
   import { horSkeletonProps } from './types'
-  import { url } from '../utils'
 
   defineOptions({ name: 'HorSkeleton' })
   // 如果定义属性 这里传 horSkeletonProps， 在 types 里完善类型
   defineProps(horSkeletonProps)
   defineEmits(['refresh'])
 
-  const empty = url('./empty-image-default.png', import.meta.url)
+  const empty = new URL('./empty-image-default.png', import.meta.url).toString()
 </script>
 
 <style lang="scss" scoped>

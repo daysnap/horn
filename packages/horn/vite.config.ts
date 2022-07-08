@@ -42,7 +42,7 @@ export default defineConfig({
 
     Components({
       dts: 'typings/components.d.ts',
-      extensions: ['vue', 'jsx', 'tsx', 'ts', 'js'],
+      extensions: ['ts', 'jsx', 'tsx', 'js', 'vue'],
       resolvers: [
         VantResolver(),
         (componentName) => {

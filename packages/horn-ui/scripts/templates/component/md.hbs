@@ -32,8 +32,8 @@
     <td>默认值</td>
   </tr>
   <tr v-for="(item, key) in {{ camelCase name }}Props" :key="key">
-    <td>{{ key }}</td>
-    <td>\{{ parseType(item.type) }}</td>
+    <td>\{{ key }}</td>
+    <td>\{{ parseType(item.type || item) }}</td>
     <td>\{{ reserve(item.default, '-') }}</td>
   </tr>
 </table>

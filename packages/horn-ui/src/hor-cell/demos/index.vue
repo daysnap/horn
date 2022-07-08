@@ -1,3 +1,5 @@
 <template>
-  <p>dasdasdasdasdasdds</p>
+  <hor-cell label="123"></hor-cell>
 </template>
+
+<script setup lang="ts"></script>

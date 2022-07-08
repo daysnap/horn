@@ -13,7 +13,9 @@
     :style="{ '--hor-cell-line-clamp': lineClamp }"
   >
     <div class="hor-cell-label">
-      <slot name="prefix"></slot>
+      <slot name="prefix">
+        <van-icon class="hor-cell-icon" v-if="icon" :name="icon" />
+      </slot>
       <slot name="label">
         <span v-html="label"></span>
       </slot>
@@ -36,7 +38,7 @@
   defineProps(horCellProps)
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   @import '../styles/define.scss';
 
   @include b(cell) {
@@ -46,8 +48,6 @@
     @extend %bsb;
     @extend %w100;
     @extend %c3;
-    @extend %cp;
-    @extend %ao8;
     background-color: #fff;
     font-size: j(14);
     padding: j(10) j(16);
@@ -115,10 +115,18 @@
       }
     }
 
+    @include when(clickable) {
+      @extend %cp;
+      @extend %ao8;
+    }
+
     @include e(label) {
       @extend %df;
       @extend %aic;
       margin-right: j(16);
+      i {
+        margin-right: j(8);
+      }
       span {
         padding: j(4) 0;
       }
@@ -129,14 +137,20 @@
       @extend %df;
       @extend %aic;
       @extend %c9;
+      word-break: break-all;
+      min-height: j(30);
       span {
         @extend %df1;
         padding: j(4) 0;
       }
+      i {
+        margin-left: j(8);
+        line-height: j(30);
+      }
     }
 
     @include e(arrow) {
-      margin-left: j(8);
+      @extend %bsb;
     }
   }
 </style>

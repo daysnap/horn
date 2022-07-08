@@ -37,7 +37,7 @@
 
 // markdown 文章的
 .markdown-body{
-  padding: 24px 10px;
+  padding: 24px 0;
   font-size: 12px;
   line-height: 1.6;
   ul {
@@ -50,17 +50,17 @@
     padding-inline-start: 40px;
   }
 
-
-  p {
-    word-spacing: .05rem;
-    /* color: #3f3f3f; */
-    color: var(--mid-13);
+  > p {
+    padding: 0 16px;
+    font-size: 13px;
   }
 
 
-  /*  ol li {
-      padding-left: 0.5rem;
-  } */
+  p {
+    word-spacing: .05rem;
+    color: var(--mid-13);
+  }
+
 
   >ul:first-child,
   >ol:first-child {
@@ -75,32 +75,11 @@
     margin-bottom: 0 !important;
   }
 
-
-  /* a {
-      color: var(--main-6);
-      font-weight: 500;
-      padding: 0 2px;
-      text-decoration: none;
-  } */
-
   a {
     color: blue;
     font-weight: 500;
     padding: 0 2px;
     text-decoration: none;
-  }
-
-
-  /* 链接 */
-
-
-  /*  a {
-      border-bottom: 1px solid var(--main-6);
-      color: var(--main-6);
-      text-decoration: none;
-  } */
-
-  a {
     border-bottom: 1px solid blue;
     color: blue;
     text-decoration: none;
@@ -374,12 +353,15 @@
   }
 
   table {
+    box-sizing: border-box;
+    width: calc(100% - 32px);
+    margin: 0 16px;
     padding: 0;
     word-break: initial;
   }
 
   table tr {
-    border-top: 1px solid var(--main-6);
+    border-top: 1px solid #ddd;
     margin: 0;
     padding: 0;
   }
@@ -391,7 +373,7 @@
 
   table tr th {
     font-weight: bold;
-    border: 1px solid var(--main-6);
+    border: 1px solid #ddd;
     border-bottom: 0;
     text-align: left;
     margin: 0;
@@ -399,7 +381,7 @@
   }
 
   table tr td {
-    border: 1px solid var(--main-6);
+    border: 1px solid #ddd;
     text-align: left;
     margin: 0;
     padding: 6px 13px;

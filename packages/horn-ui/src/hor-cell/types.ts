@@ -1,27 +1,17 @@
 import { ExtractPropTypes } from 'vue'
-import { makeNumericProp, makeStringProp } from '../utils'
+import { makeBooleanProp, makeNumericProp, makeStringProp } from '../utils'
 
 export const horCellProps = {
   label: makeNumericProp(''),
   value: makeNumericProp(''),
   direction: makeStringProp<'row' | 'column'>('row'),
-  arrow: {
-    type: Boolean,
-    default: false,
-  },
-  required: {
-    type: Boolean,
-    default: false,
-  },
-  alignItemCenter: {
-    type: Boolean,
-    default: false,
-  },
-  ellipsis: {
-    type: Boolean,
-    default: false,
-  },
+  arrow: makeBooleanProp(false),
+  required: makeBooleanProp(false),
+  alignItemCenter: makeBooleanProp(false),
+  ellipsis: makeBooleanProp(false),
   lineClamp: makeNumericProp(''),
+  icon: makeStringProp(''),
+  clickable: makeBooleanProp(false),
 }
 
 export type Props = ExtractPropTypes<typeof horCellProps>

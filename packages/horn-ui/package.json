@@ -36,6 +36,7 @@
     "url": "https://github.com/daysnap/horn/issues"
   },
   "dependencies": {
+    "@daysnap/horn-shared": "workspace:^0.0.1",
     "@daysnap/horn-use": "workspace:^0.0.1"
   },
   "devDependencies": {
@@ -46,8 +47,8 @@
     "rimraf": "^3.0.2",
     "unplugin-vue-define-options": "^0.5.0",
     "vant": "4.0.0-alpha.4",
-    "vue": "^3.2.25",
     "vitest": "^0.17.0",
+    "vue": "^3.2.25",
     "vue-router": "^4.0.16"
   }
 }

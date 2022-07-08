@@ -1,6 +1,8 @@
 <template>
   <hor-view title="海波御用">
-    <hor-keyboard></hor-keyboard>
+    <van-button @click="handleKeyboard">Click me</van-button>
+    <hor-keyboard ref="refHorKeyboard"></hor-keyboard>
+    <!-- <hor-date-picker ref="refDatePicker"></hor-date-picker> -->
     <!-- <hor-scroll :finished="list >= 100" @load="load" @refresh="refresh">
       <div :key="i" style="height: 30px" v-for="i in list">{{ i }}</div>
     </hor-scroll> -->
@@ -11,12 +13,25 @@
 
 <script setup lang="ts">
   import { useKeepAliveIncludes } from '@daysnap/horn-use'
-  // import { HorDatePickerInstance } from '@daysnap/horn-ui'
+  import { HorKeyboardInstance } from '@daysnap/horn-ui'
   defineOptions({ name: 'whb' })
-
+  const refHorKeyboard = ref<HorKeyboardInstance>()
+  const handleKeyboard = () => {
+    refHorKeyboard.value
+      ?.show({
+        // type: 'idNum',
+      })
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
   // const refHorList = ref()
 
   // const refDatePicker = ref<HorDatePickerInstance>()
+  // refDatePicker.
   // const handlerDatePicker = () => {
   //   refDatePicker.value?.show({
   //     minDate: new Date('2022/01/01'),

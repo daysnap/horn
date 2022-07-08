@@ -1,7 +1,7 @@
 <template>
   <hor-view title="海波御用">
-    <van-button @click="handleKeyboard">Click me</van-button>
-    <hor-keyboard ref="refHorKeyboard"></hor-keyboard>
+    <van-button size="small" @click="handleClick">Click me</van-button>
+    {{ num }}
     <!-- <hor-date-picker ref="refDatePicker"></hor-date-picker> -->
     <!-- <hor-scroll :finished="list >= 100" @load="load" @refresh="refresh">
       <div :key="i" style="height: 30px" v-for="i in list">{{ i }}</div>
@@ -13,21 +13,9 @@
 
 <script setup lang="ts">
   import { useKeepAliveIncludes } from '@daysnap/horn-use'
-  import { HorKeyboardInstance } from '@daysnap/horn-ui'
+  import { KeyBoard } from '@daysnap/horn-ui'
   defineOptions({ name: 'whb' })
-  const refHorKeyboard = ref<HorKeyboardInstance>()
-  const handleKeyboard = () => {
-    refHorKeyboard.value
-      ?.show({
-        // type: 'idNum',
-      })
-      .then((res) => {
-        console.log(res)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }
+
   // const refHorList = ref()
 
   // const refDatePicker = ref<HorDatePickerInstance>()
@@ -53,9 +41,15 @@
   //   console.log('refresh了')
   //   cb('内部错误')
   // }
-
+  const num = ref()
+  const handleClick = () => {
+    KeyBoard({
+      type: 'idNum',
+    }).then((res) => {
+      num.value = res
+    })
+  }
   useKeepAliveIncludes()
-
   onActivated(() => {
     console.log('激活')
   })

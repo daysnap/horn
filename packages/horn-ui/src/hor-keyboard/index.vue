@@ -29,7 +29,7 @@
   import { useVisible } from '@daysnap/horn-use'
   import { computed, defineProps, ref } from 'vue'
   import { horKeyboardProps, HorKeyboardProps } from './type'
-
+  defineOptions({ name: 'HorKeyboard' })
   const props = defineProps(horKeyboardProps)
   const dynamicProps = ref<Partial<HorKeyboardProps>>()
   const computedProps = computed<HorKeyboardProps>(() =>
@@ -98,7 +98,6 @@
       value = value.substring(0, Number(maxlength))
     }
     val.value = value
-    console.log('val.value =>', val.value)
   }
   defineExpose({
     show,
@@ -108,6 +107,7 @@
 <style lang="scss">
   @import '../styles/define.scss';
   @include b(keyboard) {
+    @extend %ncp;
     background-color: #ddd;
     &-header {
       @extend %df;
@@ -145,7 +145,7 @@
       margin-right: j(8);
     }
     &-content {
-      padding: 0 j(6) j(10);
+      padding: 0 j(10) j(40);
     }
     &-li {
       @extend %df;
@@ -163,10 +163,12 @@
       @extend %aic;
       @extend %jcc;
       @extend %c3;
-      @extend %ao8;
       @extend %cp;
       @extend %w100;
       @extend %df1;
+      &:active {
+        opacity: 0.4;
+      }
       margin-right: j(4);
       font-size: j(14);
       background-color: #fff;

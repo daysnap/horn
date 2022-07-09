@@ -3,7 +3,9 @@
 *.woff
 *.ttf
 
-*hbs
+*.hbs
+*.test.ts
+__tests__
 
 .vscode
 .idea

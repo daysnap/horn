@@ -1,7 +1,11 @@
 import { describe, expect, it } from 'vitest'
+import { mount } from '@vue/test-utils'
+import { {{ pascalCase name }} } from '../index'
 
-describe('basic', () => {
-  it('should works', () => {
-    expect(1 + 1).toEqual(2)
+describe('{{ pascalCase name }}', () => {
+  it('create', () => {
+    const wrapper = mount({{ pascalCase name }}, {
+      props: { },
+    })
   })
 })

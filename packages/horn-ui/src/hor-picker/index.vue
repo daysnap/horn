@@ -23,6 +23,7 @@
   import { useVisible } from '@daysnap/horn-use'
   import { horPickerProps, HorPickerProps } from './types'
   import { Numeric } from '../utils'
+  import { Popup as VanPopup, Picker as VanPicker } from 'vant'
 
   defineOptions({ name: 'HorPicker' })
 

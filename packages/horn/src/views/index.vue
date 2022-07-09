@@ -11,7 +11,7 @@
         :actions="popoverActions"
       >
         <template #reference>
-          <van-icon name="ellipsis" size="24" />
+          <hor-icon name="ellipsis" size="24" />
         </template>
       </van-popover>
     </template>

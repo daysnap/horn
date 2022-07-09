@@ -1,6 +1,8 @@
 <template>
   <hor-view :use-nav-bar="false" :left-arrow="false">
     <br />
+    <hor-icon name="hor-keyboard" />
+    <br />
     <van-button @click="$router.push('/setting')">设置</van-button>
     首页首页首页首页首页首页首页首页首页首页首页首页首页首页 首页
     首页首页首页首页首页首页首页首页首页首页首页首页首页首页
@@ -18,6 +20,7 @@
 
 <script setup lang="ts">
   import { useKeepAliveIncludes } from '@daysnap/horn-use'
+  import { HorIcon } from '@daysnap/horn-ui'
 
   defineOptions({ name: 'index-home' })
   useKeepAliveIncludes()

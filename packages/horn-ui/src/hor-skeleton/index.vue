@@ -30,7 +30,7 @@
   defineProps(horSkeletonProps)
   defineEmits(['refresh'])
 
-  const empty = new URL('./empty-image-default.png', import.meta.url).toString()
+  const empty = new URL('./empty-image-default.png', import.meta.url).href
 </script>
 
 <style lang="scss" scoped>

@@ -7,7 +7,7 @@
   >
     <template #left>
       <slot name="left">
-        <van-icon v-if="leftArrow" name="arrow-left" size="18" />
+        <hor-icon v-if="leftArrow" name="arrow-left" size="18" />
       </slot>
     </template>
     <template #title>
@@ -23,6 +23,7 @@
 
 <script setup lang="ts">
   import { horHeaderProps } from './types'
+  import { HorIcon } from '../hor-icon'
 
   defineOptions({ name: 'HorHeader' })
   // 如果定义属性 这里传 headerProps， 在 types 里完善类型

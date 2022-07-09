@@ -31,7 +31,7 @@
   <hor-cell label="单元格" arrow>
     <input type="text" placeholder="请输入密码"/>
     <template #suffix>
-      <van-icon name="plus" />
+      <hor-icon name="plus" />
     </template>
   </hor-cell>
 </div>
@@ -107,6 +107,6 @@
 <script setup lang="ts">
   import { reserve } from '@daysnap/horn-shared'
   import { HorCell, horCellProps } from './index'
-  import { Icon as VanIcon } from 'vant'
+  import { HorIcon } from '../hor-icon'
   import { parseType } from '../utils'
 </script>

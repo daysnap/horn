@@ -35,5 +35,5 @@
 
 <style lang="scss">
   @import '../styles/define.scss';
-  @import './iconfont';
+  @import './iconfont.scss';
 </style>

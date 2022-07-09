@@ -14,7 +14,7 @@
   >
     <div class="hor-cell-label">
       <slot name="prefix">
-        <van-icon class="hor-cell-icon" v-if="icon" :name="icon" />
+        <hor-icon class="hor-cell-icon" v-if="icon" :name="icon" />
       </slot>
       <slot name="label">
         <span v-html="label"></span>
@@ -25,7 +25,7 @@
         <span v-html="value"></span>
       </slot>
       <slot name="suffix">
-        <van-icon class="hor-cell-arrow" v-if="arrow" name="arrow" />
+        <hor-icon class="hor-cell-arrow" v-if="arrow" name="arrow" />
       </slot>
     </div>
   </div>
@@ -33,6 +33,7 @@
 
 <script setup lang="ts">
   import { horCellProps } from './types'
+  import { HorIcon } from '../hor-icon'
 
   defineOptions({ name: 'HorCell' })
   defineProps(horCellProps)

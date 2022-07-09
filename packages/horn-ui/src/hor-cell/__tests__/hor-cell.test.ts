@@ -19,8 +19,42 @@ describe('HorCell', () => {
       props: { arrow: true }
     })
     expect(wrapper.classes()).toContain('is-arrow')
-    expect(wrapper.)
+    expect(wrapper.find('.hor-cell-arrow').exists()).toBeTruthy()
   })
 
+  it('render left icon', () => {
+    const wrapper = mount(HorCell, {
+      props: { icon: 'setting-o' }
+    })
+    expect(wrapper.find('.hor-cell-icon').exists()).toBeTruthy()
+  })
 
+  it('text ellipsis', () => {
+    const wrapper = mount(HorCell, {
+      props: { ellipsis: true }
+    })
+    expect(wrapper.classes()).toContain('is-ellipsis')
+  })
+
+  it('text line clamp', () => {
+    const wrapper = mount(HorCell, {
+      props: { lineClamp: 2 },
+    })
+    expect(wrapper.classes()).toContain('is-line-clamp')
+    expect(wrapper.attributes().style).toContain(wrapper.props('lineClamp'))
+  })
+
+  it('render required', () => {
+    const wrapper = mount(HorCell, {
+      props: { required: true }
+    })
+    expect(wrapper.classes()).toContain('is-required')
+  })
+
+  it('render direction column', () => {
+    const wrapper = mount(HorCell, {
+      props: { direction: 'column' }
+    })
+    expect(wrapper.classes()).toContain('is-column')
+  })
 })

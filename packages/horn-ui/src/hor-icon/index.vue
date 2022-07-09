@@ -14,6 +14,7 @@
 <script setup lang="ts">
   import { horIconProps } from './types'
   import { computed } from 'vue'
+  import { Icon as VanIcon } from 'vant'
 
   defineOptions({ name: 'HorIcon' })
   // 如果定义属性 这里传 horIconProps， 在 types 里完善类型

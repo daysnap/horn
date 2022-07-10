@@ -36,7 +36,7 @@ export default defineConfig({
     DefineOptions(),
 
     AutoImport({
-      imports: ['vue', 'vue-router'],
+      imports: ['vue', 'vue-router', 'vue-i18n'],
       dts: 'typings/auto-imports.d.ts',
       resolvers: [VantResolver()],
     }),

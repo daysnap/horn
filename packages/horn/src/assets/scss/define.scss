@@ -1,6 +1,8 @@
 @use "sass:math";
 @import "@daysnap/define-sass/index.scss";
 
+$namespace: '';
+
 $base-font-size: 37.5px;
 
 @function j($px, $bfs: $base-font-size) {

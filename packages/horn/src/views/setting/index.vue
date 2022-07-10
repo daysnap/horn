@@ -1,23 +1,49 @@
 <template>
-  <hor-view class="setting">
-    <hor-cell @click="handlePicker" label="选择城市" value="" direction="row"></hor-cell>
-    <hor-picker ref="refHorPicker"></hor-picker>
+  <hor-view>
+    <div class="c-h10"></div>
+    <hor-cell
+      v-for="(item, index) in menus"
+      :key="index"
+      @click="handleTransfer(item)"
+      v-bind="item"
+    ></hor-cell>
   </hor-view>
 </template>
 
 <route>{ meta: { title: '设置', depth: 2 } }</route>
 
 <script setup lang="ts">
-  import { HorPickerInstance } from '@daysnap/horn-ui'
-  const refHorPicker = ref<HorPickerInstance>()
-  const handlePicker = () => {
-    refHorPicker.value?.show()
-  }
+  import { useTransfer } from '@daysnap/horn-use'
+
+  const { t, availableLocales, locale, messages } = useI18n({
+    inheritLocale: true,
+  })
+  const handleTransfer = useTransfer()
+  const menus = computed(() => [
+    {
+      label: t('language.label'),
+      value: t('language.value'),
+      arrow: true,
+      fn: () => {
+        console.log(availableLocales, locale, messages)
+        locale.value =
+          availableLocales[(availableLocales.indexOf(locale.value) + 1) % availableLocales.length]
+      },
+    },
+  ])
 </script>
+
+<i18n>
+zh:
+  language: 
+    label: 语言
+    value: 中文
+en:
+  language: 
+    label: Language
+    value: English
+</i18n>
 
 <style lang="scss" scoped>
   @import 'src/assets/scss/define';
-  .setting {
-    z-index: 9;
-  }
 </style>

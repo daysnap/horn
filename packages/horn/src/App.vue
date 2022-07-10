@@ -38,8 +38,12 @@
       @include twno(1);
     }
   }
-
   .hor-view {
     background-color: $color-background;
+  }
+  @include b(c) {
+    @include e(h10) {
+      height: j(10);
+    }
   }
 </style>

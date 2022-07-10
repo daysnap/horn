@@ -75,6 +75,7 @@ export default defineConfig({
     VueI18n({
       runtimeOnly: true,
       compositionOnly: true,
+      defaultSFCLang: 'yml',
       include: [resolve('locales/**')],
     }),
   ],

@@ -11,6 +11,7 @@ import LinkAttributes from 'markdown-it-link-attributes'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
 import legacy from '@vitejs/plugin-legacy'
 import postCssPxToRem from 'postcss-pxtorem'
+import VueI18n from '@intlify/vite-plugin-vue-i18n'
 
 const resolve = (dir: string) => path.join(__dirname, dir)
 
@@ -69,6 +70,12 @@ export default defineConfig({
           },
         })
       },
+    }),
+
+    VueI18n({
+      runtimeOnly: true,
+      compositionOnly: true,
+      include: [resolve('locales/**')],
     }),
   ],
   resolve: {

@@ -19,6 +19,7 @@
     "humps": "^2.0.1",
     "vant": "4.0.0-alpha.4",
     "vue": "^3.2.25",
+    "vue-i18n": "^9.1.10",
     "vue-router": "^4.0.16"
   },
   "devDependencies": {

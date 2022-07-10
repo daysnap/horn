@@ -1,1 +1,7 @@
 name: chanson
+scan: Scan
+github: Github
+setting: 设置
+language: 
+    label: Language
+    value: English

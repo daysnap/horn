@@ -7,6 +7,8 @@
       @click="handleTransfer(item)"
       v-bind="item"
     ></hor-cell>
+
+    <p>locale => {{ locale }}</p>
   </hor-view>
 </template>
 
@@ -15,9 +17,7 @@
 <script setup lang="ts">
   import { useTransfer } from '@daysnap/horn-use'
 
-  const { t, availableLocales, locale, messages } = useI18n({
-    inheritLocale: true,
-  })
+  const { t, availableLocales, locale, messages } = useI18n()
   const handleTransfer = useTransfer()
   const menus = computed(() => [
     {
@@ -33,7 +33,7 @@
   ])
 </script>
 
-<i18n>
+<!-- <i18n>
 zh:
   language: 
     label: 语言
@@ -42,7 +42,7 @@ en:
   language: 
     label: Language
     value: English
-</i18n>
+</i18n> -->
 
 <style lang="scss" scoped>
   @import 'src/assets/scss/define';

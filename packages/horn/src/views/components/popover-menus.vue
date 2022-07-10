@@ -27,7 +27,7 @@
   ])
 </script>
 
-<i18n>
+<!-- <i18n>
 zh:
   scan: 扫一扫
   github: Github
@@ -36,7 +36,7 @@ en:
   scan: Scan
   github: Github
   setting: 设置
-</i18n>
+</i18n> -->
 
 <style lang="scss">
   .popover {

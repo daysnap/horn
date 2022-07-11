@@ -1,1 +1,3 @@
-export default {}
+export default {
+  title: '哈哈哈',
+}

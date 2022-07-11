@@ -35,7 +35,7 @@
 <script setup lang="ts">
   import { horCellProps } from './types'
   import { HorIcon } from '../hor-icon'
-  import { useNamespace } from '@/hooks'
+  import { useNamespace } from '../hooks'
 
   defineOptions({ name: 'HorCell' })
   defineProps(horCellProps)

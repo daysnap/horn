@@ -40,6 +40,9 @@
         // availableLocales[(availableLocales.indexOf(locale.value) + 1) % availableLocales.length]
       },
     },
+    {
+      label: '111',
+    },
   ])
 
   const actions = [

@@ -52,8 +52,8 @@
   const visible = ref(false)
   const handleChangeLanguage = (item: typeof actions[0]) => {
     locale.value = item.value
-    window.localStorage.setItem(`$$LOCALE`, item.value)
     Locale.use(item.value)
+    window.localStorage.setItem(`$$LOCALE`, item.value)
   }
 
   const currentDate = ref(['2021', '01', '01'])

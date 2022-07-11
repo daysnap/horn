@@ -19,10 +19,10 @@ export const Locale = {
   async use(lng: string) {
     let vant, horn
     if (lng === 'en-US') {
-      vant = await import('vant/es/locale/lang/en-US')
-      horn = await import('./lang/en-US')
+      vant = (await import('vant/es/locale/lang/en-US')).default
+      horn = { hor: (await import('./lang/en-US')).default }
     }
-    return VantLocale.use(lng, Object.assign({}, vant?.default, horn?.default))
+    return VantLocale.use(lng, Object.assign({}, vant, horn))
   },
 
   add(newMessages: Messages = {}) {

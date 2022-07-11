@@ -1,5 +1,6 @@
 // import Locale from '../locale'
 import { Locale } from 'vant'
+import { parsePath } from '@daysnap/horn-shared'
 
 interface UseNamespaceOptions {
   i18n?: Record<string, any>
@@ -16,6 +17,9 @@ export const useNamespace = ({ i18n }: UseNamespaceOptions = {}) => {
 
     Locale.add(messages)
   }
-  const t = () => {}
+  const t = (path: string) => {
+    const messages = Locale.messages()
+    return parsePath(messages, path)
+  }
   return { t }
 }

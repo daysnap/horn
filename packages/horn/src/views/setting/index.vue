@@ -7,6 +7,16 @@
       @click="handleTransfer(item)"
       v-bind="item"
     ></hor-cell>
+
+    <van-date-picker v-model="currentDate" title="选择日期" />
+
+    <van-action-sheet
+      cancel-text="取消"
+      close-on-click-action
+      :actions="actions"
+      @select="handleChangeLanguage"
+      v-model:show="visible"
+    />
   </hor-view>
 </template>
 
@@ -14,6 +24,7 @@
 
 <script setup lang="ts">
   import { useTransfer } from '@daysnap/horn-use'
+  import { Locale } from 'vant'
 
   const { t, availableLocales, locale, messages } = useI18n()
   const handleTransfer = useTransfer()
@@ -23,12 +34,26 @@
       value: t('language.value'),
       arrow: true,
       fn: () => {
+        visible.value = true
         console.log(availableLocales, locale, messages)
-        locale.value =
-          availableLocales[(availableLocales.indexOf(locale.value) + 1) % availableLocales.length]
+        // locale.value =
+        // availableLocales[(availableLocales.indexOf(locale.value) + 1) % availableLocales.length]
       },
     },
   ])
+
+  const actions = [
+    { name: '中文', value: 'zh-CN' },
+    { name: 'English', value: 'en-US' },
+  ]
+  const visible = ref(false)
+  const handleChangeLanguage = (item: typeof actions[0]) => {
+    locale.value = item.value
+    window.localStorage.setItem(`$$LOCALE`, item.value)
+    Locale.use(item.value)
+  }
+
+  const currentDate = ref(['2021', '01', '01'])
 </script>
 
 <i18n>

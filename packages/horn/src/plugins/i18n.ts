@@ -7,12 +7,16 @@ const messages = Object.fromEntries(
   }),
 )
 
+const locale = window.localStorage.getItem(`$$LOCALE`) || 'zh-CN'
+
 export default {
   install(app) {
     const i18n = createI18n({
       legacy: false,
-      locale: 'zh-CN',
+      locale,
       messages,
+      fallbackLocale: 'zh-CN',
+      silentFallbackWarn: true,
     })
 
     app.use(i18n)

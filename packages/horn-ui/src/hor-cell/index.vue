@@ -20,6 +20,7 @@
         <span v-html="label"></span>
       </slot>
     </div>
+    <p>{{ t('test') }}</p>
     <div class="hor-cell-value">
       <slot>
         <span v-html="value"></span>
@@ -34,9 +35,21 @@
 <script setup lang="ts">
   import { horCellProps } from './types'
   import { HorIcon } from '../hor-icon'
+  import { useNamespace } from '@/hooks'
 
   defineOptions({ name: 'HorCell' })
   defineProps(horCellProps)
+
+  const { t } = useNamespace({
+    i18n: {
+      'zh-CN': {
+        test: '测试',
+      },
+      'en-US': {
+        test: 'ceshi',
+      },
+    },
+  })
 </script>
 
 <style lang="scss">

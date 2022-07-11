@@ -5,7 +5,7 @@ import 'amfe-flexible'
 
 const app = createApp(App)
 
-;((s) => Object.values(s).forEach((it) => app.use(it.default)))(
+;((s) => Object.values(s).forEach((it) => it.default && app.use(it.default)))(
   import.meta.globEager('./plugins/*.ts'),
 )
 

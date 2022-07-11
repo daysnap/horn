@@ -37,8 +37,7 @@
   },
   "dependencies": {
     "@daysnap/horn-shared": "workspace:^0.0.1",
-    "@daysnap/horn-use": "workspace:^0.0.1",
-    "deepmerge": "^4.2.2"
+    "@daysnap/horn-use": "workspace:^0.0.1"
   },
   "devDependencies": {
     "@daysnap/define-sass": "^0.0.9",

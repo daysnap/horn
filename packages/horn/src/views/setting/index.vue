@@ -8,8 +8,6 @@
       v-bind="item"
     ></hor-cell>
 
-    <van-date-picker v-model="currentDate" title="选择日期" />
-
     <van-action-sheet
       cancel-text="取消"
       close-on-click-action
@@ -55,8 +53,6 @@
     Locale.use(item.value)
     window.localStorage.setItem(`$$LOCALE`, item.value)
   }
-
-  const currentDate = ref(['2021', '01', '01'])
 </script>
 
 <i18n>

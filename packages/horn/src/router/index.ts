@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import routes from '~pages'
 
 console.log('routes => ', routes)
@@ -10,10 +10,7 @@ console.log('routes => ', routes)
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes: [
-    ...routes,
-    { path: '/:catchAll(.*)*', name: '404', redirect: '/' }
-  ]
+  routes: [...routes, { path: '/:catchAll(.*)*', name: '404', redirect: '/' }],
 })
 
 export default router

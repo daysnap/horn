@@ -1,20 +1,9 @@
-import { Locale } from 'vant'
 import { parsePath } from '@daysnap/horn-shared'
-import zhCN from '../locale/lang/zh-CN'
-import enUS from '../locale/lang/en-US'
+import Locale from '../locale'
 
 interface UseNamespaceOptions {
   i18n?: Record<string, any>
 }
-
-Locale.add({
-  'zh-CN': {
-    hor: zhCN,
-  },
-  'en-US': {
-    hor: enUS,
-  },
-})
 
 let uid = 0
 export const useNamespace = ({ i18n }: UseNamespaceOptions = {}) => {

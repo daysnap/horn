@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
   import { useTransfer } from '@daysnap/horn-use'
-  import { Locale } from 'vant'
+  import { Locale } from '@daysnap/horn-ui'
 
   const { t, availableLocales, locale, messages } = useI18n()
   const handleTransfer = useTransfer()

@@ -11,7 +11,7 @@ export default {
   install(app) {
     const i18n = createI18n({
       legacy: false,
-      locale: 'zh',
+      locale: 'zh-CN',
       messages,
     })
 

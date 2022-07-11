@@ -4,8 +4,6 @@
       <popover-menus />
     </template>
 
-    <p>locale => {{ locale }}</p>
-
     <router-view v-slot="{ Component }">
       <keep-alive :include="includes">
         <component :is="Component" />
@@ -31,7 +29,7 @@
 <script setup lang="ts">
   import { useKeepAliveIncludes } from '@daysnap/horn-use'
   import PopoverMenus from './components/popover-menus.vue'
-  const { locale } = useI18n()
+
   defineOptions({ name: 'index' })
 
   const [includes] = useKeepAliveIncludes({ name: 'index' })

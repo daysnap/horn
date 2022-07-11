@@ -7,8 +7,6 @@
       @click="handleTransfer(item)"
       v-bind="item"
     ></hor-cell>
-
-    <p>locale => {{ locale }}</p>
   </hor-view>
 </template>
 
@@ -33,16 +31,16 @@
   ])
 </script>
 
-<!-- <i18n>
-zh:
+<i18n>
+zh-CN:
   language: 
     label: 语言
     value: 中文
-en:
+en-US:
   language: 
     label: Language
     value: English
-</i18n> -->
+</i18n>
 
 <style lang="scss" scoped>
   @import 'src/assets/scss/define';

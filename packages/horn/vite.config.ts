@@ -76,6 +76,7 @@ export default defineConfig({
       runtimeOnly: true,
       compositionOnly: true,
       defaultSFCLang: 'yml',
+      globalSFCScope: true,
       include: [resolve('locales/**')],
     }),
   ],

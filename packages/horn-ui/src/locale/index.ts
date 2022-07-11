@@ -1,7 +1,6 @@
 // 这里暂时不要 因为 horn-ui 依赖于 vant 所以国际化这块继承了他的功能
 import { Locale as VantLocale } from 'vant'
 import zhCN from './lang/zh-CN'
-import enUS from './lang/en-US'
 
 type Message = Record<string, any>
 type Messages = Record<string, Message>
@@ -10,9 +9,6 @@ VantLocale.add({
   'zh-CN': {
     hor: zhCN,
   },
-  'en-US': {
-    hor: enUS,
-  },
 })
 
 export const Locale = {
@@ -20,8 +16,13 @@ export const Locale = {
     return VantLocale.messages()
   },
 
-  use(newLang: string, newMessage?: Message) {
-    return VantLocale.use(newLang, newMessage)
+  async use(lng: string) {
+    let vant, horn
+    if (lng === 'en-US') {
+      vant = await import('vant/es/locale/lang/en-US')
+      horn = await import('./lang/en-US')
+    }
+    return VantLocale.use(lng, Object.assign({}, vant?.default, horn?.default))
   },
 
   add(newMessages: Messages = {}) {

@@ -9,26 +9,29 @@
         type="primary"
         class="hor-skeleton-error-btn"
       >
-        {{ errorBtnText }}
+        {{ errorBtnText || t('skeleton.errorBtnText') }}
       </van-button>
     </div>
 
-    <van-loading v-else-if="loading" vertical>加载中</van-loading>
+    <van-loading v-else-if="loading" vertical>{{ t('skeleton.loading') }}</van-loading>
 
     <div class="hor-skeleton-empty" v-else>
-      <img :src="empty" alt="无数据" />
-      <span>{{ emptyPrompt }}</span>
+      <img :src="empty" :alt="t('skeleton.emptyPrompt')" />
+      <span>{{ emptyPrompt || t('skeleton.emptyPrompt') }}</span>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+  import { useNamespace } from '../hooks'
   import { horSkeletonProps } from './types'
 
   defineOptions({ name: 'HorSkeleton' })
   // 如果定义属性 这里传 horSkeletonProps， 在 types 里完善类型
   defineProps(horSkeletonProps)
   defineEmits(['refresh'])
+
+  const { t } = useNamespace()
 
   const empty = new URL('./empty-image-default.png', import.meta.url).href
 </script>

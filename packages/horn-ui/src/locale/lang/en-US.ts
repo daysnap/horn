@@ -1,3 +1,8 @@
 export default {
-  title: 'hahaha',
+  // hor-skeleton
+  skeleton: {
+    errorBtnText: 'Refresh',
+    emptyPrompt: 'No Data...',
+    loading: 'Loading',
+  },
 }

@@ -1,5 +1,5 @@
 <template>
-  <hor-view :title="name">
+  <hor-view :title="humps.pascalize(name)">
     <hor-skeleton :error-btn-visible="false" :error="refError" v-if="refError" />
     <hor-service v-else />
   </hor-view>
@@ -8,6 +8,8 @@
 <route>{ meta: { depth: 2 } }</route>
 
 <script setup lang="ts">
+  import humps from 'humps'
+
   const props = defineProps<{
     name: string
     group: string

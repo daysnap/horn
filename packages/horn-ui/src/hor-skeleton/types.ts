@@ -4,7 +4,7 @@ export const horSkeletonProps = {
   error: {},
   errorBtnText: {
     type: String,
-    default: '刷新',
+    default: '',
   },
   errorBtnVisible: {
     type: Boolean,
@@ -16,7 +16,7 @@ export const horSkeletonProps = {
   },
   emptyPrompt: {
     type: String,
-    default: '暂无数据...',
+    default: '',
   },
 }
 

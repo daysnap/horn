@@ -3,11 +3,15 @@ import Locale from '../locale'
 
 interface UseNamespaceOptions {
   i18n?: Record<string, any>
+  name?: string
 }
 
-let uid = 0
-export const useNamespace = ({ i18n }: UseNamespaceOptions = {}) => {
-  const prefix = `hor-${uid++}`
+export const useNamespace = ({ i18n, name = '' }: UseNamespaceOptions = {}) => {
+  let prefix = `hor`
+  if (name) {
+    prefix += `-${name}`
+  }
+
   if (i18n) {
     const messages: Record<string, any> = {}
 
@@ -17,9 +21,14 @@ export const useNamespace = ({ i18n }: UseNamespaceOptions = {}) => {
 
     Locale.add(messages)
   }
+
   const t = (path: string) => {
     const messages = Locale.messages()
-    return parsePath(messages, `${prefix}.${path}`) || parsePath(messages, `hor.${path}`)
+    let result = parsePath(messages, `${prefix}.${path}`)
+    if (!result && prefix !== 'hor') {
+      result = parsePath(messages, `hor.${path}`)
+    }
+    return result
   }
   return { t }
 }

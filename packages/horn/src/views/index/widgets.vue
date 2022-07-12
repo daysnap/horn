@@ -4,9 +4,10 @@
       <van-grid-item
         v-for="item in arrData"
         :key="item.text"
-        icon="photo-o"
+        :icon="parseIcon(item.name)"
         :text="item.text"
         :to="`/widgets/${item.name}`"
+        icon-prefix="hor-icon"
       />
     </van-grid>
   </hor-view>
@@ -28,4 +29,8 @@
         name: humps.decamelize(text, { separator: '-' }),
       }))
   })
+
+  const parseIcon = (name: string) => {
+    return name.replace('hor-', '')
+  }
 </script>

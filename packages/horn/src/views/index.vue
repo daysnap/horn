@@ -1,6 +1,6 @@
 <template>
   <hor-view :title="title" :left-arrow="false">
-    <template #right>
+    <template #right v-if="current !== 0">
       <popover-menus />
     </template>
 

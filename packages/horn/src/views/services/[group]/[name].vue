@@ -1,7 +1,7 @@
 <template>
   <hor-view :title="humps.pascalize(name)">
     <hor-skeleton :error-btn-visible="false" :error="refError" v-if="refError" />
-    <hor-service v-else />
+    <service-content v-else />
   </hor-view>
 </template>
 
@@ -16,7 +16,7 @@
   }>()
 
   const refError = ref<any>()
-  const HorService = defineAsyncComponent(() =>
+  const ServiceContent = defineAsyncComponent(() =>
     import(
       `../../../../node_modules/@daysnap/horn-jssdk/src/${props.group}/${props.name}/index.md`
     ).catch((err) => (refError.value = err)),

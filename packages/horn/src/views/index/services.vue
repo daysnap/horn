@@ -6,6 +6,7 @@
         v-for="name in item.children"
         :key="name"
         :label="humps.pascalize(name)"
+        arrow
         @click="$router.push(`/services/${item.group}/${name}`)"
       ></hor-cell>
     </div>

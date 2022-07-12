@@ -9,7 +9,7 @@
 
 ### 基础用法
 
-<div class="group">
+<div class="demo-section">
   <div>
     <hor-icon name="arrow"/>
     <span>arrow</span>
@@ -92,8 +92,8 @@
 </script>
 
 
-<style lang="scss">
-  .group{
+<style lang="scss" scoped>
+  .demo-section{
     display: flex;
     align-items: center;
     flex-wrap: wrap;

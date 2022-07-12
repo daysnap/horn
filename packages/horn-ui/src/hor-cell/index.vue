@@ -126,7 +126,8 @@
       @extend %aic;
       margin-right: j(16);
       i {
-        margin-right: j(8);
+        margin-right: j(12);
+        font-size: j(20);
       }
       span {
         padding: j(4) 0;

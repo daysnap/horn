@@ -24,7 +24,7 @@
   import { useTransfer } from '@daysnap/horn-use'
   import { Locale } from '@daysnap/horn-ui'
 
-  const { t, availableLocales, locale, messages } = useI18n()
+  const { t, locale } = useI18n()
   const handleTransfer = useTransfer()
   const menus = computed(() => [
     {
@@ -33,13 +33,7 @@
       arrow: true,
       fn: () => {
         visible.value = true
-        console.log(availableLocales, locale, messages)
-        // locale.value =
-        // availableLocales[(availableLocales.indexOf(locale.value) + 1) % availableLocales.length]
       },
-    },
-    {
-      label: '111',
     },
   ])
 
@@ -57,11 +51,11 @@
 
 <i18n>
 zh-CN:
-  language: 
+  language:
     label: 语言
     value: 中文
 en-US:
-  language: 
+  language:
     label: Language
     value: English
 </i18n>

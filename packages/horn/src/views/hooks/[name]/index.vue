@@ -1,7 +1,7 @@
 <template>
   <hor-view :title="humps.pascalize(name)">
     <hor-skeleton :error="refError" :error-btn-visible="false" v-if="refError" />
-    <hor-hook calss="content" v-else />
+    <hook-content calss="content" v-else />
   </hor-view>
 </template>
 
@@ -12,7 +12,7 @@
 
   const props = defineProps<{ name: string }>()
   const refError = ref<any>()
-  const HorHook = defineAsyncComponent(() =>
+  const HookContent = defineAsyncComponent(() =>
     import(
       `../../../../node_modules/@daysnap/horn-use/src/${humps.camelize(props.name)}/index.md`
     ).catch((err) => (refError.value = err)),

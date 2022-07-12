@@ -1,7 +1,7 @@
 <template>
   <hor-view :title="humps.pascalize(name)">
     <hor-skeleton :error-btn-visible="false" :error="refError" v-if="refError" />
-    <hor-widget v-else />
+    <widget-content v-else />
   </hor-view>
 </template>
 
@@ -12,7 +12,7 @@
 
   const props = defineProps<{ name: string }>()
   const refError = ref<any>()
-  const HorWidget = defineAsyncComponent(() =>
+  const WidgetContent = defineAsyncComponent(() =>
     import(`../../../../node_modules/@daysnap/horn-ui/src/${props.name}/index.md`).catch(
       (err) => (refError.value = err),
     ),

@@ -4,6 +4,7 @@
       v-for="(name, index) in arrData"
       :key="index"
       :label="name"
+      arrow
       @click="$router.push(`/hooks/${humps.decamelize(name, { separator: '-' })}`)"
     ></hor-cell>
   </hor-view>

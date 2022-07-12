@@ -41,12 +41,13 @@
   //   console.log('refresh了')
   //   cb('内部错误')
   // }
-  const num = ref()
+  const num = ref('123')
   const handleClick = () => {
     KeyBoard({
       type: 'idNum',
+      value: num.value,
     }).then((res) => {
-      num.value = res
+      num.value = res.value
     })
   }
   useKeepAliveIncludes()

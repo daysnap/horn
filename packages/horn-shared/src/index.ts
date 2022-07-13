@@ -1,3 +1,5 @@
 export * from './is'
+export * from './omit'
 export * from './parse-path'
+export * from './pick'
 export * from './reserve'

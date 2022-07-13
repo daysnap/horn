@@ -1,5 +1,14 @@
 <template>
   <hor-view title="海波御用">
+    <hor-field
+      v-model="field"
+      placeholder="请填写身份证"
+      label="身份证"
+      :required="true"
+      direction="row"
+      :maxlength="10"
+      unit="位"
+    ></hor-field>
     <van-button size="small" @click="handleClick">Click me</van-button>
     {{ num }}
     <!-- <hor-date-picker ref="refDatePicker"></hor-date-picker> -->
@@ -15,7 +24,7 @@
   import { useKeepAliveIncludes } from '@daysnap/horn-use'
   import { KeyBoard } from '@daysnap/horn-ui'
   defineOptions({ name: 'whb' })
-
+  const field = ref('')
   // const refHorList = ref()
 
   // const refDatePicker = ref<HorDatePickerInstance>()

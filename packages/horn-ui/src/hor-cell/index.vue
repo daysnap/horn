@@ -39,7 +39,7 @@
   defineProps(horCellProps)
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import '../styles/define.scss';
 
   @include b(cell) {

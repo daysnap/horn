@@ -18,7 +18,16 @@
           :key="item"
           @click="handleKey(item)"
         >
-          {{ item === 'DELETE' ? '' : item === 'SURE' ? '完成' : item }}
+          <template v-if="item === 'shrink'">
+            <hor-icon
+              class="hor-keyboard-collapse"
+              classPrefix="hor-icon"
+              name="keyboard"
+            ></hor-icon>
+          </template>
+          <template v-else>
+            {{ item === 'DELETE' ? '' : item === 'SURE' ? '完成' : item }}
+          </template>
         </div>
       </li>
     </ul>
@@ -29,12 +38,14 @@
   import { useVisible } from '@daysnap/horn-use'
   import { computed, defineProps, ref } from 'vue'
   import { horKeyboardProps, HorKeyboardProps } from './type'
+  import { HorIcon } from '../hor-icon'
   defineOptions({ name: 'HorKeyboard' })
   const props = defineProps(horKeyboardProps)
   const dynamicProps = ref<Partial<HorKeyboardProps>>()
   const computedProps = computed<HorKeyboardProps>(() =>
     Object.assign({}, props, dynamicProps.value),
   )
+
   const innerProps = computed(() => {
     let { type, maxlength, placeholder, disabledKey } = computedProps.value
     if (type === 'vin') {
@@ -75,27 +86,33 @@
     ['3', '6', '9', '00'],
     ['DELETE', 'SURE'],
   ])
+  let val = ref('')
   const sources = computed(() => (numKeyborard.value ? sourcesNumber : sourcesAll))
-  const val = ref('')
-  const { show, hide, confirm, visible } = useVisible<Partial<HorKeyboardProps>, { value: any }>({
-    showCallback: (options) => {
-      dynamicProps.value = options
+  const { show, hide, confirm, visible } = useVisible<Partial<HorKeyboardProps>, { value: string }>(
+    {
+      showCallback: (options) => {
+        dynamicProps.value = options
+        console.log(computedProps)
+        val.value = options?.value || ''
+      },
+      confirmCallback: (res) => res,
     },
-    confirmCallback: (res) => res,
-  })
+  )
   const handleKey = (keyItem: string) => {
     let { value } = val
     const { maxlength, disabledKey } = innerProps.value
     if (disabledKey.includes(keyItem)) return
     if (keyItem === 'SURE') {
-      confirm(value)
+      return confirm({ value })
     } else if (keyItem === 'DELETE') {
-      value = value.substring(0, value.length - 1)
+      value = value?.substring(0, value.length - 1)
+    } else if (keyItem === 'shrink') {
+      return hide()
     } else {
       value += keyItem
     }
-    if (maxlength > -1 && value.length > maxlength) {
-      value = value.substring(0, Number(maxlength))
+    if (maxlength > -1 && (value.length || 0) > maxlength) {
+      value = value?.substring(0, Number(maxlength))
     }
     val.value = value
   }
@@ -175,6 +192,9 @@
       height: j(34);
       border-radius: j(4);
       box-shadow: 0 0 j(1) j(1) #c3c3c3;
+    }
+    &-collapse {
+      font-size: j(28);
     }
     .key-DELETE {
       flex: 1.5;

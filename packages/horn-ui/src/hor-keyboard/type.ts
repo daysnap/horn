@@ -1,6 +1,10 @@
 import { ExtractPropTypes, PropType } from 'vue'
 type KeyboardType = 'vin' | 'lic' | 'idNum' | 'phone' | 'num' | 'full'
 export const horKeyboardProps = {
+  value: {
+    type: String,
+    default: '',
+  },
   type: {
     type: String as PropType<KeyboardType>,
     default: 'full',

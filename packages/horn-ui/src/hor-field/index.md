@@ -10,21 +10,62 @@
 
 <div>
   <hor-field
-    v-model="field"
     placeholder="请填写身份证"
     label="身份证"
+    direction="row"
+    :maxlength="10"
+  ></hor-field>
+  <hor-field
+    placeholder="请填写身份证"
+    label="必填"
     :required="true"
     direction="row"
     :maxlength="10"
   ></hor-field>
   <hor-field
-    v-model="field"
-    placeholder="请填写身份证"
-    label="身份证"
+    placeholder="请填写价格"
+    label="单位"
     :required="true"
     direction="row"
     :maxlength="10"
-    unit="位"
+    unit="万元"
+  ></hor-field>
+  <hor-field
+    placeholder="请填写价格"
+    label="禁用"
+    :required="true"
+    direction="row"
+    :maxlength="10"
+    :disabled="true"
+  ></hor-field>
+  <hor-field
+    placeholder="请填写价格"
+    label="是否可清空"
+    :required="true"
+    direction="row"
+    :maxlength="10"
+    v-model="field"
+    clearable
+  ></hor-field>
+  <hor-field
+    placeholder="请填写价格"
+    label="数字"
+    :required="true"
+    direction="row"
+    :maxlength="10"
+    type="number"
+    clearable
+  ></hor-field>
+  <hor-field
+    placeholder="请填写价格"
+    label="小数"
+    :required="true"
+    direction="row"
+    :maxlength="10"
+    type="digit"
+    clearable
+    fractionDigits="4"
+    :pattern="()=>({a:1})"
   ></hor-field>
 </div>
 
@@ -89,4 +130,6 @@
   import { HorCell } from '../hor-cell'
   import { HorField, horFieldProps } from './index'
   import { parseType } from '../utils'
+  import {ref} from 'vue'
+  const field = ref('');
 </script>

@@ -1,4 +1,4 @@
-import { ExtractPropTypes } from 'vue'
+import { ExtractPropTypes, InputHTMLAttributes } from 'vue'
 import { pick } from '@daysnap/horn-shared'
 import { makeNumericProp, makeBooleanProp, makeStringProp } from '../utils'
 import { horCellProps } from '../hor-cell'
@@ -12,8 +12,10 @@ export const horFieldProps = {
   maxlength: makeNumericProp('999'),
   modelValue: makeStringProp(''),
   unit: makeStringProp(''),
-  type: makeStringProp(''),
+  type: makeStringProp<InputHTMLAttributes['type']>(''),
   disabled: makeBooleanProp(false),
+  fractionDigits: makeNumericProp('2'),
+  pattern: makeStringProp<Function | String | Object>(''),
 }
 
 export type HorFieldProps = ExtractPropTypes<typeof horFieldProps>

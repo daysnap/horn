@@ -4,13 +4,28 @@
 // xxxx
 
 
-
 ## 代码演示
 
 ### 基础用法
 
 <div>
-  // ...
+  <hor-field
+    v-model="field"
+    placeholder="请填写身份证"
+    label="身份证"
+    :required="true"
+    direction="row"
+    :maxlength="10"
+  ></hor-field>
+  <hor-field
+    v-model="field"
+    placeholder="请填写身份证"
+    label="身份证"
+    :required="true"
+    direction="row"
+    :maxlength="10"
+    unit="位"
+  ></hor-field>
 </div>
 
 

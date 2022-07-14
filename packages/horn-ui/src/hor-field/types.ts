@@ -3,7 +3,7 @@ import { pick } from '@daysnap/horn-shared'
 import { makeNumericProp, makeBooleanProp, makeStringProp } from '../utils'
 import { horCellProps } from '../hor-cell'
 
-const cellProps = pick(horCellProps, ['label', 'required', 'direction'])
+const cellProps = pick(horCellProps, ['label', 'required', 'direction', 'icon'])
 
 export const horFieldProps = {
   ...cellProps,
@@ -15,7 +15,9 @@ export const horFieldProps = {
   type: makeStringProp<InputHTMLAttributes['type']>(''),
   disabled: makeBooleanProp(false),
   fractionDigits: makeNumericProp('2'),
-  pattern: makeStringProp<Function | String | Object>(''),
+  pattern: {
+    type: [Function, Object],
+  },
 }
 
 export type HorFieldProps = ExtractPropTypes<typeof horFieldProps>

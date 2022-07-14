@@ -61,3 +61,22 @@ export const isEmail = (val: string) => regEmail.test(val.toString())
  * 校验是否是身份证
  */
 export const isIDCard = (val: string) => regIDCard.test(val)
+
+/**
+ * 校验是否是正则表达式
+ */
+export const isRegExp = (val: unknown): val is RegExp => val instanceof RegExp
+
+/**
+ * 校验是否是安卓
+ */
+export const isAndroid = () => {
+  return /android/.test(navigator.userAgent.toLowerCase())
+}
+
+/**
+ * 校验是否是ios
+ */
+export const isIOS = () => {
+  return /ios|iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase())
+}

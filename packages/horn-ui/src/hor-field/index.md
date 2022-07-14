@@ -1,8 +1,7 @@
 
 ## 介绍
 
-// xxxx
-
+用户可以在文本框内输入或编辑文字。
 
 ## 代码演示
 
@@ -14,6 +13,7 @@
     label="身份证"
     direction="row"
     :maxlength="10"
+    :pattern="pattern"
   ></hor-field>
   <hor-field
     placeholder="请填写身份证"
@@ -67,6 +67,23 @@
     fractionDigits="4"
     :pattern="()=>({a:1})"
   ></hor-field>
+  <hor-field
+    placeholder="suffix插槽"
+    label="suffix插槽"
+    :required="true"
+    direction="row"
+    icon="gold-coin-o"
+    :maxlength="10"
+    type="digit"
+    clearable
+    v-model="field"
+    fractionDigits="4"
+    :pattern="pattern"
+    >
+    <template #suffix>
+      <van-button style="margin-left:10px" size="small" type="primary">发送验证码</van-button>
+    </template>
+  </hor-field>
 </div>
 
 
@@ -104,8 +121,8 @@
     <td>说明</td>
   </tr>
   <tr>
-    <td>xx</td>
-    <td>xxx</td>
+    <td>change</td>
+    <td>value改变触发</td>
   </tr>
 </table>
 
@@ -118,18 +135,33 @@
     <td>名称</td>
     <td>说明</td>
   </tr>
-  <tr>
-    <td>xx</td>
-    <td>xxx</td>
+  <tr v-for="i in slots" :key=" i.name ">
+    <td>{{ i.name }}</td>
+    <td>{{ i.explain }}</td>
   </tr>
 </table>
 
 
 <script setup lang="ts">
   import { reserve } from '@daysnap/horn-shared'
+  import { Button as VanButton } from 'vant';
   import { HorCell } from '../hor-cell'
   import { HorField, horFieldProps } from './index'
   import { parseType } from '../utils'
-  import {ref} from 'vue'
+  import { ref } from 'vue'
   const field = ref('');
+  const pattern = (v: string) => {
+    console.log('haha =>' );
+    return v + "1"
+  }
+  const slots = [
+    {
+      name: 'prefix',
+      explain: '自定义前缀',
+    },
+    {
+      name: 'suffix',
+      explain: '自定义后缀',
+    }
+  ]
 </script>

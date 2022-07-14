@@ -4,10 +4,16 @@
     :label="label"
     :required="required"
     :direction="direction"
+    :icon="icon"
     alignItemCenter
   >
+    <template #prefix>
+      <slot name="prefix"> </slot>
+    </template>
     <input
       @input="handleInput"
+      @compositionstart="handleCompositionstart"
+      @compositionend="handleCompositionend"
       class="hor-field-input"
       :disabled="disabled"
       :value="modelValue"
@@ -16,35 +22,40 @@
       :maxlength="maxlength"
       :placeholder="placeholder"
     />
+    <hor-icon
+      v-show="computedShowClear"
+      @touchstart="handleClear"
+      class="hor-field-clear"
+      name="clear"
+    ></hor-icon>
+    <span v-if="unit" class="hor-field-unit">{{ unit }}</span>
     <template #suffix>
-      <hor-icon
-        v-show="computedShowClear"
-        @touchstart="handleClear"
-        class="hor-field-clear"
-        name="clear"
-      ></hor-icon>
-      <span v-if="unit" class="hor-field-unit">{{ unit }}</span>
+      <slot name="suffix"></slot>
     </template>
   </hor-cell>
 </template>
 
 <script setup lang="ts">
+  import { computed, InputHTMLAttributes } from 'vue'
+  import { isFunction, isRegExp } from '@daysnap/horn-shared'
+  import { useComposition } from '@daysnap/horn-use'
   import { horFieldProps } from './types'
   import { HorCell } from '../hor-cell'
   import { HorIcon } from '../hor-icon'
-  import { computed, InputHTMLAttributes } from 'vue'
 
   defineOptions({ name: 'HorField' })
 
   // 如果定义属性 这里传 horFieldProps， 在 types 里完善类型
   const props = defineProps(horFieldProps)
 
-  const emits = defineEmits(['update:modelValue'])
+  const emits = defineEmits(['update:modelValue', 'change'])
+
   const handleClear = () => {
     emits('update:modelValue', '')
+    emits('change', '')
   }
 
-  let computedShowClear = computed(() => {
+  const computedShowClear = computed(() => {
     return !['', null, undefined].includes(props.modelValue) && props.clearable
   })
 
@@ -52,15 +63,20 @@
     type: InputHTMLAttributes['type']
     inputmode: InputHTMLAttributes['inputmode']
   }
-  let computedInputTypeAndMode = computed(() => {
+  const computedInputTypeAndMode = computed(() => {
     let result: resultInterface = { type: props.type, inputmode: 'text' }
     if (props.type === 'digit') result = { type: 'text', inputmode: 'decimal' }
     else if (props.type === 'number') result = { type: 'tel', inputmode: 'numeric' }
     return result
   })
 
+  const { handleCompositionend, handleCompositionstart } = useComposition()
+
   const handleInput = (e: Event) => {
-    const target = e.target as InputHTMLAttributes
+    if ((e.target as any).composing) {
+      return
+    }
+    const target = e.target as HTMLInputElement
     let value = target.value
     const { type, fractionDigits, pattern } = props
     if (type === 'number') {
@@ -71,34 +87,32 @@
       const reg = new RegExp(`^([1-9]\\d*|0)(\\.?\\d{0,${fractionDigits}})`, 'g')
       const v = value.match(reg)
       value = v ? v[0] : ''
-      if (value.startsWith('00')) value = +value
+      if (value.startsWith('00')) value = +value + ''
     }
-    const typeOfPattern = pattern.constructor.toString()
-    console.dir(pattern.constructor)
     if (pattern) {
-      // const typeOfPattern = pattern.constructor
-      if (typeOfPattern === 'function') value = pattern(value, this.value)
-      else if (typeOfPattern === 'object') value = value.replace(typeOfPattern, '')
-      else if (typeOfPattern === 'string' && filters[pattern]) value = filters[pattern](value)
+      if (isFunction(pattern)) value = pattern(value)
+      else if (isRegExp(pattern)) value = value.replace(pattern, '')
     }
     target.value = value
     emits('update:modelValue', value)
+    emits('change', value)
   }
 </script>
 
 <style lang="scss">
   @import '../styles/define.scss';
   @include b(field) {
-    &-input {
+    @include e(input) {
       @extend %df1;
       @extend %tar;
       @extend %c3;
+      width: 0;
       font-size: j(14);
       border: none;
       word-break: normal;
       background-color: transparent;
     }
-    &-clear {
+    @include e(clear) {
       @extend %df;
       @extend %aic;
       @extend %cp;
@@ -109,7 +123,7 @@
       padding: 0 j(8);
       font-size: j(16);
     }
-    &-unit {
+    @include e(unit) {
       @extend %c3;
       flex: none;
       margin-left: j(4);

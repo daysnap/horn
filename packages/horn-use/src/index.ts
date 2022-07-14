@@ -1,5 +1,6 @@
 /* 本文件自动生成 './bin/entry.js' */
 
+export * from './useComposition'
 export * from './useKeepAliveIncludes'
 export * from './useRouteStack'
 export * from './useTitle'

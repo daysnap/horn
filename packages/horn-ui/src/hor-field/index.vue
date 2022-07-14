@@ -7,11 +7,14 @@
     alignItemCenter
   >
     <input
+      @input="handleInput"
+      class="hor-field-input"
+      :disabled="disabled"
       :value="modelValue"
+      :type="type"
+      inputmode="url"
       :maxlength="maxlength"
       :placeholder="placeholder"
-      class="hor-field-input"
-      @input="handleInput"
     />
     <template #suffix>
       <hor-icon
@@ -30,7 +33,9 @@
   import { HorCell } from '../hor-cell'
   import { HorIcon } from '../hor-icon'
   import { computed, InputHTMLAttributes } from 'vue'
+
   defineOptions({ name: 'HorField' })
+
   // 如果定义属性 这里传 horFieldProps， 在 types 里完善类型
   const props = defineProps(horFieldProps)
   const handleClear = () => {

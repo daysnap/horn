@@ -39,6 +39,7 @@
   import { computed, defineProps, ref } from 'vue'
   import { horKeyboardProps, HorKeyboardProps } from './type'
   import { HorIcon } from '../hor-icon'
+
   defineOptions({ name: 'HorKeyboard' })
   const props = defineProps(horKeyboardProps)
   const dynamicProps = ref<Partial<HorKeyboardProps>>()

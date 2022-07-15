@@ -11,7 +11,7 @@ export const horKeyboardProps = {
   },
   maxlength: {
     type: [String, Number],
-    default: 20,
+    default: 999,
   },
   placeholder: { default: '请输入' },
   disabledKey: {

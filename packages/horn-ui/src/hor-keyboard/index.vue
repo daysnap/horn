@@ -36,16 +36,16 @@
 
 <script setup lang="ts">
   import { useVisible } from '@daysnap/horn-use'
-  import { computed, defineProps, ref } from 'vue'
+  import { computed, defineProps, ref, watchEffect } from 'vue'
   import { horKeyboardProps, HorKeyboardProps } from './type'
   import { HorIcon } from '../hor-icon'
 
   defineOptions({ name: 'HorKeyboard' })
   const props = defineProps(horKeyboardProps)
   const dynamicProps = ref<Partial<HorKeyboardProps>>()
-  const computedProps = computed<HorKeyboardProps>(() =>
-    Object.assign({}, props, dynamicProps.value),
-  )
+  const computedProps = computed<HorKeyboardProps>(() => {
+    return Object.assign({}, props, dynamicProps.value)
+  })
 
   const innerProps = computed(() => {
     let { type, maxlength, placeholder, disabledKey } = computedProps.value
@@ -66,34 +66,32 @@
     }
     return { type, maxlength, disabledKey, placeholder }
   })
-  const numKeyborard = computed(() => ['idNum', 'num'].includes(computedProps.value.type))
+  const numKeyborard = computed(() => ['idNum', 'num', 'phone'].includes(computedProps.value.type))
   const sourcesAll = ref([
     ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
     ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
     ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'DELETE'],
     ['Z', 'X', 'C', 'V', 'B', 'N', 'M', 'SURE'],
   ])
-  const keyboard = computed(() => {
-    if (computedProps.value.type === 'num') {
-      return '.'
-    } else if (computedProps.value.type === 'idNum') {
-      return 'X'
-    }
-    return 'shrink'
-  })
   const sourcesNumber = ref([
-    ['1', '4', '7', keyboard.value],
+    ['1', '4', '7', 'shrink'],
     ['2', '5', '8', '0'],
     ['3', '6', '9', '00'],
     ['DELETE', 'SURE'],
   ])
+  watchEffect(() => {
+    if (dynamicProps?.value?.type === 'num') {
+      sourcesNumber.value[0].splice(3, 1, '.')
+    } else if (dynamicProps?.value?.type === 'idNum') {
+      sourcesNumber.value[0].splice(3, 1, 'X')
+    }
+  })
   let val = ref('')
   const sources = computed(() => (numKeyborard.value ? sourcesNumber : sourcesAll))
   const { show, hide, confirm, visible } = useVisible<Partial<HorKeyboardProps>, { value: string }>(
     {
       showCallback: (options) => {
         dynamicProps.value = options
-        console.log(computedProps)
         val.value = options?.value || ''
       },
       confirmCallback: (res) => res,
@@ -141,6 +139,8 @@
       @extend %aic;
       @extend %c3;
       @extend %bsb;
+      min-width: 70%;
+      overflow: hidden;
       padding: 0 j(16);
       font-size: j(14);
       background-color: #fff;

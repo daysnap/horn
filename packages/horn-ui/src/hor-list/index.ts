@@ -1,5 +1,6 @@
 import Component from './index.vue'
 import { withInstall } from '../utils'
+export * from './types'
 export const HorList = withInstall<typeof Component>(Component)
 export type HorListInstance = InstanceType<typeof HorList>
 declare module 'vue' {

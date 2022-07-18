@@ -5,7 +5,6 @@
     :required="required"
     :direction="direction"
     :icon="icon"
-    alignItemCenter
   >
     <template #prefix>
       <slot name="prefix"> </slot>

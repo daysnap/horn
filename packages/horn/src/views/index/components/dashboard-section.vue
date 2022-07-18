@@ -28,7 +28,6 @@
 
   const arrServiceData = computed(() => {
     const data = import.meta.glob(`../../../../node_modules/@daysnap/horn-jssdk/src/**/index.md`)
-    console.log('data => ', data)
     return Object.keys(data)
   })
 

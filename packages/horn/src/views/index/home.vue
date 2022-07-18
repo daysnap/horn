@@ -1,5 +1,11 @@
 <template>
   <hor-view :use-nav-bar="false" :left-arrow="false">
+    <div class="seat"></div>
+
+    <img class="logo" src="src/assets/logo.png" alt="logo" />
+
+    <dashboard-section />
+
     <hor-cell-group class="mt10" v-for="(menus, index) in menuGroups" :key="index">
       <hor-cell
         v-for="(item, i) in menus"
@@ -16,6 +22,7 @@
 
 <script setup lang="ts">
   import { useKeepAliveIncludes, useTransfer } from '@daysnap/horn-use'
+  import DashboardSection from './components/dashboard-section.vue'
   import { version } from '../../../package.json'
 
   defineOptions({ name: 'index-home' })
@@ -52,6 +59,16 @@ en-US:
 </i18n>
 
 <style lang="scss" scoped>
+  @import 'src/assets/scss/define.scss';
+  .seat {
+    height: j(30);
+  }
+  .logo {
+    @extend %db;
+    @extend %ma;
+    width: j(100);
+    height: j(100);
+  }
   .mt10 {
     margin-top: 10px;
   }

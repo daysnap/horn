@@ -2,7 +2,7 @@
   <van-popup class="hor-keyboard" @click-overlay="hide" position="bottom" :show="visible">
     <div class="hor-keyboard-header">
       <span class="hor-keyboard-value" :class="[!val && 'place-value']">
-        {{ val || innerProps.placeholder }}
+        <em>{{ val || innerProps.placeholder }}</em>
       </span>
       <!-- <van-button class="hor-keyboard-copy" type="success" size="small"> 粘贴 </van-button> -->
       <van-button class="hor-keyboard-cancel" type="warning" @click="hide" size="small">
@@ -66,7 +66,10 @@
     }
     return { type, maxlength, disabledKey, placeholder }
   })
-  const numKeyborard = computed(() => ['idNum', 'num', 'phone'].includes(computedProps.value.type))
+  const numKeyborard = computed(() => {
+    const { type } = computedProps.value
+    return ['idNum', 'num', 'phone'].includes(type)
+  })
   const sourcesAll = ref([
     ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
     ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
@@ -218,15 +221,7 @@
     }
     &-number {
       @extend %df;
-      padding: 0 j(10) j(10);
-      .key-DELETE {
-        @extend %df1;
-
-        background-size: 28%;
-      }
-      .key-SURE {
-        @extend %df1;
-      }
+      padding: 0 j(10) j(40);
       .hor-keyboard-li {
         flex-direction: column;
         margin-right: j(6);
@@ -234,6 +229,14 @@
         height: j(200);
         &:last-child {
           margin-right: j(-6);
+        }
+        .key-DELETE {
+          @extend %df1;
+
+          background-size: 28%;
+        }
+        .key-SURE {
+          @extend %df1;
         }
       }
       .hor-keyboard-cell {

@@ -84,6 +84,16 @@
       <van-button style="margin-left:10px" size="small" type="primary">发送验证码</van-button>
     </template>
   </hor-field>
+  <hor-field
+    placeholder="请填写价格"
+    label="小数"
+    :required="true"
+    direction="column"
+    :maxlength="10"
+    type="digit"
+    clearable
+    fractionDigits="4"
+  ></hor-field>
 </div>
 
 

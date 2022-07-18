@@ -1,6 +1,7 @@
-/* 本文件自动生成 './bin/entry.js' */
+/* 本文件自动生成 './scripts/entry.js' */
 
 export * from './useComposition'
+export * from './useDragSort'
 export * from './useKeepAliveIncludes'
 export * from './useRouteStack'
 export * from './useTitle'

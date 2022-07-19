@@ -1,19 +1,24 @@
 <template>
   <div class="test">
     <div
-      class="dragSort"
-      :class="['item' + '-' + index, 'item']"
+      class="dragSort item"
+      @touchstart="handleTouchStart"
+      @touchmove="handleTouchMove"
+      @touchend="handleTouchEnd"
       v-for="(item, index) in arr"
       :key="index"
     >
-      <div class="123">
+      请选择图片
+      <div :class="['item' + '-' + index, 'drag']">
         {{ item.name }}
       </div>
     </div>
+    <div class="dragSort item x" :style="`top: ${y}px; left: ${x}px`"></div>
   </div>
 </template>
 <script setup lang="ts">
-  import { onMounted } from 'vue'
+  // import { onMounted } from 'vue'
+  import { useDragSort } from '@daysnap/horn-use'
   const arr = [
     {
       name: 'ww',
@@ -34,45 +39,36 @@
       name: '77',
     },
   ]
-  const useDragSort = (dom: any) => {
-    dom.style.position = 'relative'
-    const childrens = dom.children
-    let dragDom
-    let clientX
-    let clientY
-    Array.prototype.map.call(childrens, (item) => {
-      console.dir(item)
-      item.style.top = item.clientHeight + 'px'
-      item.style.left = item.clientWidth + 'px'
-      const touchstart = function (e) {
-        item.style.position = 'absolute'
-        dragDom = item
-        console.log(e)
-      }
-      item.addEventListener('touchstart', touchstart)
-      const touchmove = function (e) {
-        clientX = e.targetTouches[0].clientX
-        clientY = e.targetTouches[0].clientY
-        dragDom.style.left = clientX - dragDom.offsetWidth / 2 + 'px'
-        dragDom.style.top = clientY - dragDom.offsetHeight / 2 + 'px'
-        console.dir(dragDom)
-      }
-      item.addEventListener('touchmove', touchmove)
-    })
-  }
-  onMounted(() => {
-    useDragSort(document.getElementsByClassName('test')[0])
-  })
+
+  const { x, y, handleTouchEnd, handleTouchMove, handleTouchStart } = useDragSort({})
+
+  // onMounted(() => {
+  //   const domList = document.getElementsByClassName('drag')
+  //   useDragSort(domList, (startIndex, endIndex) => {})
+  // })
 </script>
 <style lang="scss">
   @import 'src/assets/scss/define';
   .test {
     display: flex;
     flex-wrap: wrap;
+    position: relative;
     .item {
-      width: 33%;
+      width: j(125);
       height: j(130);
       flex-grow: unset;
+      position: relative;
+      &.x {
+        background-color: #ddd;
+        position: absolute;
+      }
+    }
+    .drag {
+      width: j(125);
+      height: j(130);
+      position: absolute;
+      top: 0;
+      left: 0;
     }
     .item-1 {
       background-color: #00fdfb;

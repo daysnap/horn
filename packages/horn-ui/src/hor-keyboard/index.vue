@@ -126,7 +126,7 @@
 <style lang="scss">
   @import '../styles/define.scss';
   @include b(keyboard) {
-    @extend %ncp;
+    @extend %usn;
     background-color: #ddd;
     &-header {
       @extend %df;

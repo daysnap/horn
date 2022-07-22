@@ -7,3 +7,6 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+
+declare let BMapGL: any
+declare let BMAP_STATUS_SUCCESS: any

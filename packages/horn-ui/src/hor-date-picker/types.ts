@@ -1,6 +1,6 @@
 import type { DatePickerColumnType, PickerOption } from 'vant'
 import { ExtractPropTypes, PropType } from 'vue'
-export const datePickerProps = {
+export const horDatePickerProps = {
   value: Array as PropType<Array<string>>,
   minDate: {
     type: Date,
@@ -31,4 +31,4 @@ export const datePickerProps = {
     type: Function as PropType<(columnType: string, options: PickerOption[]) => PickerOption[]>,
   },
 }
-export type DatePickerProps = ExtractPropTypes<typeof datePickerProps>
+export type HorDatePickerProps = ExtractPropTypes<typeof horDatePickerProps>

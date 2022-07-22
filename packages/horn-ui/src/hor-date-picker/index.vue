@@ -15,23 +15,23 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, defineProps, ref } from 'vue'
-  import { datePickerProps, DatePickerProps } from './types'
+  import { computed, ref } from 'vue'
+  import { horDatePickerProps, HorDatePickerProps } from './types'
   import { PickerConfirmEventParams } from 'vant'
   import { useVisible } from '@daysnap/horn-use'
   defineOptions({
     name: 'HorDatePicker',
   })
 
-  const props = defineProps(datePickerProps)
+  const props = defineProps(horDatePickerProps)
 
-  const dynamicProps = ref<Partial<DatePickerProps>>()
+  const dynamicProps = ref<Partial<HorDatePickerProps>>()
 
-  const computedProps = computed<DatePickerProps>(() =>
+  const computedProps = computed<HorDatePickerProps>(() =>
     Object.assign({}, props, dynamicProps.value),
   )
   const { show, hide, confirm, visible } = useVisible<
-    Partial<DatePickerProps>,
+    Partial<HorDatePickerProps>,
     PickerConfirmEventParams & { value: any }
   >({
     showCallback: (options) => {

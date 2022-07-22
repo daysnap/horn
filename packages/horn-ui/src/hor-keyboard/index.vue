@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
   import { useVisible } from '@daysnap/horn-use'
-  import { computed, defineProps, ref, watchEffect } from 'vue'
+  import { computed, ref, watchEffect } from 'vue'
   import { horKeyboardProps, HorKeyboardProps } from './type'
   import { HorIcon } from '../hor-icon'
 

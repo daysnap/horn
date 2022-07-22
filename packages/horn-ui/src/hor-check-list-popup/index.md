@@ -8,10 +8,10 @@
 ## 代码演示
 
 ### 基础用法
+<van-button @click="handleShowList" >点击唤起选择弹框</van-button>
+<hor-check-list-popup ref="refHorCheckListPopup">
 
-<div>
-  // ...
-</div>
+</hor-check-list-popup>
 
 
 ### 复杂案例
@@ -74,4 +74,10 @@
   import { HorCell } from '../hor-cell'
   import { HorCheckListPopup, horCheckListPopupProps } from './index'
   import { parseType } from '../utils'
+  import { ref } from 'vue'
+  import { Button as VanButton } from 'vant';
+  const refHorCheckListPopup = ref()
+  const handleShowList = function (){
+    refHorCheckListPopup.value.show()
+  }
 </script>
